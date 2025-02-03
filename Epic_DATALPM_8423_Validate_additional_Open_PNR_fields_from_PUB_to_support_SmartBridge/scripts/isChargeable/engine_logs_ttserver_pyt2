@@ -1,0 +1,43 @@
+2023/08/22 14:02:10.713885 NCEL140818 APP WARN <TTS_GlobalEngine.cpp#597 TID#3933472320> Runtime exception: name 'expected_isChargeable_true' is not defined
+
+2023/08/22 14:02:10.713889 NCEL140818 APP WARN <TTS_Task.cpp#55 TID#3933472320> Caught exception in TTS_ReceiveReplyTask
+2023/08/22 14:02:10.766935 NCEL140818 APP INFO <TTS_Configuration.cpp#425 TID#3935794432> CIL keepalive transport options: enabled - 0, period - 10, reply timeout - 2, negotiation - 0
+2023/08/22 14:03:04.068470 NCEL140818 APP WARN <TTS_GlobalEngine.cpp#597 TID#356648512> Runtime exception: name 'expected_isChargeable_true' is not defined
+
+2023/08/22 14:03:04.068476 NCEL140818 APP WARN <TTS_Task.cpp#55 TID#356648512> Caught exception in TTS_ReceiveReplyTask
+2023/08/22 14:03:04.129964 NCEL140818 APP INFO <TTS_Configuration.cpp#425 TID#361133312> CIL keepalive transport options: enabled - 0, period - 10, reply timeout - 2, negotiation - 0
+2023/08/22 15:45:24.705499 NCEL140818 APP WARN <TTS_GlobalEngine.cpp#597 TID#377030208> Runtime exception: name 'true' is not defined
+
+2023/08/22 15:45:24.705508 NCEL140818 APP WARN <TTS_Task.cpp#55 TID#377030208> Caught exception in TTS_ReceiveReplyTask
+2023/08/22 15:45:24.763035 NCEL140818 APP INFO <TTS_Configuration.cpp#425 TID#381515008> CIL keepalive transport options: enabled - 0, period - 10, reply timeout - 2, negotiation - 0
+2023/08/22 16:15:49.431543 NCEL140818 APP WARN <TTS_GlobalEngine.cpp#597 TID#681576000> Runtime exception: 'module' object has no attribute '_compare_element'
+
+2023/08/22 16:15:49.431551 NCEL140818 APP WARN <TTS_Task.cpp#55 TID#681576000> Caught exception in TTS_ReceiveReplyTask
+2023/08/22 16:15:49.492716 NCEL140818 APP INFO <TTS_Configuration.cpp#425 TID#683898112> CIL keepalive transport options: enabled - 0, period - 10, reply timeout - 2, negotiation - 0
+2023/08/22 16:17:23.646952 NCEL140818 APP WARN <TTS_GlobalEngine.cpp#597 TID#3866232384> Runtime exception: 'module' object has no attribute '_compare_element'
+
+2023/08/22 16:17:23.646957 NCEL140818 APP WARN <TTS_Task.cpp#55 TID#3866232384> Caught exception in TTS_ReceiveReplyTask
+2023/08/22 16:17:23.696771 NCEL140818 APP INFO <TTS_Configuration.cpp#425 TID#3870717184> CIL keepalive transport options: enabled - 0, period - 10, reply timeout - 2, negotiation - 0
+2023/08/22 16:19:01.918180 NCEL140818 APP WARN <TTS_GlobalEngine.cpp#597 TID#73205312> Runtime exception: 'module' object has no attribute '_compare_element'
+
+2023/08/22 16:19:01.918187 NCEL140818 APP WARN <TTS_Task.cpp#55 TID#73205312> Caught exception in TTS_ReceiveReplyTask
+2023/08/22 16:19:01.976610 NCEL140818 APP INFO <TTS_Configuration.cpp#425 TID#77690112> CIL keepalive transport options: enabled - 0, period - 10, reply timeout - 2, negotiation - 0
+2023/08/22 17:07:09.935381 NCEL140818 APP WARN <TTS_GlobalEngine.cpp#597 TID#1001588288> Runtime exception: 'module' object has no attribute 'element_exists'
+
+2023/08/22 17:07:09.935386 NCEL140818 APP WARN <TTS_Task.cpp#55 TID#1001588288> Caught exception in TTS_ReceiveReplyTask
+2023/08/22 17:07:09.984183 NCEL140818 APP INFO <TTS_Configuration.cpp#425 TID#1006073088> CIL keepalive transport options: enabled - 0, period - 10, reply timeout - 2, negotiation - 0
+2023/08/22 17:09:44.703999 NCEL140818 APP WARN <TTS_GlobalEngine.cpp#597 TID#3803907648> Runtime exception: 'module' object has no attribute 'element_exists'
+
+2023/08/22 17:09:44.704007 NCEL140818 APP WARN <TTS_Task.cpp#55 TID#3803907648> Caught exception in TTS_ReceiveReplyTask
+2023/08/22 17:09:44.759790 NCEL140818 APP INFO <TTS_Configuration.cpp#425 TID#3808392448> CIL keepalive transport options: enabled - 0, period - 10, reply timeout - 2, negotiation - 0
+2023/08/22 17:13:36.606522 NCEL140818 APP WARN <TTS_GlobalEngine.cpp#597 TID#2727216704> Runtime exception: 'module' object has no attribute 'element_exists'
+
+2023/08/22 17:13:36.606528 NCEL140818 APP WARN <TTS_Task.cpp#55 TID#2727216704> Caught exception in TTS_ReceiveReplyTask
+2023/08/22 17:13:36.659586 NCEL140818 APP INFO <TTS_Configuration.cpp#425 TID#2731701504> CIL keepalive transport options: enabled - 0, period - 10, reply timeout - 2, negotiation - 0
+2023/08/22 17:45:20.063770 NCEL140818 APP WARN <TTS_GlobalEngine.cpp#597 TID#159057472> Runtime exception: name 'true' is not defined
+
+2023/08/22 17:45:20.063780 NCEL140818 APP WARN <TTS_Task.cpp#55 TID#159057472> Caught exception in TTS_ReceiveReplyTask
+2023/08/22 17:45:20.122611 NCEL140818 APP INFO <TTS_Configuration.cpp#425 TID#163542272> CIL keepalive transport options: enabled - 0, period - 10, reply timeout - 2, negotiation - 0
+2023/08/24 11:01:21.597453 NCEL140818 APP WARN <TTS_GlobalEngine.cpp#597 TID#3554936384> Response timeout in context: 0x625f750
+
+2023/08/24 11:01:23.548527 NCEL140818 APP INFO <TTS_Configuration.cpp#425 TID#3557258496> CIL keepalive transport options: enabled - 0, period - 10, reply timeout - 2, negotiation - 0

@@ -1,0 +1,248 @@
+2023/11/29 16:28:26.848839 NCEL146275 APP WARN <TTS_GlobalEngine.cpp#597 TID#3796567616> Response timeout in context: 0x7f7ed401da80
+
+2023/11/29 16:29:37.141840 NCEL146275 APP INFO <TTS_Configuration.cpp#425 TID#3801052416> CIL keepalive transport options: enabled - 0, period - 10, reply timeout - 2, negotiation - 0
+2023/12/12 10:59:56.759527 NCEL146275 APP WARN <TTS_CommSocket.cpp#642 TID#972752448> timeout on an unknown conversation
+2023/12/12 10:59:56.760339 NCEL146275 APP WARN <TTS_GlobalEngine.cpp#597 TID#3134064192> Response timeout in transaction: 1
+
+2023/12/12 10:59:56.760659 NCEL146275 APP WARN <TTS_Task.cpp#55 TID#3134064192> Caught exception in TTS_StartConversationTask
+2023/12/12 10:59:56.760715 NCEL146275 APP WARN <TTS_GlobalEngine.cpp#597 TID#3134064192> Runtime exception: The variable 'blbsize' is not defined
+
+2023/12/12 10:59:56.844770 NCEL146275 APP INFO <TTS_Configuration.cpp#425 TID#3138548992> CIL keepalive transport options: enabled - 0, period - 10, reply timeout - 2, negotiation - 0
+2023/12/12 13:12:05.263768 NCEL146275 APP WARN <TTS_Task.cpp#55 TID#2655716928> Caught exception in TTS_StartConversationTask
+2023/12/12 13:12:05.263871 NCEL146275 APP WARN <TTS_GlobalEngine.cpp#597 TID#2655716928> Runtime exception: The variable 'blbsize' is not defined
+
+2023/12/12 13:12:05.324364 NCEL146275 APP INFO <TTS_Configuration.cpp#425 TID#2658039040> CIL keepalive transport options: enabled - 0, period - 10, reply timeout - 2, negotiation - 0
+2023/12/12 13:37:06.675990 NCEL146275 APP WARN <TTS_CommSocket.cpp#642 TID#570099264> timeout on an unknown conversation
+2023/12/12 13:37:06.676849 NCEL146275 APP WARN <TTS_GlobalEngine.cpp#597 TID#2585003584> Response timeout in transaction: 1
+
+2023/12/12 13:37:06.677296 NCEL146275 APP WARN <TTS_Task.cpp#55 TID#2585003584> Caught exception in TTS_StartConversationTask
+2023/12/12 13:37:06.677398 NCEL146275 APP WARN <TTS_GlobalEngine.cpp#597 TID#2585003584> Runtime exception: The variable 'received_protobuf' is not defined
+
+2023/12/12 13:37:06.741059 NCEL146275 APP INFO <TTS_Configuration.cpp#425 TID#2587325696> CIL keepalive transport options: enabled - 0, period - 10, reply timeout - 2, negotiation - 0
+2023/12/12 13:38:07.312963 NCEL146275 APP WARN <TTS_CommSocket.cpp#642 TID#1106970176> timeout on an unknown conversation
+2023/12/12 13:38:07.313735 NCEL146275 APP WARN <TTS_GlobalEngine.cpp#597 TID#3041527360> Response timeout in transaction: 1
+
+2023/12/12 13:38:07.314139 NCEL146275 APP WARN <TTS_Task.cpp#55 TID#3041527360> Caught exception in TTS_StartConversationTask
+2023/12/12 13:38:07.314228 NCEL146275 APP WARN <TTS_GlobalEngine.cpp#597 TID#3041527360> Runtime exception: The variable 'received_protobuf' is not defined
+
+2023/12/12 13:38:07.381600 NCEL146275 APP INFO <TTS_Configuration.cpp#425 TID#3046012160> CIL keepalive transport options: enabled - 0, period - 10, reply timeout - 2, negotiation - 0
+2023/12/12 13:41:35.919905 NCEL146275 APP WARN <TTS_CommSocket.cpp#642 TID#4244178496> timeout on an unknown conversation
+2023/12/12 13:41:35.920596 NCEL146275 APP WARN <TTS_GlobalEngine.cpp#597 TID#1977878080> Response timeout in transaction: 1
+
+2023/12/12 13:41:35.920972 NCEL146275 APP WARN <TTS_Task.cpp#55 TID#1977878080> Caught exception in TTS_StartConversationTask
+2023/12/12 13:41:35.921054 NCEL146275 APP WARN <TTS_GlobalEngine.cpp#597 TID#1977878080> Runtime exception: The variable 'received_protobuf' is not defined
+
+2023/12/12 13:41:35.972997 NCEL146275 APP INFO <TTS_Configuration.cpp#425 TID#1982362880> CIL keepalive transport options: enabled - 0, period - 10, reply timeout - 2, negotiation - 0
+2023/12/12 13:51:51.367300 NCEL146275 APP WARN <TTS_CommSocket.cpp#642 TID#4059760192> timeout on an unknown conversation
+2023/12/12 13:51:51.367970 NCEL146275 APP WARN <TTS_GlobalEngine.cpp#597 TID#1698629184> Response timeout in transaction: 1
+
+2023/12/12 13:51:51.368307 NCEL146275 APP WARN <TTS_Task.cpp#55 TID#1698629184> Caught exception in TTS_StartConversationTask
+2023/12/12 13:51:51.368361 NCEL146275 APP WARN <TTS_GlobalEngine.cpp#597 TID#1698629184> Runtime exception: The variable 'received_protobuf' is not defined
+
+2023/12/12 13:51:51.434383 NCEL146275 APP INFO <TTS_Configuration.cpp#425 TID#1703113984> CIL keepalive transport options: enabled - 0, period - 10, reply timeout - 2, negotiation - 0
+2023/12/12 13:52:28.595571 NCEL146275 APP WARN <TTS_Task.cpp#55 TID#928974400> Caught exception in TTS_SendQueryTask
+2023/12/12 13:52:28.595698 NCEL146275 APP WARN <TTS_GlobalEngine.cpp#597 TID#928974400> Communication exception: 
+Can not establish connection on host: 172.17.201.97 with port:8054 Error code: 128 Error message: Failed to connect the socket, last system error 111: Connection refused timeout 5000000000
+
+
+2023/12/12 13:52:28.648789 NCEL146275 APP INFO <TTS_Configuration.cpp#425 TID#931296512> CIL keepalive transport options: enabled - 0, period - 10, reply timeout - 2, negotiation - 0
+2023/12/13 09:19:24.125330 NCEL146275 APP WARN <TTS_ScriptSession.cpp#2874 TID#2415752448> 
+Can not establish connection on host: sitst.tn3270.1a.amadeus.net with port:46062 Error code: 128 Error message: Failed to connect the socket, last system error 11: Resource temporarily unavailable timeout 5000000000
+
+2023/12/13 09:19:34.143352 NCEL146275 APP WARN <TTS_ScriptSession.cpp#2874 TID#2415752448> 
+Can not establish connection on host: 172.17.205.134 with port:14010 Error code: 4 Error message: Timeout error, last system error 115: Operation now in progress timeout 5000000000
+
+Can not establish connection on host: 172.17.204.60 with port:14010 Error code: 4 Error message: Timeout error, last system error 115: Operation now in progress timeout 5000000000
+
+2023/12/13 09:21:14.847581 NCEL146275 APP WARN <TTS_ScriptSession.cpp#2874 TID#2401793280> 
+Can not establish connection on host: sitst.tn3270.1a.amadeus.net with port:46062 Error code: 128 Error message: Failed to connect the socket, last system error 11: Resource temporarily unavailable timeout 5000000000
+
+2023/12/13 09:21:14.855349 NCEL146275 APP WARN <TTS_ScriptSession.cpp#2874 TID#2401793280> 
+Can not establish connection on host: 172.17.205.134 with port:14010 Error code: 128 Error message: Failed to connect the socket, last system error 111: Connection refused timeout 5000000000
+
+Can not establish connection on host: 172.17.204.60 with port:14010 Error code: 128 Error message: Failed to connect the socket, last system error 111: Connection refused timeout 5000000000
+
+2023/12/13 09:39:22.871628 NCEL146275 APP WARN <TTS_CommSocket.cpp#642 TID#838534720> timeout on an unknown conversation
+2023/12/13 09:39:22.872131 NCEL146275 APP WARN <TTS_GlobalEngine.cpp#597 TID#2925594176> Response timeout in transaction: 1
+
+2023/12/13 09:39:22.872403 NCEL146275 APP WARN <TTS_Task.cpp#55 TID#2925594176> Caught exception in TTS_StartConversationTask
+2023/12/13 09:39:22.872456 NCEL146275 APP WARN <TTS_GlobalEngine.cpp#597 TID#2925594176> Runtime exception: The variable 'received_protobuf' is not defined
+
+2023/12/13 09:39:22.922488 NCEL146275 APP INFO <TTS_Configuration.cpp#425 TID#2930078976> CIL keepalive transport options: enabled - 0, period - 10, reply timeout - 2, negotiation - 0
+2023/12/13 09:41:19.634189 NCEL146275 APP WARN <TTS_Task.cpp#55 TID#2556888640> Caught exception in TTS_SendQueryTask
+2023/12/13 09:41:19.634401 NCEL146275 APP WARN <TTS_GlobalEngine.cpp#597 TID#2556888640> Communication exception: 
+Can not establish connection on host: 172.17.201.97 with port:17100 Error code: 128 Error message: Failed to connect the socket, last system error 111: Connection refused timeout 5000000000
+
+Can not establish connection on host:  172.17.237.21 with port:17100 Error code: 128 Error message: Failed to connect the socket timeout 5000000000
+
+
+2023/12/13 09:41:19.690606 NCEL146275 APP INFO <TTS_Configuration.cpp#425 TID#2561373440> CIL keepalive transport options: enabled - 0, period - 10, reply timeout - 2, negotiation - 0
+2023/12/13 09:42:06.957499 NCEL146275 APP WARN <TTS_Task.cpp#55 TID#735053376> Caught exception in TTS_SendQueryTask
+2023/12/13 09:42:06.957677 NCEL146275 APP WARN <TTS_GlobalEngine.cpp#597 TID#735053376> Communication exception: 
+Can not establish connection on host: 172.17.237.12 with port:36100 Error code: 128 Error message: Failed to connect the socket, last system error 111: Connection refused timeout 5000000000
+
+Can not establish connection on host:  172.17.237.21 with port:36100 Error code: 128 Error message: Failed to connect the socket timeout 5000000000
+
+
+2023/12/13 09:42:07.009408 NCEL146275 APP INFO <TTS_Configuration.cpp#425 TID#737375488> CIL keepalive transport options: enabled - 0, period - 10, reply timeout - 2, negotiation - 0
+2023/12/13 10:55:08.457969 NCEL146275 APP INFO <TTS_Configuration.cpp#425 TID#1861682752> CIL keepalive transport options: enabled - 0, period - 10, reply timeout - 2, negotiation - 0
+2023/12/13 10:55:09.130689 NCEL146275 APP INFO <TTS_Configuration.cpp#425 TID#1866167552> CIL keepalive transport options: enabled - 0, period - 10, reply timeout - 2, negotiation - 0
+2023/12/13 10:56:43.431897 NCEL146275 APP INFO <TTS_Configuration.cpp#425 TID#2072380992> CIL keepalive transport options: enabled - 0, period - 10, reply timeout - 2, negotiation - 0
+2023/12/13 10:56:44.077903 NCEL146275 APP INFO <TTS_Configuration.cpp#425 TID#2076865792> CIL keepalive transport options: enabled - 0, period - 10, reply timeout - 2, negotiation - 0
+2023/12/13 11:07:20.603238 NCEL146275 APP INFO <TTS_Configuration.cpp#425 TID#1643316800> CIL keepalive transport options: enabled - 0, period - 10, reply timeout - 2, negotiation - 0
+2023/12/13 11:07:21.285829 NCEL146275 APP INFO <TTS_Configuration.cpp#425 TID#1645638912> CIL keepalive transport options: enabled - 0, period - 10, reply timeout - 2, negotiation - 0
+2023/12/13 11:11:47.394025 NCEL146275 APP INFO <TTS_Configuration.cpp#425 TID#3361343040> CIL keepalive transport options: enabled - 0, period - 10, reply timeout - 2, negotiation - 0
+2023/12/13 11:11:47.875871 NCEL146275 APP INFO <TTS_Configuration.cpp#425 TID#3365827840> CIL keepalive transport options: enabled - 0, period - 10, reply timeout - 2, negotiation - 0
+2023/12/13 11:14:45.847488 NCEL146275 APP INFO <TTS_Configuration.cpp#425 TID#1199900224> CIL keepalive transport options: enabled - 0, period - 10, reply timeout - 2, negotiation - 0
+2023/12/13 11:14:46.510828 NCEL146275 APP INFO <TTS_Configuration.cpp#425 TID#1202222336> CIL keepalive transport options: enabled - 0, period - 10, reply timeout - 2, negotiation - 0
+2023/12/13 11:15:55.661456 NCEL146275 APP INFO <TTS_Configuration.cpp#425 TID#1181615680> CIL keepalive transport options: enabled - 0, period - 10, reply timeout - 2, negotiation - 0
+2023/12/13 11:15:55.795616 NCEL146275 APP WARN <TTS_GlobalEngine.cpp#597 TID#1183778368> Runtime exception: name 'received_json' is not defined
+
+2023/12/13 11:15:55.795625 NCEL146275 APP WARN <TTS_Task.cpp#55 TID#1183778368> Caught exception in TTS_ReceiveReplyTask
+2023/12/13 11:15:55.848273 NCEL146275 APP INFO <TTS_Configuration.cpp#425 TID#1186100480> CIL keepalive transport options: enabled - 0, period - 10, reply timeout - 2, negotiation - 0
+2023/12/13 11:20:49.683091 NCEL146275 APP INFO <TTS_Configuration.cpp#425 TID#1740375616> CIL keepalive transport options: enabled - 0, period - 10, reply timeout - 2, negotiation - 0
+2023/12/13 11:20:49.964982 NCEL146275 APP WARN <TTS_Task.cpp#55 TID#1742538304> Caught exception in TTS_StartConversationTask
+2023/12/13 11:20:49.965020 NCEL146275 APP WARN <TTS_GlobalEngine.cpp#597 TID#1742538304> In file /mnt/c/Users/ajannoun/OneDrive - Amadeus Workplace/Desktop/QA/OpenPnr/open_pnr_validation/Epic_DATALPM_7094_Validate_DID_UCI_OpenPNR_API/scripts/structured_AB_AMFreeText_allPassengers_RPWREQ.cry, line 192
+Parser exception: Match without query
+Occured in: ''Match:generic_lib.compare_json_as_string(received_json, expected_address_ab, msg_ok, msg_fail, single_element="contacts", keys_to_ignore=["id"]) 
+
+2023/12/13 11:20:49.966339 NCEL146275 APP WARN <TTS_ScriptSession.cpp#2657 TID#1744860416> Match without query
+2023/12/13 11:20:50.014294 NCEL146275 APP INFO <TTS_Configuration.cpp#425 TID#1744860416> CIL keepalive transport options: enabled - 0, period - 10, reply timeout - 2, negotiation - 0
+2023/12/13 11:28:14.172775 NCEL146275 APP INFO <TTS_Configuration.cpp#425 TID#19531328> CIL keepalive transport options: enabled - 0, period - 10, reply timeout - 2, negotiation - 0
+2023/12/13 11:28:14.376613 NCEL146275 APP WARN <TTS_Task.cpp#55 TID#19531328> Caught exception in TTS_StartConversationTask
+2023/12/13 11:28:14.376661 NCEL146275 APP WARN <TTS_GlobalEngine.cpp#597 TID#19531328> In file /mnt/c/Users/ajannoun/OneDrive - Amadeus Workplace/Desktop/QA/OpenPnr/open_pnr_validation/Epic_DATALPM_7094_Validate_DID_UCI_OpenPNR_API/scripts/structured_AB_AMFreeText_allPassengers_RPWREQ.cry, line 192
+Parser exception: Match without query
+Occured in: ''Match:generic_lib.compare_json_as_string(received_json, expected_address_ab, msg_ok, msg_fail, single_element="contacts", keys_to_ignore=["id"]) 
+
+2023/12/13 11:28:14.378731 NCEL146275 APP WARN <TTS_ScriptSession.cpp#2657 TID#24016128> Match without query
+2023/12/13 11:28:14.430519 NCEL146275 APP INFO <TTS_Configuration.cpp#425 TID#24016128> CIL keepalive transport options: enabled - 0, period - 10, reply timeout - 2, negotiation - 0
+2023/12/13 11:38:43.636510 NCEL146275 APP INFO <TTS_Configuration.cpp#425 TID#376243776> CIL keepalive transport options: enabled - 0, period - 10, reply timeout - 2, negotiation - 0
+2023/12/13 11:38:43.838768 NCEL146275 APP WARN <TTS_Task.cpp#55 TID#378406464> Caught exception in TTS_StartConversationTask
+2023/12/13 11:38:43.838833 NCEL146275 APP WARN <TTS_GlobalEngine.cpp#597 TID#378406464> In file /mnt/c/Users/ajannoun/OneDrive - Amadeus Workplace/Desktop/QA/OpenPnr/open_pnr_validation/Epic_DATALPM_7094_Validate_DID_UCI_OpenPNR_API/scripts/structured_AB_AMFreeText_allPassengers_RPWREQ.cry, line 143
+Parser exception: Response without query
+Occured in: ''Response: 
+
+2023/12/13 11:38:43.840510 NCEL146275 APP WARN <TTS_ScriptSession.cpp#2657 TID#380728576> Response without query
+2023/12/13 11:38:43.894061 NCEL146275 APP INFO <TTS_Configuration.cpp#425 TID#380728576> CIL keepalive transport options: enabled - 0, period - 10, reply timeout - 2, negotiation - 0
+2023/12/13 11:47:29.771047 NCEL146275 APP INFO <TTS_Configuration.cpp#425 TID#1435305536> CIL keepalive transport options: enabled - 0, period - 10, reply timeout - 2, negotiation - 0
+2023/12/13 11:47:29.971944 NCEL146275 APP WARN <TTS_Task.cpp#55 TID#1433142848> Caught exception in TTS_StartConversationTask
+2023/12/13 11:47:29.972115 NCEL146275 APP WARN <TTS_GlobalEngine.cpp#597 TID#1433142848> Runtime exception: The variable 'received_protobuf' is not defined
+
+2023/12/13 11:47:30.028801 NCEL146275 APP INFO <TTS_Configuration.cpp#425 TID#1437627648> CIL keepalive transport options: enabled - 0, period - 10, reply timeout - 2, negotiation - 0
+2023/12/13 11:48:50.747410 NCEL146275 APP INFO <TTS_Configuration.cpp#425 TID#36308544> CIL keepalive transport options: enabled - 0, period - 10, reply timeout - 2, negotiation - 0
+2023/12/13 11:48:51.309920 NCEL146275 APP INFO <TTS_Configuration.cpp#425 TID#38630656> CIL keepalive transport options: enabled - 0, period - 10, reply timeout - 2, negotiation - 0
+2023/12/13 11:55:15.481307 NCEL146275 APP INFO <TTS_Configuration.cpp#425 TID#1625491008> CIL keepalive transport options: enabled - 0, period - 10, reply timeout - 2, negotiation - 0
+2023/12/13 11:55:16.008176 NCEL146275 APP INFO <TTS_Configuration.cpp#425 TID#1629975808> CIL keepalive transport options: enabled - 0, period - 10, reply timeout - 2, negotiation - 0
+2023/12/13 11:57:33.430844 NCEL146275 APP INFO <TTS_Configuration.cpp#425 TID#2814117440> CIL keepalive transport options: enabled - 0, period - 10, reply timeout - 2, negotiation - 0
+2023/12/13 11:57:33.905318 NCEL146275 APP INFO <TTS_Configuration.cpp#425 TID#2818602240> CIL keepalive transport options: enabled - 0, period - 10, reply timeout - 2, negotiation - 0
+2023/12/13 12:00:51.192983 NCEL146275 APP INFO <TTS_Configuration.cpp#425 TID#4132570688> CIL keepalive transport options: enabled - 0, period - 10, reply timeout - 2, negotiation - 0
+2023/12/13 12:00:51.436359 NCEL146275 APP WARN <TTS_GlobalEngine.cpp#597 TID#4134733376> Runtime exception: The variable 'received_json' is not defined
+
+2023/12/13 12:00:51.436460 NCEL146275 APP WARN <TTS_GlobalEngine.cpp#597 TID#4134733376> Runtime exception: The variable 'received_json' is not defined
+
+2023/12/13 12:00:51.436466 NCEL146275 APP WARN <TTS_Task.cpp#55 TID#4134733376> Caught exception in TTS_ReceiveReplyTask
+2023/12/13 12:00:51.488516 NCEL146275 APP INFO <TTS_Configuration.cpp#425 TID#4137055488> CIL keepalive transport options: enabled - 0, period - 10, reply timeout - 2, negotiation - 0
+2023/12/13 12:02:06.814306 NCEL146275 APP INFO <TTS_Configuration.cpp#425 TID#541525568> CIL keepalive transport options: enabled - 0, period - 10, reply timeout - 2, negotiation - 0
+2023/12/13 12:02:06.970718 NCEL146275 APP WARN <TTS_GlobalEngine.cpp#597 TID#543688256> Runtime exception: name 'received_json' is not defined
+
+2023/12/13 12:02:06.970728 NCEL146275 APP WARN <TTS_Task.cpp#55 TID#543688256> Caught exception in TTS_ReceiveReplyTask
+2023/12/13 12:02:07.019522 NCEL146275 APP INFO <TTS_Configuration.cpp#425 TID#546010368> CIL keepalive transport options: enabled - 0, period - 10, reply timeout - 2, negotiation - 0
+2023/12/13 12:02:45.946785 NCEL146275 APP INFO <TTS_Configuration.cpp#425 TID#1945175616> CIL keepalive transport options: enabled - 0, period - 10, reply timeout - 2, negotiation - 0
+2023/12/13 12:02:46.434805 NCEL146275 APP INFO <TTS_Configuration.cpp#425 TID#1949660416> CIL keepalive transport options: enabled - 0, period - 10, reply timeout - 2, negotiation - 0
+2023/12/13 12:05:50.128302 NCEL146275 APP INFO <TTS_Configuration.cpp#425 TID#2422736448> CIL keepalive transport options: enabled - 0, period - 10, reply timeout - 2, negotiation - 0
+2023/12/13 12:05:50.309073 NCEL146275 APP WARN <TTS_Task.cpp#55 TID#2422736448> Caught exception in TTS_StartConversationTask
+2023/12/13 12:05:50.309215 NCEL146275 APP WARN <TTS_GlobalEngine.cpp#597 TID#2422736448> Runtime exception: The variable 'received_protobuf' is not defined
+
+2023/12/13 12:05:50.362324 NCEL146275 APP INFO <TTS_Configuration.cpp#425 TID#2427221248> CIL keepalive transport options: enabled - 0, period - 10, reply timeout - 2, negotiation - 0
+2023/12/13 12:06:37.592703 NCEL146275 APP INFO <TTS_Configuration.cpp#425 TID#4045014592> CIL keepalive transport options: enabled - 0, period - 10, reply timeout - 2, negotiation - 0
+2023/12/13 12:06:37.780883 NCEL146275 APP WARN <TTS_Task.cpp#55 TID#4045014592> Caught exception in TTS_StartConversationTask
+2023/12/13 12:06:37.780968 NCEL146275 APP WARN <TTS_GlobalEngine.cpp#597 TID#4045014592> Runtime exception: The variable 'received_protobuf' is not defined
+
+2023/12/13 12:06:37.833765 NCEL146275 APP INFO <TTS_Configuration.cpp#425 TID#4049499392> CIL keepalive transport options: enabled - 0, period - 10, reply timeout - 2, negotiation - 0
+2023/12/13 12:07:02.045856 NCEL146275 APP INFO <TTS_Configuration.cpp#425 TID#1959855680> CIL keepalive transport options: enabled - 0, period - 10, reply timeout - 2, negotiation - 0
+2023/12/13 12:07:02.228581 NCEL146275 APP WARN <TTS_Task.cpp#55 TID#1957692992> Caught exception in TTS_StartConversationTask
+2023/12/13 12:07:02.228746 NCEL146275 APP WARN <TTS_GlobalEngine.cpp#597 TID#1957692992> Runtime exception: The variable 'received_protobuf' is not defined
+
+2023/12/13 12:07:02.284725 NCEL146275 APP INFO <TTS_Configuration.cpp#425 TID#1962177792> CIL keepalive transport options: enabled - 0, period - 10, reply timeout - 2, negotiation - 0
+2023/12/13 12:07:26.809280 NCEL146275 APP INFO <TTS_Configuration.cpp#425 TID#3887007296> CIL keepalive transport options: enabled - 0, period - 10, reply timeout - 2, negotiation - 0
+2023/12/13 12:07:31.713161 NCEL146275 APP INFO <TTS_Configuration.cpp#425 TID#3891492096> CIL keepalive transport options: enabled - 0, period - 10, reply timeout - 2, negotiation - 0
+2023/12/13 12:16:16.612874 NCEL146275 APP INFO <TTS_Configuration.cpp#425 TID#2429486656> CIL keepalive transport options: enabled - 0, period - 10, reply timeout - 2, negotiation - 0
+2023/12/13 12:16:21.505067 NCEL146275 APP INFO <TTS_Configuration.cpp#425 TID#2433971456> CIL keepalive transport options: enabled - 0, period - 10, reply timeout - 2, negotiation - 0
+2023/12/13 14:09:30.190534 NCEL146275 APP INFO <TTS_Configuration.cpp#425 TID#2250180160> CIL keepalive transport options: enabled - 0, period - 10, reply timeout - 2, negotiation - 0
+2023/12/13 14:09:35.086397 NCEL146275 APP INFO <TTS_Configuration.cpp#425 TID#2254664960> CIL keepalive transport options: enabled - 0, period - 10, reply timeout - 2, negotiation - 0
+2023/12/13 14:12:06.621825 NCEL146275 APP INFO <TTS_Configuration.cpp#425 TID#2852914752> CIL keepalive transport options: enabled - 0, period - 10, reply timeout - 2, negotiation - 0
+2023/12/13 14:12:11.528498 NCEL146275 APP INFO <TTS_Configuration.cpp#425 TID#2857399552> CIL keepalive transport options: enabled - 0, period - 10, reply timeout - 2, negotiation - 0
+2023/12/13 14:17:00.245004 NCEL146275 APP INFO <TTS_Configuration.cpp#425 TID#2895644224> CIL keepalive transport options: enabled - 0, period - 10, reply timeout - 2, negotiation - 0
+2023/12/13 14:17:00.408695 NCEL146275 APP WARN <TTS_Task.cpp#55 TID#2895644224> Caught exception in TTS_StartConversationTask
+2023/12/13 14:17:00.408736 NCEL146275 APP WARN <TTS_GlobalEngine.cpp#597 TID#2895644224> In file /mnt/c/Users/ajannoun/OneDrive - Amadeus Workplace/Desktop/QA/OpenPnr/open_pnr_validation/Epic_DATALPM_7094_Validate_DID_UCI_OpenPNR_API/scripts/structured_AB_AMFreeText_allPassengers_RPWREQ.cry, line 182
+Parser exception: Response without query
+Occured in: ''Response: 
+
+2023/12/13 14:17:00.410001 NCEL146275 APP WARN <TTS_ScriptSession.cpp#2657 TID#2897966336> Response without query
+2023/12/13 14:17:00.462562 NCEL146275 APP INFO <TTS_Configuration.cpp#425 TID#2897966336> CIL keepalive transport options: enabled - 0, period - 10, reply timeout - 2, negotiation - 0
+2023/12/13 14:34:56.981105 NCEL146275 APP INFO <TTS_Configuration.cpp#425 TID#4127327808> CIL keepalive transport options: enabled - 0, period - 10, reply timeout - 2, negotiation - 0
+2023/12/13 14:34:57.438767 NCEL146275 APP INFO <TTS_Configuration.cpp#425 TID#4131812608> CIL keepalive transport options: enabled - 0, period - 10, reply timeout - 2, negotiation - 0
+2023/12/13 14:39:33.827710 NCEL146275 APP INFO <TTS_Configuration.cpp#425 TID#1406535232> CIL keepalive transport options: enabled - 0, period - 10, reply timeout - 2, negotiation - 0
+2023/12/13 14:39:34.373570 NCEL146275 APP INFO <TTS_Configuration.cpp#425 TID#1411020032> CIL keepalive transport options: enabled - 0, period - 10, reply timeout - 2, negotiation - 0
+2023/12/13 14:40:51.029623 NCEL146275 APP INFO <TTS_Configuration.cpp#425 TID#782698048> CIL keepalive transport options: enabled - 0, period - 10, reply timeout - 2, negotiation - 0
+2023/12/13 14:40:51.263025 NCEL146275 APP WARN <TTS_Task.cpp#55 TID#782698048> Caught exception in TTS_StartConversationTask
+2023/12/13 14:40:51.263081 NCEL146275 APP WARN <TTS_GlobalEngine.cpp#597 TID#782698048> In file /mnt/c/Users/ajannoun/OneDrive - Amadeus Workplace/Desktop/QA/OpenPnr/open_pnr_validation/Epic_DATALPM_7094_Validate_DID_UCI_OpenPNR_API/scripts/structured_AB_AMFreeText_allPassengers_RPWREQ.cry, line 189
+Parser exception: Match without query
+Occured in: ''Match:generic_lib.compare_json_as_string(received_json, expected_address_ab, msg_ok, msg_fail, single_element="contacts", keys_to_ignore=["id"]) 
+
+2023/12/13 14:40:51.265197 NCEL146275 APP WARN <TTS_ScriptSession.cpp#2657 TID#785020160> Match without query
+2023/12/13 14:40:51.319088 NCEL146275 APP INFO <TTS_Configuration.cpp#425 TID#785020160> CIL keepalive transport options: enabled - 0, period - 10, reply timeout - 2, negotiation - 0
+2023/12/13 14:41:26.526584 NCEL146275 APP INFO <TTS_Configuration.cpp#425 TID#3865314880> CIL keepalive transport options: enabled - 0, period - 10, reply timeout - 2, negotiation - 0
+2023/12/13 14:41:27.064670 NCEL146275 APP INFO <TTS_Configuration.cpp#425 TID#3869799680> CIL keepalive transport options: enabled - 0, period - 10, reply timeout - 2, negotiation - 0
+2023/12/13 14:44:34.797679 NCEL146275 APP INFO <TTS_Configuration.cpp#425 TID#3166045760> CIL keepalive transport options: enabled - 0, period - 10, reply timeout - 2, negotiation - 0
+2023/12/13 14:44:35.316416 NCEL146275 APP INFO <TTS_Configuration.cpp#425 TID#3168367872> CIL keepalive transport options: enabled - 0, period - 10, reply timeout - 2, negotiation - 0
+2023/12/13 14:46:28.890272 NCEL146275 APP INFO <TTS_Configuration.cpp#425 TID#3432056384> CIL keepalive transport options: enabled - 0, period - 10, reply timeout - 2, negotiation - 0
+2023/12/13 14:46:29.425172 NCEL146275 APP INFO <TTS_Configuration.cpp#425 TID#3436541184> CIL keepalive transport options: enabled - 0, period - 10, reply timeout - 2, negotiation - 0
+2023/12/13 14:49:26.872431 NCEL146275 APP INFO <TTS_Configuration.cpp#425 TID#2456421952> CIL keepalive transport options: enabled - 0, period - 10, reply timeout - 2, negotiation - 0
+2023/12/13 14:49:27.395493 NCEL146275 APP INFO <TTS_Configuration.cpp#425 TID#2460906752> CIL keepalive transport options: enabled - 0, period - 10, reply timeout - 2, negotiation - 0
+2023/12/13 14:49:41.272802 NCEL146275 APP INFO <TTS_Configuration.cpp#425 TID#1944716864> CIL keepalive transport options: enabled - 0, period - 10, reply timeout - 2, negotiation - 0
+2023/12/13 14:49:41.818280 NCEL146275 APP INFO <TTS_Configuration.cpp#425 TID#1949201664> CIL keepalive transport options: enabled - 0, period - 10, reply timeout - 2, negotiation - 0
+2023/12/13 14:59:33.378414 NCEL146275 APP INFO <TTS_Configuration.cpp#425 TID#2833516096> CIL keepalive transport options: enabled - 0, period - 10, reply timeout - 2, negotiation - 0
+2023/12/13 14:59:33.894572 NCEL146275 APP INFO <TTS_Configuration.cpp#425 TID#2838000896> CIL keepalive transport options: enabled - 0, period - 10, reply timeout - 2, negotiation - 0
+2023/12/13 14:59:49.457165 NCEL146275 APP INFO <TTS_Configuration.cpp#425 TID#2399274560> CIL keepalive transport options: enabled - 0, period - 10, reply timeout - 2, negotiation - 0
+2023/12/13 14:59:49.973446 NCEL146275 APP INFO <TTS_Configuration.cpp#425 TID#2401596672> CIL keepalive transport options: enabled - 0, period - 10, reply timeout - 2, negotiation - 0
+2023/12/13 15:00:04.095295 NCEL146275 APP INFO <TTS_Configuration.cpp#425 TID#3330278976> CIL keepalive transport options: enabled - 0, period - 10, reply timeout - 2, negotiation - 0
+2023/12/13 15:00:04.634982 NCEL146275 APP INFO <TTS_Configuration.cpp#425 TID#3334763776> CIL keepalive transport options: enabled - 0, period - 10, reply timeout - 2, negotiation - 0
+2023/12/13 15:00:26.406980 NCEL146275 APP INFO <TTS_Configuration.cpp#425 TID#2088896064> CIL keepalive transport options: enabled - 0, period - 10, reply timeout - 2, negotiation - 0
+2023/12/13 15:00:26.985222 NCEL146275 APP INFO <TTS_Configuration.cpp#425 TID#2091218176> CIL keepalive transport options: enabled - 0, period - 10, reply timeout - 2, negotiation - 0
+2023/12/13 16:29:03.871980 NCEL146275 APP WARN <TTS_GlobalEngine.cpp#597 TID#1207895616> Response timeout in context: 0x7f1740004560
+
+2023/12/13 16:29:03.872436 NCEL146275 APP WARN <TTS_Task.cpp#55 TID#1207895616> Caught exception in TTS_StartConversationTask
+2023/12/13 16:29:03.872540 NCEL146275 APP WARN <TTS_GlobalEngine.cpp#597 TID#1207895616> Runtime exception: The variable 'received_protobuf' is not defined
+
+2023/12/13 16:29:03.927316 NCEL146275 APP INFO <TTS_Configuration.cpp#425 TID#1279948032> CIL keepalive transport options: enabled - 0, period - 10, reply timeout - 2, negotiation - 0
+2023/12/13 16:49:26.597279 NCEL146275 APP INFO <TTS_Configuration.cpp#425 TID#2300708416> CIL keepalive transport options: enabled - 0, period - 10, reply timeout - 2, negotiation - 0
+2023/12/13 16:49:27.209827 NCEL146275 APP INFO <TTS_Configuration.cpp#425 TID#2303030528> CIL keepalive transport options: enabled - 0, period - 10, reply timeout - 2, negotiation - 0
+2023/12/13 16:52:41.652867 NCEL146275 APP INFO <TTS_Configuration.cpp#425 TID#2450327104> CIL keepalive transport options: enabled - 0, period - 10, reply timeout - 2, negotiation - 0
+2023/12/13 16:52:42.262971 NCEL146275 APP INFO <TTS_Configuration.cpp#425 TID#2452649216> CIL keepalive transport options: enabled - 0, period - 10, reply timeout - 2, negotiation - 0
+2023/12/13 16:55:29.582530 NCEL146275 APP INFO <TTS_Configuration.cpp#425 TID#3670541888> CIL keepalive transport options: enabled - 0, period - 10, reply timeout - 2, negotiation - 0
+2023/12/13 16:55:30.199934 NCEL146275 APP INFO <TTS_Configuration.cpp#425 TID#3672864000> CIL keepalive transport options: enabled - 0, period - 10, reply timeout - 2, negotiation - 0
+2023/12/13 16:56:57.538199 NCEL146275 APP INFO <TTS_Configuration.cpp#425 TID#1945110080> CIL keepalive transport options: enabled - 0, period - 10, reply timeout - 2, negotiation - 0
+2023/12/13 16:56:58.111500 NCEL146275 APP INFO <TTS_Configuration.cpp#425 TID#1949594880> CIL keepalive transport options: enabled - 0, period - 10, reply timeout - 2, negotiation - 0
+2023/12/13 16:58:09.339209 NCEL146275 APP INFO <TTS_Configuration.cpp#425 TID#888407616> CIL keepalive transport options: enabled - 0, period - 10, reply timeout - 2, negotiation - 0
+2023/12/13 16:58:09.909538 NCEL146275 APP INFO <TTS_Configuration.cpp#425 TID#890729728> CIL keepalive transport options: enabled - 0, period - 10, reply timeout - 2, negotiation - 0
+2023/12/13 16:58:27.659505 NCEL146275 APP INFO <TTS_Configuration.cpp#425 TID#3817473600> CIL keepalive transport options: enabled - 0, period - 10, reply timeout - 2, negotiation - 0
+2023/12/13 16:58:28.211517 NCEL146275 APP INFO <TTS_Configuration.cpp#425 TID#3819795712> CIL keepalive transport options: enabled - 0, period - 10, reply timeout - 2, negotiation - 0
+2023/12/13 16:58:44.434207 NCEL146275 APP INFO <TTS_Configuration.cpp#425 TID#558237248> CIL keepalive transport options: enabled - 0, period - 10, reply timeout - 2, negotiation - 0
+2023/12/13 16:58:45.027206 NCEL146275 APP INFO <TTS_Configuration.cpp#425 TID#560559360> CIL keepalive transport options: enabled - 0, period - 10, reply timeout - 2, negotiation - 0
+2023/12/13 16:58:59.842496 NCEL146275 APP INFO <TTS_Configuration.cpp#425 TID#3408791104> CIL keepalive transport options: enabled - 0, period - 10, reply timeout - 2, negotiation - 0
+2023/12/13 16:59:00.468776 NCEL146275 APP INFO <TTS_Configuration.cpp#425 TID#3411113216> CIL keepalive transport options: enabled - 0, period - 10, reply timeout - 2, negotiation - 0
+2023/12/13 16:59:15.521794 NCEL146275 APP INFO <TTS_Configuration.cpp#425 TID#1136395840> CIL keepalive transport options: enabled - 0, period - 10, reply timeout - 2, negotiation - 0
+2023/12/13 16:59:16.116530 NCEL146275 APP INFO <TTS_Configuration.cpp#425 TID#1138717952> CIL keepalive transport options: enabled - 0, period - 10, reply timeout - 2, negotiation - 0
+2023/12/13 16:59:29.838315 NCEL146275 APP INFO <TTS_Configuration.cpp#425 TID#2087585344> CIL keepalive transport options: enabled - 0, period - 10, reply timeout - 2, negotiation - 0
+2023/12/13 16:59:30.379513 NCEL146275 APP INFO <TTS_Configuration.cpp#425 TID#2089907456> CIL keepalive transport options: enabled - 0, period - 10, reply timeout - 2, negotiation - 0
+2023/12/13 16:59:44.277379 NCEL146275 APP INFO <TTS_Configuration.cpp#425 TID#4178839104> CIL keepalive transport options: enabled - 0, period - 10, reply timeout - 2, negotiation - 0
+2023/12/13 16:59:44.871338 NCEL146275 APP INFO <TTS_Configuration.cpp#425 TID#4181161216> CIL keepalive transport options: enabled - 0, period - 10, reply timeout - 2, negotiation - 0
+2023/12/13 17:00:26.328313 NCEL146275 APP INFO <TTS_Configuration.cpp#425 TID#2574779968> CIL keepalive transport options: enabled - 0, period - 10, reply timeout - 2, negotiation - 0
+2023/12/13 17:00:26.911972 NCEL146275 APP INFO <TTS_Configuration.cpp#425 TID#2577102080> CIL keepalive transport options: enabled - 0, period - 10, reply timeout - 2, negotiation - 0
+2023/12/14 09:30:22.542562 NCEL146275 APP WARN <TTS_GlobalEngine.cpp#597 TID#1991902784> Response timeout in context: 0x7fb16c00df00
+
+2023/12/14 09:30:22.542963 NCEL146275 APP WARN <TTS_Task.cpp#55 TID#1991902784> Caught exception in TTS_StartConversationTask
+2023/12/14 09:30:22.543024 NCEL146275 APP WARN <TTS_GlobalEngine.cpp#597 TID#1991902784> Runtime exception: The variable 'received_protobuf' is not defined
+
+2023/12/14 09:30:22.598044 NCEL146275 APP INFO <TTS_Configuration.cpp#425 TID#1994224896> CIL keepalive transport options: enabled - 0, period - 10, reply timeout - 2, negotiation - 0

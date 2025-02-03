@@ -1,0 +1,252 @@
+2023/07/17 18:38:20.878697 NCEL140818 APP WARN <TTS_GlobalEngine.cpp#597 TID#3143763520> Runtime exception: name 'expected_identityDocuments' is not defined
+
+2023/07/17 18:38:20.878701 NCEL140818 APP WARN <TTS_Task.cpp#55 TID#3143763520> Caught exception in TTS_ReceiveReplyTask
+2023/07/17 18:38:20.917000 NCEL140818 APP INFO <TTS_Configuration.cpp#425 TID#3146085632> CIL keepalive transport options: enabled - 0, period - 10, reply timeout - 2, negotiation - 0
+2023/07/17 19:01:11.894250 NCEL140818 APP WARN <TTS_GlobalEngine.cpp#597 TID#2723939904> Runtime exception: name 'expected_DOCS' is not defined
+
+2023/07/17 19:01:11.894255 NCEL140818 APP WARN <TTS_Task.cpp#55 TID#2723939904> Caught exception in TTS_ReceiveReplyTask
+2023/07/17 19:01:11.932617 NCEL140818 APP INFO <TTS_Configuration.cpp#425 TID#2726262016> CIL keepalive transport options: enabled - 0, period - 10, reply timeout - 2, negotiation - 0
+2023/07/18 11:24:11.458371 NCEL140818 APP WARN <TTS_Task.cpp#55 TID#2254767680> Caught exception in TTS_StartConversationTask
+2023/07/18 11:24:11.458463 NCEL140818 APP WARN <TTS_GlobalEngine.cpp#597 TID#2254767680> Runtime exception: The variable 'auth_header2' is not defined
+
+2023/07/18 11:24:20.531848 NCEL140818 APP WARN <TTS_Task.cpp#55 TID#2252604992> Caught exception in TTS_StartConversationTask
+2023/07/18 11:24:20.532028 NCEL140818 APP WARN <TTS_GlobalEngine.cpp#597 TID#2252604992> Runtime exception: The variable 'auth_header2' is not defined
+
+2023/07/18 11:24:29.678309 NCEL140818 APP WARN <TTS_Task.cpp#55 TID#2252604992> Caught exception in TTS_StartConversationTask
+2023/07/18 11:24:29.678366 NCEL140818 APP WARN <TTS_GlobalEngine.cpp#597 TID#2252604992> Runtime exception: The variable 'auth_header2' is not defined
+
+2023/07/18 11:24:41.543804 NCEL140818 APP WARN <TTS_Task.cpp#55 TID#2252604992> Caught exception in TTS_StartConversationTask
+2023/07/18 11:24:41.543853 NCEL140818 APP WARN <TTS_GlobalEngine.cpp#597 TID#2252604992> Runtime exception: The variable 'auth_header2' is not defined
+
+2023/07/18 11:24:41.591789 NCEL140818 APP INFO <TTS_Configuration.cpp#425 TID#2257089792> CIL keepalive transport options: enabled - 0, period - 10, reply timeout - 2, negotiation - 0
+2023/07/18 11:26:09.026767 NCEL140818 APP WARN <TTS_Task.cpp#55 TID#4029023808> Caught exception in TTS_StartConversationTask
+2023/07/18 11:26:09.026905 NCEL140818 APP WARN <TTS_GlobalEngine.cpp#597 TID#4029023808> Runtime exception: The variable 'auth_header2' is not defined
+
+2023/07/18 11:26:09.074779 NCEL140818 APP INFO <TTS_Configuration.cpp#425 TID#4031345920> CIL keepalive transport options: enabled - 0, period - 10, reply timeout - 2, negotiation - 0
+2023/07/18 11:34:38.711970 NCEL140818 APP WARN <TTS_Task.cpp#55 TID#2431583808> Caught exception in TTS_StartConversationTask
+2023/07/18 11:34:38.712056 NCEL140818 APP WARN <TTS_GlobalEngine.cpp#597 TID#2431583808> Runtime exception: The variable 'auth_header2' is not defined
+
+2023/07/18 11:34:38.759373 NCEL140818 APP INFO <TTS_Configuration.cpp#425 TID#2433905920> CIL keepalive transport options: enabled - 0, period - 10, reply timeout - 2, negotiation - 0
+2023/07/18 11:39:48.097386 NCEL140818 APP WARN <TTS_Task.cpp#55 TID#4254729792> Caught exception in TTS_StartConversationTask
+2023/07/18 11:39:48.097472 NCEL140818 APP WARN <TTS_GlobalEngine.cpp#597 TID#4254729792> Runtime exception: The variable 'auth_header2' is not defined
+
+2023/07/18 11:39:48.149644 NCEL140818 APP INFO <TTS_Configuration.cpp#425 TID#4257051904> CIL keepalive transport options: enabled - 0, period - 10, reply timeout - 2, negotiation - 0
+2023/07/18 11:40:43.308053 NCEL140818 APP WARN <TTS_Task.cpp#55 TID#364643904> Caught exception in TTS_StartConversationTask
+2023/07/18 11:40:43.308138 NCEL140818 APP WARN <TTS_GlobalEngine.cpp#597 TID#364643904> Runtime exception: The variable 'auth_header2' is not defined
+
+2023/07/18 11:40:43.357907 NCEL140818 APP INFO <TTS_Configuration.cpp#425 TID#366966016> CIL keepalive transport options: enabled - 0, period - 10, reply timeout - 2, negotiation - 0
+2023/07/18 11:59:32.868551 NCEL140818 APP WARN <TTS_Task.cpp#55 TID#2997159488> Caught exception in TTS_StartConversationTask
+2023/07/18 11:59:32.868693 NCEL140818 APP WARN <TTS_GlobalEngine.cpp#597 TID#2997159488> Runtime exception: The variable 'auth_header2' is not defined
+
+2023/07/18 11:59:32.918959 NCEL140818 APP INFO <TTS_Configuration.cpp#425 TID#3001644288> CIL keepalive transport options: enabled - 0, period - 10, reply timeout - 2, negotiation - 0
+2023/07/18 12:12:09.279595 NCEL140818 APP WARN <TTS_Task.cpp#55 TID#2593261120> Caught exception in TTS_StartConversationTask
+2023/07/18 12:12:09.279688 NCEL140818 APP WARN <TTS_GlobalEngine.cpp#597 TID#2593261120> Runtime exception: The variable 'auth_header2' is not defined
+
+2023/07/18 12:12:09.319904 NCEL140818 APP INFO <TTS_Configuration.cpp#425 TID#2597745920> CIL keepalive transport options: enabled - 0, period - 10, reply timeout - 2, negotiation - 0
+2023/07/18 12:37:53.511540 NCEL140818 APP WARN <TTS_Task.cpp#55 TID#2211317312> Caught exception in TTS_StartConversationTask
+2023/07/18 12:37:53.511617 NCEL140818 APP WARN <TTS_GlobalEngine.cpp#597 TID#2211317312> Runtime exception: The variable 'auth_header2' is not defined
+
+2023/07/18 12:37:53.552120 NCEL140818 APP INFO <TTS_Configuration.cpp#425 TID#2215802112> CIL keepalive transport options: enabled - 0, period - 10, reply timeout - 2, negotiation - 0
+2023/07/18 12:38:14.056643 NCEL140818 APP WARN <TTS_Task.cpp#55 TID#420873792> Caught exception in TTS_StartConversationTask
+2023/07/18 12:38:14.056747 NCEL140818 APP WARN <TTS_GlobalEngine.cpp#597 TID#420873792> Runtime exception: The variable 'auth_header2' is not defined
+
+2023/07/18 12:38:14.098062 NCEL140818 APP INFO <TTS_Configuration.cpp#425 TID#423195904> CIL keepalive transport options: enabled - 0, period - 10, reply timeout - 2, negotiation - 0
+2023/07/18 12:39:56.968323 NCEL140818 APP WARN <TTS_Task.cpp#55 TID#2608596544> Caught exception in TTS_StartConversationTask
+2023/07/18 12:39:56.968459 NCEL140818 APP WARN <TTS_GlobalEngine.cpp#597 TID#2608596544> Runtime exception: The variable 'auth_header2' is not defined
+
+2023/07/18 12:39:57.015358 NCEL140818 APP INFO <TTS_Configuration.cpp#425 TID#2610918656> CIL keepalive transport options: enabled - 0, period - 10, reply timeout - 2, negotiation - 0
+2023/07/18 15:12:29.170084 NCEL140818 APP WARN <TTS_Task.cpp#55 TID#1039468096> Caught exception in TTS_StartConversationTask
+2023/07/18 15:12:29.170213 NCEL140818 APP WARN <TTS_GlobalEngine.cpp#597 TID#1039468096> Runtime exception: The variable 'auth_header2' is not defined
+
+2023/07/18 15:12:29.218371 NCEL140818 APP INFO <TTS_Configuration.cpp#425 TID#1043952896> CIL keepalive transport options: enabled - 0, period - 10, reply timeout - 2, negotiation - 0
+2023/07/18 17:31:47.122862 NCEL140818 APP WARN <TTS_Task.cpp#55 TID#3282699840> Caught exception in TTS_StartConversationTask
+2023/07/18 17:31:47.122980 NCEL140818 APP WARN <TTS_GlobalEngine.cpp#597 TID#3282699840> Runtime exception: The variable 'auth_header2' is not defined
+
+2023/07/18 17:31:47.224474 NCEL140818 APP INFO <TTS_Configuration.cpp#425 TID#3285021952> CIL keepalive transport options: enabled - 0, period - 10, reply timeout - 2, negotiation - 0
+2023/07/18 18:01:33.928382 NCEL140818 APP WARN <TTS_Task.cpp#55 TID#3831432768> Caught exception in TTS_StartConversationTask
+2023/07/18 18:01:33.928469 NCEL140818 APP WARN <TTS_GlobalEngine.cpp#597 TID#3831432768> Runtime exception: The variable 'auth_header2' is not defined
+
+2023/07/18 18:01:33.981353 NCEL140818 APP INFO <TTS_Configuration.cpp#425 TID#3833754880> CIL keepalive transport options: enabled - 0, period - 10, reply timeout - 2, negotiation - 0
+2023/07/18 18:02:25.699813 NCEL140818 APP WARN <TTS_Task.cpp#55 TID#4147512896> Caught exception in TTS_StartConversationTask
+2023/07/18 18:02:25.699913 NCEL140818 APP WARN <TTS_GlobalEngine.cpp#597 TID#4147512896> Runtime exception: The variable 'auth_header2' is not defined
+
+2023/07/18 18:02:25.751427 NCEL140818 APP INFO <TTS_Configuration.cpp#425 TID#4149835008> CIL keepalive transport options: enabled - 0, period - 10, reply timeout - 2, negotiation - 0
+2023/07/18 18:03:51.514258 NCEL140818 APP WARN <TTS_Task.cpp#55 TID#3786475072> Caught exception in TTS_SendQueryTask
+2023/07/18 18:03:51.514367 NCEL140818 APP WARN <TTS_GlobalEngine.cpp#597 TID#3786475072> Runtime exception: The target 'tty' mentioned after the conversation keyword is not defined
+
+2023/07/18 18:03:51.515302 NCEL140818 APP WARN <TTS_ScriptSession.cpp#2647 TID#3788797184> Cannot get the entity
+2023/07/18 18:03:51.577034 NCEL140818 APP INFO <TTS_Configuration.cpp#425 TID#3788797184> CIL keepalive transport options: enabled - 0, period - 10, reply timeout - 2, negotiation - 0
+2023/07/18 18:09:15.816750 NCEL140818 APP WARN <TTS_Task.cpp#55 TID#142149184> Caught exception in TTS_StartConversationTask
+2023/07/18 18:09:15.816857 NCEL140818 APP WARN <TTS_GlobalEngine.cpp#597 TID#142149184> Runtime exception: The variable 'auth_header2' is not defined
+
+2023/07/18 18:09:15.868753 NCEL140818 APP INFO <TTS_Configuration.cpp#425 TID#146633984> CIL keepalive transport options: enabled - 0, period - 10, reply timeout - 2, negotiation - 0
+2023/07/18 18:10:20.462706 NCEL140818 APP WARN <TTS_Task.cpp#55 TID#4020635200> Caught exception in TTS_StartConversationTask
+2023/07/18 18:10:20.462817 NCEL140818 APP WARN <TTS_GlobalEngine.cpp#597 TID#4020635200> Runtime exception: The variable 'auth_header2' is not defined
+
+2023/07/18 18:10:20.516575 NCEL140818 APP INFO <TTS_Configuration.cpp#425 TID#4022957312> CIL keepalive transport options: enabled - 0, period - 10, reply timeout - 2, negotiation - 0
+2023/07/18 18:12:24.055248 NCEL140818 APP WARN <TTS_Task.cpp#55 TID#3245147712> Caught exception in TTS_StartConversationTask
+2023/07/18 18:12:24.055378 NCEL140818 APP WARN <TTS_GlobalEngine.cpp#597 TID#3245147712> Runtime exception: The variable 'auth_header2' is not defined
+
+2023/07/18 18:12:24.108147 NCEL140818 APP INFO <TTS_Configuration.cpp#425 TID#3247469824> CIL keepalive transport options: enabled - 0, period - 10, reply timeout - 2, negotiation - 0
+2023/07/18 18:14:14.226809 NCEL140818 APP WARN <TTS_Task.cpp#55 TID#4159637056> Caught exception in TTS_StartConversationTask
+2023/07/18 18:14:14.226973 NCEL140818 APP WARN <TTS_GlobalEngine.cpp#597 TID#4159637056> Runtime exception: The variable 'auth_header2' is not defined
+
+2023/07/18 18:14:14.279147 NCEL140818 APP INFO <TTS_Configuration.cpp#425 TID#4164121856> CIL keepalive transport options: enabled - 0, period - 10, reply timeout - 2, negotiation - 0
+2023/07/18 18:20:10.359887 NCEL140818 APP WARN <TTS_Task.cpp#55 TID#3790145088> Caught exception in TTS_StartConversationTask
+2023/07/18 18:20:10.359989 NCEL140818 APP WARN <TTS_GlobalEngine.cpp#597 TID#3790145088> Runtime exception: The variable 'auth_header2' is not defined
+
+2023/07/18 18:20:10.406148 NCEL140818 APP INFO <TTS_Configuration.cpp#425 TID#3792467200> CIL keepalive transport options: enabled - 0, period - 10, reply timeout - 2, negotiation - 0
+2023/07/19 09:44:08.779460 NCEL140818 APP WARN <TTS_GlobalEngine.cpp#597 TID#3976922688> Runtime exception: name 'expected_FO' is not defined
+
+2023/07/19 09:44:08.779464 NCEL140818 APP WARN <TTS_Task.cpp#55 TID#3976922688> Caught exception in TTS_ReceiveReplyTask
+2023/07/19 09:44:08.817415 NCEL140818 APP INFO <TTS_Configuration.cpp#425 TID#3979244800> CIL keepalive transport options: enabled - 0, period - 10, reply timeout - 2, negotiation - 0
+2023/07/19 10:23:07.522353 NCEL140818 APP WARN <TTS_Task.cpp#55 TID#3556705856> Caught exception in TTS_SendQueryTask
+2023/07/19 10:23:07.522406 NCEL140818 APP WARN <TTS_GlobalEngine.cpp#597 TID#3556705856> In file /mnt/c/Users/ygarnier/ScriptingQA/Epic_DATALPM_7351_Validate_RES_Open_PNR_new_fields/scripts/element_FA.cry, line 82
+Parser exception: Reply segment must start with ''
+Occured in: {*} 
+
+2023/07/19 10:23:07.523723 NCEL140818 APP WARN <TTS_ScriptSession.cpp#2647 TID#3630265600> Reply segment must start with ''
+2023/07/19 10:23:07.566924 NCEL140818 APP INFO <TTS_Configuration.cpp#425 TID#3630265600> CIL keepalive transport options: enabled - 0, period - 10, reply timeout - 2, negotiation - 0
+2023/07/19 10:24:47.193087 NCEL140818 APP WARN <TTS_GlobalEngine.cpp#597 TID#3841852992> Runtime exception: name 'expected_SSR_FA' is not defined
+
+2023/07/19 10:24:47.193094 NCEL140818 APP WARN <TTS_Task.cpp#55 TID#3841852992> Caught exception in TTS_ReceiveReplyTask
+2023/07/19 10:24:47.234786 NCEL140818 APP INFO <TTS_Configuration.cpp#425 TID#3844175104> CIL keepalive transport options: enabled - 0, period - 10, reply timeout - 2, negotiation - 0
+2023/07/19 10:28:59.326213 NCEL140818 APP WARN <TTS_GlobalEngine.cpp#597 TID#982189632> Runtime exception: name 'expected_SSR_FA' is not defined
+
+2023/07/19 10:28:59.326222 NCEL140818 APP WARN <TTS_Task.cpp#55 TID#982189632> Caught exception in TTS_ReceiveReplyTask
+2023/07/19 10:28:59.370453 NCEL140818 APP INFO <TTS_Configuration.cpp#425 TID#984511744> CIL keepalive transport options: enabled - 0, period - 10, reply timeout - 2, negotiation - 0
+2023/07/19 10:32:09.425321 NCEL140818 APP WARN <TTS_GlobalEngine.cpp#597 TID#2997945920> Runtime exception: name 'expected_SSR_FA' is not defined
+
+2023/07/19 10:32:09.425326 NCEL140818 APP WARN <TTS_Task.cpp#55 TID#2997945920> Caught exception in TTS_ReceiveReplyTask
+2023/07/19 10:32:09.464020 NCEL140818 APP INFO <TTS_Configuration.cpp#425 TID#3002430720> CIL keepalive transport options: enabled - 0, period - 10, reply timeout - 2, negotiation - 0
+2023/07/19 11:30:54.488021 NCEL140818 APP WARN <TTS_Task.cpp#55 TID#1511130688> Caught exception in TTS_SendQueryTask
+2023/07/19 11:30:54.488066 NCEL140818 APP WARN <TTS_GlobalEngine.cpp#597 TID#1511130688> In file /mnt/c/Users/ygarnier/ScriptingQA/Epic_DATALPM_7351_Validate_RES_Open_PNR_new_fields/scripts/codeshare_singlePNR.cry, line 75
+Parser exception: Invalid pattern ({6}) at index 3 : nothing to repeat
+Occured in: ''RP/%test_user_1A_office%/%test_user_1A_office% {*}/{*} {*}Z   {%RLOC%={6}}& 
+
+2023/07/19 11:30:54.489394 NCEL140818 APP WARN <TTS_ScriptSession.cpp#2647 TID#1513452800> Invalid pattern ({6}) at index 3 : nothing to repeat
+2023/07/19 11:30:54.528448 NCEL140818 APP INFO <TTS_Configuration.cpp#425 TID#1513452800> CIL keepalive transport options: enabled - 0, period - 10, reply timeout - 2, negotiation - 0
+2023/07/19 11:32:58.120024 NCEL140818 APP WARN <TTS_Task.cpp#55 TID#1907230272> Caught exception in TTS_SendQueryTask
+2023/07/19 11:32:58.120087 NCEL140818 APP WARN <TTS_GlobalEngine.cpp#597 TID#1907230272> In file /mnt/c/Users/ygarnier/ScriptingQA/Epic_DATALPM_7351_Validate_RES_Open_PNR_new_fields/scripts/codeshare_singlePNR.cry, line 78
+Parser exception: Reply segment must start with ''
+Occured in:  
+
+2023/07/19 11:32:58.120958 NCEL140818 APP WARN <TTS_ScriptSession.cpp#2647 TID#1911715072> Reply segment must start with ''
+2023/07/19 11:32:58.159946 NCEL140818 APP INFO <TTS_Configuration.cpp#425 TID#1911715072> CIL keepalive transport options: enabled - 0, period - 10, reply timeout - 2, negotiation - 0
+2023/07/19 11:33:55.596277 NCEL140818 APP WARN <TTS_Task.cpp#55 TID#2232485440> Caught exception in TTS_SendQueryTask
+2023/07/19 11:33:55.596325 NCEL140818 APP WARN <TTS_GlobalEngine.cpp#597 TID#2232485440> In file /mnt/c/Users/ygarnier/ScriptingQA/Epic_DATALPM_7351_Validate_RES_Open_PNR_new_fields/scripts/codeshare_singlePNR.cry, line 78
+Parser exception: Reply segment must start with ''
+Occured in:  
+
+2023/07/19 11:33:55.597679 NCEL140818 APP WARN <TTS_ScriptSession.cpp#2647 TID#2236970240> Reply segment must start with ''
+2023/07/19 11:33:55.639739 NCEL140818 APP INFO <TTS_Configuration.cpp#425 TID#2236970240> CIL keepalive transport options: enabled - 0, period - 10, reply timeout - 2, negotiation - 0
+2023/07/19 11:40:08.755746 NCEL140818 APP WARN <TTS_Task.cpp#55 TID#3492677184> Caught exception in TTS_SendQueryTask
+2023/07/19 11:40:08.755788 NCEL140818 APP WARN <TTS_GlobalEngine.cpp#597 TID#3492677184> In file /mnt/c/Users/ygarnier/ScriptingQA/Epic_DATALPM_7351_Validate_RES_Open_PNR_new_fields/scripts/codeshare_singlePNR.cry, line 79
+Parser exception: Reply segment must start with ''
+Occured in:  
+
+2023/07/19 11:40:08.757128 NCEL140818 APP WARN <TTS_ScriptSession.cpp#2647 TID#3497161984> Reply segment must start with ''
+2023/07/19 11:40:08.797747 NCEL140818 APP INFO <TTS_Configuration.cpp#425 TID#3497161984> CIL keepalive transport options: enabled - 0, period - 10, reply timeout - 2, negotiation - 0
+2023/07/19 11:42:47.700258 NCEL140818 APP WARN <TTS_Task.cpp#55 TID#3540584000> Caught exception in TTS_SendQueryTask
+2023/07/19 11:42:47.700312 NCEL140818 APP WARN <TTS_GlobalEngine.cpp#597 TID#3540584000> In file /mnt/c/Users/ygarnier/ScriptingQA/Epic_DATALPM_7351_Validate_RES_Open_PNR_new_fields/scripts/codeshare_singlePNR.cry, line 78
+Parser exception: Reply segment must start with ''
+Occured in:  
+
+2023/07/19 11:42:47.701682 NCEL140818 APP WARN <TTS_ScriptSession.cpp#2647 TID#3542906112> Reply segment must start with ''
+2023/07/19 11:42:47.741785 NCEL140818 APP INFO <TTS_Configuration.cpp#425 TID#3542906112> CIL keepalive transport options: enabled - 0, period - 10, reply timeout - 2, negotiation - 0
+2023/07/19 14:54:25.870834 NCEL140818 APP WARN <TTS_Task.cpp#55 TID#3963029056> Caught exception in TTS_StartConversationTask
+2023/07/19 14:54:25.870954 NCEL140818 APP WARN <TTS_GlobalEngine.cpp#597 TID#3963029056> Runtime exception: The variable 'RLOC' is not defined
+
+2023/07/19 14:54:25.910337 NCEL140818 APP INFO <TTS_Configuration.cpp#425 TID#3965351168> CIL keepalive transport options: enabled - 0, period - 10, reply timeout - 2, negotiation - 0
+2023/07/19 14:57:40.428708 NCEL140818 APP WARN <TTS_Task.cpp#55 TID#3887203904> Caught exception in TTS_StartConversationTask
+2023/07/19 14:57:40.428788 NCEL140818 APP WARN <TTS_GlobalEngine.cpp#597 TID#3887203904> Runtime exception: The variable 'RLOC' is not defined
+
+2023/07/19 14:57:40.468152 NCEL140818 APP INFO <TTS_Configuration.cpp#425 TID#3889526016> CIL keepalive transport options: enabled - 0, period - 10, reply timeout - 2, negotiation - 0
+2023/07/19 15:33:45.426125 NCEL140818 APP WARN <TTS_Task.cpp#55 TID#3869705792> Caught exception in TTS_SendQueryTask
+2023/07/19 15:33:45.426155 NCEL140818 APP WARN <TTS_GlobalEngine.cpp#597 TID#3869705792> In file /mnt/c/Users/ygarnier/ScriptingQA/Epic_DATALPM_7351_Validate_RES_Open_PNR_new_fields/scripts/codeshare_marketingPNR.cry, line 79
+Parser exception: Reply segment must start with ''
+Occured in:        OPERATED BY SINGAPORE AIRLINES& 
+
+2023/07/19 15:33:45.426945 NCEL140818 APP WARN <TTS_ScriptSession.cpp#2647 TID#3874190592> Reply segment must start with ''
+2023/07/19 15:33:45.465376 NCEL140818 APP INFO <TTS_Configuration.cpp#425 TID#3874190592> CIL keepalive transport options: enabled - 0, period - 10, reply timeout - 2, negotiation - 0
+2023/07/19 17:41:26.132183 NCEL140818 APP WARN <TTS_Task.cpp#55 TID#1574110784> Caught exception in TTS_StartConversationTask
+2023/07/19 17:41:26.132285 NCEL140818 APP WARN <TTS_GlobalEngine.cpp#597 TID#1574110784> Runtime exception: The variable 'RLOC' is not defined
+
+2023/07/19 17:41:26.170906 NCEL140818 APP INFO <TTS_Configuration.cpp#425 TID#1576432896> CIL keepalive transport options: enabled - 0, period - 10, reply timeout - 2, negotiation - 0
+2023/07/19 17:47:24.668213 NCEL140818 APP WARN <TTS_Task.cpp#55 TID#1740244544> Caught exception in TTS_StartConversationTask
+2023/07/19 17:47:24.668329 NCEL140818 APP WARN <TTS_GlobalEngine.cpp#597 TID#1740244544> Runtime exception: The variable 'RLOC' is not defined
+
+2023/07/19 17:47:24.707416 NCEL140818 APP INFO <TTS_Configuration.cpp#425 TID#1744729344> CIL keepalive transport options: enabled - 0, period - 10, reply timeout - 2, negotiation - 0
+2023/07/20 16:46:51.279956 NCEL140818 APP WARN <TTS_Task.cpp#55 TID#57411136> Caught exception in TTS_StartConversationTask
+2023/07/20 16:46:51.280046 NCEL140818 APP WARN <TTS_GlobalEngine.cpp#597 TID#57411136> Runtime exception: The variable 'RLOC' is not defined
+
+2023/07/20 16:46:51.325077 NCEL140818 APP INFO <TTS_Configuration.cpp#425 TID#61895936> CIL keepalive transport options: enabled - 0, period - 10, reply timeout - 2, negotiation - 0
+2023/07/20 16:47:42.071873 NCEL140818 APP WARN <TTS_Task.cpp#55 TID#2253522496> Caught exception in TTS_SendQueryTask
+2023/07/20 16:47:42.071910 NCEL140818 APP WARN <TTS_GlobalEngine.cpp#597 TID#2253522496> In file /mnt/c/Users/ygarnier/ScriptingQA/Epic_DATALPM_7351_Validate_RES_Open_PNR_new_fields/scripts/codeshare_singlePNR.cry, line 79
+Parser exception: Reply segment must start with ''
+Occured in:  
+
+2023/07/20 16:47:42.072840 NCEL140818 APP WARN <TTS_ScriptSession.cpp#2647 TID#2258007296> Reply segment must start with ''
+2023/07/20 16:47:42.126042 NCEL140818 APP INFO <TTS_Configuration.cpp#425 TID#2258007296> CIL keepalive transport options: enabled - 0, period - 10, reply timeout - 2, negotiation - 0
+2023/07/20 16:49:16.777422 NCEL140818 APP WARN <TTS_Task.cpp#55 TID#2796619328> Caught exception in TTS_SendQueryTask
+2023/07/20 16:49:16.777458 NCEL140818 APP WARN <TTS_GlobalEngine.cpp#597 TID#2796619328> In file /mnt/c/Users/ygarnier/ScriptingQA/Epic_DATALPM_7351_Validate_RES_Open_PNR_new_fields/scripts/codeshare_singlePNR.cry, line 79
+Parser exception: Reply segment must start with ''
+Occured in:  
+
+2023/07/20 16:49:16.778385 NCEL140818 APP WARN <TTS_ScriptSession.cpp#2647 TID#2801104128> Reply segment must start with ''
+2023/07/20 16:49:16.822806 NCEL140818 APP INFO <TTS_Configuration.cpp#425 TID#2801104128> CIL keepalive transport options: enabled - 0, period - 10, reply timeout - 2, negotiation - 0
+2023/07/21 10:19:36.170011 NCEL140818 APP WARN <TTS_ScriptSession.cpp#2864 TID#3985208576> 
+Can not establish connection on host: sidev.tn3270.1a.amadeus.net with port:46060 Error code: 4 Error message: Timeout error, last system error 115: Operation now in progress timeout 5000000000
+
+2023/07/21 10:19:46.178743 NCEL140818 APP WARN <TTS_ScriptSession.cpp#2864 TID#3985208576> 
+Can not establish connection on host: 172.17.246.30 with port:14010 Error code: 4 Error message: Timeout error, last system error 115: Operation now in progress timeout 5000000000
+
+Can not establish connection on host: 172.17.246.32 with port:14010 Error code: 4 Error message: Timeout error, last system error 115: Operation now in progress timeout 5000000000
+
+2023/08/09 15:35:07.577023 NCEL140818 APP WARN <TTS_Task.cpp#55 TID#1113982528> Caught exception in TTS_SendQueryTask
+2023/08/09 15:35:07.577061 NCEL140818 APP WARN <TTS_GlobalEngine.cpp#597 TID#1113982528> In file /mnt/c/Users/ygarnier/ScriptingQA/Epic_DATALPM_7351_Validate_RES_Open_PNR_new_fields/scripts/codeshare_operatingPNR.cry, line 81
+Parser exception: Reply segment must start with ''
+Occured in:      OPERATED BY DELTA AIR LINES& 
+
+2023/08/09 15:35:07.578057 NCEL140818 APP WARN <TTS_ScriptSession.cpp#2647 TID#1118467328> Reply segment must start with ''
+2023/08/09 15:35:07.629429 NCEL140818 APP INFO <TTS_Configuration.cpp#425 TID#1118467328> CIL keepalive transport options: enabled - 0, period - 10, reply timeout - 2, negotiation - 0
+2023/08/09 15:35:52.534448 NCEL140818 APP WARN <TTS_Task.cpp#55 TID#4220257856> Caught exception in TTS_SendQueryTask
+2023/08/09 15:35:52.534478 NCEL140818 APP WARN <TTS_GlobalEngine.cpp#597 TID#4220257856> In file /mnt/c/Users/ygarnier/ScriptingQA/Epic_DATALPM_7351_Validate_RES_Open_PNR_new_fields/scripts/codeshare_operatingPNR.cry, line 81
+Parser exception: Reply segment must start with ''
+Occured in:      OPERATED BY DELTA AIR LINES& 
+
+2023/08/09 15:35:52.535352 NCEL140818 APP WARN <TTS_ScriptSession.cpp#2647 TID#4224742656> Reply segment must start with ''
+2023/08/09 15:35:52.572979 NCEL140818 APP INFO <TTS_Configuration.cpp#425 TID#4224742656> CIL keepalive transport options: enabled - 0, period - 10, reply timeout - 2, negotiation - 0
+2023/08/09 17:18:03.960180 NCEL140818 APP WARN <TTS_Task.cpp#55 TID#2985297472> Caught exception in TTS_StartConversationTask
+2023/08/09 17:18:03.960300 NCEL140818 APP WARN <TTS_GlobalEngine.cpp#597 TID#2985297472> Runtime exception: The variable 'auth_header2' is not defined
+
+2023/08/09 17:19:11.640064 NCEL140818 APP WARN <TTS_GlobalEngine.cpp#597 TID#2983134784> Response timeout in context: 0x64feb50
+
+2023/08/09 17:19:16.564805 NCEL140818 APP WARN <TTS_Task.cpp#55 TID#2983134784> Caught exception in TTS_StartConversationTask
+2023/08/09 17:19:16.564849 NCEL140818 APP WARN <TTS_GlobalEngine.cpp#597 TID#2983134784> Runtime exception: The variable 'auth_header2' is not defined
+
+2023/08/09 17:21:08.410495 NCEL140818 APP WARN <TTS_GlobalEngine.cpp#597 TID#2347304512> Response timeout in context: 0x5271370
+
+2023/08/09 17:23:40.147196 NCEL140818 APP WARN <TTS_GlobalEngine.cpp#597 TID#639043136> Response timeout in context: 0x5a99a30
+
+2023/08/09 17:23:49.961291 NCEL140818 APP INFO <TTS_Configuration.cpp#425 TID#643527936> CIL keepalive transport options: enabled - 0, period - 10, reply timeout - 2, negotiation - 0
+2023/08/09 17:32:28.348553 NCEL140818 APP WARN <TTS_GlobalEngine.cpp#597 TID#879494720> Response timeout in context: 0x586a700
+
+2023/08/09 17:32:38.074109 NCEL140818 APP INFO <TTS_Configuration.cpp#425 TID#881816832> CIL keepalive transport options: enabled - 0, period - 10, reply timeout - 2, negotiation - 0
+2023/08/09 17:35:14.586514 NCEL140818 APP WARN <TTS_GlobalEngine.cpp#597 TID#3085895232> Response timeout in context: 0x5abc390
+
+2023/08/09 17:35:15.788059 NCEL140818 APP INFO <TTS_Configuration.cpp#425 TID#3088217344> CIL keepalive transport options: enabled - 0, period - 10, reply timeout - 2, negotiation - 0
+2023/08/09 17:45:48.759148 NCEL140818 APP WARN <TTS_GlobalEngine.cpp#597 TID#2526676544> Response timeout in context: 0x5ab28a0
+
+2023/08/09 17:45:56.500092 NCEL140818 APP INFO <TTS_Configuration.cpp#425 TID#2528998656> CIL keepalive transport options: enabled - 0, period - 10, reply timeout - 2, negotiation - 0
+2023/08/09 17:48:36.654312 NCEL140818 APP WARN <TTS_GlobalEngine.cpp#597 TID#1755186752> Response timeout in context: 0x69f5b60
+
+2023/08/09 17:48:44.542794 NCEL140818 APP INFO <TTS_Configuration.cpp#425 TID#1759671552> CIL keepalive transport options: enabled - 0, period - 10, reply timeout - 2, negotiation - 0
+2023/08/22 11:41:05.529123 NCEL140818 APP WARN <TTS_GlobalEngine.cpp#597 TID#1719338560> Runtime exception: name 'expected_SSR_TKNE_PrimaryDocumentNumber' is not defined
+
+2023/08/22 11:41:05.529128 NCEL140818 APP WARN <TTS_Task.cpp#55 TID#1719338560> Caught exception in TTS_ReceiveReplyTask
+2023/08/22 11:41:05.581920 NCEL140818 APP INFO <TTS_Configuration.cpp#425 TID#1721660672> CIL keepalive transport options: enabled - 0, period - 10, reply timeout - 2, negotiation - 0
+2023/08/22 11:48:38.046196 NCEL140818 APP WARN <TTS_GlobalEngine.cpp#597 TID#1074071104> Runtime exception: name 'expected_SSR_TKNE_primaryDocumentNumber' is not defined
+
+2023/08/22 11:48:38.046209 NCEL140818 APP WARN <TTS_Task.cpp#55 TID#1074071104> Caught exception in TTS_ReceiveReplyTask
+2023/08/22 11:48:38.096164 NCEL140818 APP INFO <TTS_Configuration.cpp#425 TID#1076393216> CIL keepalive transport options: enabled - 0, period - 10, reply timeout - 2, negotiation - 0

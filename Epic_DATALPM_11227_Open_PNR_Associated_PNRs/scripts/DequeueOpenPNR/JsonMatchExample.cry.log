@@ -1,0 +1,858 @@
+' Log report : 09:40:00.905242 - 03 Jan 2024
+' Filename   : /data/dguerra/qa/open_pnr_validation/Epic_DATALPM_11227_Open_PNR_Associated_PNRs/scripts/DequeueOpenPNR/JsonMatchExample.cry
+'----------------------------------------------------------------------
+
+''Initialize:
+import json
+from lib.openpnr import extract_binary_payload
+from lib.json_match import assert_equal, assert_found, assert_not_found, parse_json
+
+execfile(global_regression.TTS_RootDir + '/data/data_' + global_regression.TEST_SYSTEM + '.py')
+
+TTS_OK = TTServer.currentMessage.TTS_MATCH_COMPARISON_OK
+TTS_KO = TTServer.currentMessage.TTS_MATCH_COMPARISON_FAILURE
+
+# As the specific conditions to evaluate depend on the test, the comparison function is in the individual script
+# In case of match error, find the error details in TTS logs (not available in .log or in .rex file)
+# Variables defined in data files (e.g., test user data) or in the current scripts (e.g., recloc)
+# are directly available from inside the function.
+def validate_openpnr(openpnr_json):
+    try:
+        openpnr = parse_json(openpnr_json)
+        for field in ['id', 'reference', 'creation', 'travelers', 'products']:
+            assert_found(field, container=openpnr)
+
+        expected_openpnr_id = recloc + '-' + today
+        assert_equal(actual=openpnr['id'], expected=expected_openpnr_id, item_name='OpenPNR id field')
+        assert_not_found('creation/date', container=openpnr)
+        assert_found('creation/dateTime', container=openpnr)
+        assert_found('creation/pointOfSale/office/id', container=openpnr)
+        assert_equal(expected=test_user_1A_extended_office, actual=openpnr['creation']['pointOfSale']['office']['id'], item_name='creator office')
+
+        assert_equal(actual=len(openpnr['travelers']), expected=1, item_name='number of travelers')
+        traveler_1 = openpnr['travelers'][0]
+        assert_found('names[0]/firstName', container=traveler_1)
+        assert_equal(actual=traveler_1['names'][0]['firstName'], expected=pax_1.first_name, item_name='passenger first name')
+
+
+    except Exception as e:
+        print('OpenPNR validation failed: {}'.format(e))
+        return TTS_KO
+
+    print('OpenPNR validation successful')
+    return TTS_OK
+
+''End
+''Conversation: cry
+
+'**********************************************************************
+' Sent at      09:40:00.905699 - 03 Jan 2024
+' Filename     /data/dguerra/qa/open_pnr_validation/Epic_DATALPM_11227_Open_PNR_Associated_PNRs/scripts/DequeueOpenPNR/JsonMatchExample.cry
+' Message      1 -  . 
+' Size         2 bytes
+' T. headers   {encryptedPayloadIndicator = False; sensitiveDataExpectedFormatsInReply = CardVerificationValue: not set, CreditCardMagneticStripe: not set, CreditCardNumber: not set; sensitiveDataExperimental = not set; sensitiveDataFormatInMessage = CardVerificationValue: not set, CreditCardMagneticStripe: not set, CreditCardNumber: not set; sensitiveDataPresence = CardVerificationValue: not set, CreditCardMagneticStripe: not set, CreditCardNumber: not set; shieldTokenizerVersion = not set}
+' Reply needed yes
+'----------------------------------------------------------------------
+IG
+
+'**********************************************************************
+' Received at  09:40:00.950272 - 03 Jan 2024
+' Filename     /data/dguerra/qa/open_pnr_validation/Epic_DATALPM_11227_Open_PNR_Associated_PNRs/scripts/DequeueOpenPNR/JsonMatchExample.cry
+' Match        N/A
+' Message      1 -  . 
+' Size         9 bytes
+' T. headers   {encryptedPayloadIndicator = False; sensitiveDataExpectedFormatsInReply = CardVerificationValue: not set, CreditCardMagneticStripe: not set, CreditCardNumber: not set; sensitiveDataExperimental = not set; sensitiveDataFormatInMessage = CardVerificationValue: not set, CreditCardMagneticStripe: not set, CreditCardNumber: not set; sensitiveDataPresence = CardVerificationValue: not set, CreditCardMagneticStripe: not set, CreditCardNumber: not set; shieldTokenizerVersion = not set}
+'----------------------------------------------------------------------
+''Response:
+''SIGN IN&
+''>
+''End of response
+
+'**********************************************************************
+' Sent at      09:40:00.950497 - 03 Jan 2024
+' Filename     /data/dguerra/qa/open_pnr_validation/Epic_DATALPM_11227_Open_PNR_Associated_PNRs/scripts/DequeueOpenPNR/JsonMatchExample.cry
+' Message      2 -  . 
+' Size         2 bytes
+' T. headers   {encryptedPayloadIndicator = False; sensitiveDataExpectedFormatsInReply = CardVerificationValue: not set, CreditCardMagneticStripe: not set, CreditCardNumber: not set; sensitiveDataExperimental = not set; sensitiveDataFormatInMessage = CardVerificationValue: not set, CreditCardMagneticStripe: not set, CreditCardNumber: not set; sensitiveDataPresence = CardVerificationValue: not set, CreditCardMagneticStripe: not set, CreditCardNumber: not set; shieldTokenizerVersion = not set}
+' Reply needed yes
+'----------------------------------------------------------------------
+JO
+
+'**********************************************************************
+' Received at  09:40:01.049798 - 03 Jan 2024
+' Filename     /data/dguerra/qa/open_pnr_validation/Epic_DATALPM_11227_Open_PNR_Associated_PNRs/scripts/DequeueOpenPNR/JsonMatchExample.cry
+' Match        N/A
+' Message      2 -  . 
+' Size         9 bytes
+' T. headers   {encryptedPayloadIndicator = False; sensitiveDataExpectedFormatsInReply = CardVerificationValue: not set, CreditCardMagneticStripe: not set, CreditCardNumber: not set; sensitiveDataExperimental = not set; sensitiveDataFormatInMessage = CardVerificationValue: not set, CreditCardMagneticStripe: not set, CreditCardNumber: not set; sensitiveDataPresence = CardVerificationValue: not set, CreditCardMagneticStripe: not set, CreditCardNumber: not set; shieldTokenizerVersion = not set}
+'----------------------------------------------------------------------
+''Response:
+''SIGN IN&
+''>
+''End of response
+
+'**********************************************************************
+' Sent at      09:40:01.050031 - 03 Jan 2024
+' Filename     /data/dguerra/qa/open_pnr_validation/Epic_DATALPM_11227_Open_PNR_Associated_PNRs/scripts/DequeueOpenPNR/JsonMatchExample.cry
+' Message      3 -  . 
+' Size         2 bytes
+' T. headers   {encryptedPayloadIndicator = False; sensitiveDataExpectedFormatsInReply = CardVerificationValue: not set, CreditCardMagneticStripe: not set, CreditCardNumber: not set; sensitiveDataExperimental = not set; sensitiveDataFormatInMessage = CardVerificationValue: not set, CreditCardMagneticStripe: not set, CreditCardNumber: not set; sensitiveDataPresence = CardVerificationValue: not set, CreditCardMagneticStripe: not set, CreditCardNumber: not set; shieldTokenizerVersion = not set}
+' Reply needed yes
+'----------------------------------------------------------------------
+JD
+
+'**********************************************************************
+' Received at  09:40:01.113916 - 03 Jan 2024
+' Filename     /data/dguerra/qa/open_pnr_validation/Epic_DATALPM_11227_Open_PNR_Associated_PNRs/scripts/DequeueOpenPNR/JsonMatchExample.cry
+' Match        N/A
+' Message      3 -  . 
+' Size         387 bytes
+' T. headers   {encryptedPayloadIndicator = False; sensitiveDataExpectedFormatsInReply = CardVerificationValue: not set, CreditCardMagneticStripe: not set, CreditCardNumber: not set; sensitiveDataExperimental = not set; sensitiveDataFormatInMessage = CardVerificationValue: not set, CreditCardMagneticStripe: not set, CreditCardNumber: not set; sensitiveDataPresence = CardVerificationValue: not set, CreditCardMagneticStripe: not set, CreditCardNumber: not set; shieldTokenizerVersion = not set}
+'----------------------------------------------------------------------
+''Response:
+''&
+''********         NCE1A0955&
+''&
+''AREA  TM  MOD SG/DT.LG TIME      ACT.Q   STATUS     NAME&
+''A                       24             NOT SIGNED&
+''B                                      NOT SIGNED&
+''C                                      NOT SIGNED&
+''D                                      NOT SIGNED&
+''E                                      NOT SIGNED&
+''F                                      NOT SIGNED&
+''>
+''End of response
+
+'> 1. Sign in with test_user_1A_sign in office test_user_1A_office
+'**********************************************************************
+' Sent at      09:40:01.114172 - 03 Jan 2024
+' Filename     /data/dguerra/qa/open_pnr_validation/Epic_DATALPM_11227_Open_PNR_Associated_PNRs/scripts/DequeueOpenPNR/JsonMatchExample.cry
+' Message      4 -  . 
+' Size         16 bytes
+' T. headers   {encryptedPayloadIndicator = False; sensitiveDataExpectedFormatsInReply = CardVerificationValue: not set, CreditCardMagneticStripe: not set, CreditCardNumber: not set; sensitiveDataExperimental = not set; sensitiveDataFormatInMessage = CardVerificationValue: not set, CreditCardMagneticStripe: not set, CreditCardNumber: not set; sensitiveDataPresence = CardVerificationValue: not set, CreditCardMagneticStripe: not set, CreditCardNumber: not set; shieldTokenizerVersion = not set}
+' Reply needed yes
+'----------------------------------------------------------------------
+OK-WE/L-********
+
+'**********************************************************************
+' Received at  09:40:01.163486 - 03 Jan 2024
+' Filename     /data/dguerra/qa/open_pnr_validation/Epic_DATALPM_11227_Open_PNR_Associated_PNRs/scripts/DequeueOpenPNR/JsonMatchExample.cry
+' Match        N/A
+' Message      4 -  . 
+' Size         85 bytes
+' T. headers   {encryptedPayloadIndicator = False; sensitiveDataExpectedFormatsInReply = CardVerificationValue: not set, CreditCardMagneticStripe: not set, CreditCardNumber: not set; sensitiveDataExperimental = not set; sensitiveDataFormatInMessage = CardVerificationValue: not set, CreditCardMagneticStripe: not set, CreditCardNumber: not set; sensitiveDataPresence = CardVerificationValue: not set, CreditCardMagneticStripe: not set, CreditCardNumber: not set; shieldTokenizerVersion = not set}
+'----------------------------------------------------------------------
+''Response:
+''  NETWORK 09 SUB-SYS FE DELETION LIST&
+''     AA0808    DELETED OK&
+''  DELETION FINISHED&
+''>
+''End of response
+
+''WAIT:2
+'**********************************************************************
+' Sent at      09:40:03.163939 - 03 Jan 2024
+' Filename     /data/dguerra/qa/open_pnr_validation/Epic_DATALPM_11227_Open_PNR_Associated_PNRs/scripts/DequeueOpenPNR/JsonMatchExample.cry
+' Message      5 -  . 
+' Size         63 bytes
+' T. headers   {encryptedPayloadIndicator = False; sensitiveDataExpectedFormatsInReply = CardVerificationValue: not set, CreditCardMagneticStripe: not set, CreditCardNumber: not set; sensitiveDataExperimental = not set; sensitiveDataFormatInMessage = CardVerificationValue: not set, CreditCardMagneticStripe: not set, CreditCardNumber: not set; sensitiveDataPresence = CardVerificationValue: not set, CreditCardMagneticStripe: not set, CreditCardNumber: not set; shieldTokenizerVersion = not set}
+' Reply needed yes
+'----------------------------------------------------------------------
+OK-WY/C-C5AGY/W-AMAD/S-80X22/O-NCE1A0955/T-NCE/A-NCE/L-********
+
+'**********************************************************************
+' Received at  09:40:03.214065 - 03 Jan 2024
+' Filename     /data/dguerra/qa/open_pnr_validation/Epic_DATALPM_11227_Open_PNR_Associated_PNRs/scripts/DequeueOpenPNR/JsonMatchExample.cry
+' Match        N/A
+' Message      5 -  . 
+' Size         46 bytes
+' T. headers   {encryptedPayloadIndicator = False; sensitiveDataExpectedFormatsInReply = CardVerificationValue: not set, CreditCardMagneticStripe: not set, CreditCardNumber: not set; sensitiveDataExperimental = not set; sensitiveDataFormatInMessage = CardVerificationValue: not set, CreditCardMagneticStripe: not set, CreditCardNumber: not set; sensitiveDataPresence = CardVerificationValue: not set, CreditCardMagneticStripe: not set, CreditCardNumber: not set; shieldTokenizerVersion = not set}
+'----------------------------------------------------------------------
+''Response:
+''&
+''LEIDS:   AA0808&
+''INITIALIZED FOR: NETWORK 09&
+''>
+''End of response
+
+'**********************************************************************
+' Sent at      09:40:03.214314 - 03 Jan 2024
+' Filename     /data/dguerra/qa/open_pnr_validation/Epic_DATALPM_11227_Open_PNR_Associated_PNRs/scripts/DequeueOpenPNR/JsonMatchExample.cry
+' Message      6 -  . 
+' Size         36 bytes
+' T. headers   {encryptedPayloadIndicator = False; sensitiveDataExpectedFormatsInReply = CardVerificationValue: not set, CreditCardMagneticStripe: not set, CreditCardNumber: not set; sensitiveDataExperimental = not set; sensitiveDataFormatInMessage = CardVerificationValue: not set, CreditCardMagneticStripe: not set, CreditCardNumber: not set; sensitiveDataPresence = CardVerificationValue: not set, CreditCardMagneticStripe: not set, CreditCardNumber: not set; shieldTokenizerVersion = not set}
+' Reply needed yes
+'----------------------------------------------------------------------
+Jia0905DG/SU.NCE6X0100-*************
+
+'**********************************************************************
+' Received at  09:40:03.380693 - 03 Jan 2024
+' Filename     /data/dguerra/qa/open_pnr_validation/Epic_DATALPM_11227_Open_PNR_Associated_PNRs/scripts/DequeueOpenPNR/JsonMatchExample.cry
+' Match        OK
+' Message      6 -  . 
+' Size         325 bytes
+' T. headers   {encryptedPayloadIndicator = False; sensitiveDataExpectedFormatsInReply = CardVerificationValue: not set, CreditCardMagneticStripe: not set, CreditCardNumber: not set; sensitiveDataExperimental = not set; sensitiveDataFormatInMessage = CardVerificationValue: not set, CreditCardMagneticStripe: not set, CreditCardNumber: not set; sensitiveDataPresence = CardVerificationValue: not set, CreditCardMagneticStripe: not set, CreditCardNumber: not set; shieldTokenizerVersion = not set}
+'----------------------------------------------------------------------
+''Response:
+''&
+''A-SIGN COMPLETE/03JAN/SU&
+''************  AMADEUS PRODUCT NEWS  ***********  SEE GGNEWS&
+''AIR2 INSELAIR INTERNATIONAL (7I) ENJOYS ISM IASR GGNEWSAIR2&
+''HTL  BALLADINS (BL) ENJOY HTL DYNAMIC ACCESS     GGNEWSHTL&
+''AIR1 PULLMANTUR AIR (EB) ENJOYS AAS              GGNEWSAIR1&
+''AIR  UTAIR UKRAINE (QU) ENJOYS AAS               GGNEWSAIR&
+''>
+''End of response
+
+'> 2. Create a PNR
+'**********************************************************************
+' Sent at      09:40:03.381053 - 03 Jan 2024
+' Filename     /data/dguerra/qa/open_pnr_validation/Epic_DATALPM_11227_Open_PNR_Associated_PNRs/scripts/DequeueOpenPNR/JsonMatchExample.cry
+' Message      7 -  . 
+' Size         12 bytes
+' T. headers   {encryptedPayloadIndicator = False; sensitiveDataExpectedFormatsInReply = CardVerificationValue: not set, CreditCardMagneticStripe: not set, CreditCardNumber: not set; sensitiveDataExperimental = not set; sensitiveDataFormatInMessage = CardVerificationValue: not set, CreditCardMagneticStripe: not set, CreditCardNumber: not set; sensitiveDataPresence = CardVerificationValue: not set, CreditCardMagneticStripe: not set, CreditCardNumber: not set; shieldTokenizerVersion = not set}
+' Reply needed yes
+'----------------------------------------------------------------------
+NM1XEYW/QROB
+
+'**********************************************************************
+' Received at  09:40:03.497902 - 03 Jan 2024
+' Filename     /data/dguerra/qa/open_pnr_validation/Epic_DATALPM_11227_Open_PNR_Associated_PNRs/scripts/DequeueOpenPNR/JsonMatchExample.cry
+' Match        N/A
+' Message      7 -  . 
+' Size         29 bytes
+' T. headers   {encryptedPayloadIndicator = False; sensitiveDataExpectedFormatsInReply = CardVerificationValue: not set, CreditCardMagneticStripe: not set, CreditCardNumber: not set; sensitiveDataExperimental = not set; sensitiveDataFormatInMessage = CardVerificationValue: not set, CreditCardMagneticStripe: not set, CreditCardNumber: not set; sensitiveDataPresence = CardVerificationValue: not set, CreditCardMagneticStripe: not set, CreditCardNumber: not set; shieldTokenizerVersion = not set}
+'----------------------------------------------------------------------
+''Response:
+''RP/NCE6X0100/&
+''  1.XEYW/QROB&
+''>
+''End of response
+
+'**********************************************************************
+' Sent at      09:40:03.498196 - 03 Jan 2024
+' Filename     /data/dguerra/qa/open_pnr_validation/Epic_DATALPM_11227_Open_PNR_Associated_PNRs/scripts/DequeueOpenPNR/JsonMatchExample.cry
+' Message      8 -  . 
+' Size         20 bytes
+' T. headers   {encryptedPayloadIndicator = False; sensitiveDataExpectedFormatsInReply = CardVerificationValue: not set, CreditCardMagneticStripe: not set, CreditCardNumber: not set; sensitiveDataExperimental = not set; sensitiveDataFormatInMessage = CardVerificationValue: not set, CreditCardMagneticStripe: not set, CreditCardNumber: not set; sensitiveDataPresence = CardVerificationValue: not set, CreditCardMagneticStripe: not set, CreditCardNumber: not set; shieldTokenizerVersion = not set}
+' Reply needed yes
+'----------------------------------------------------------------------
+SS6X402Y22FEBFRALHR1
+
+'**********************************************************************
+' Received at  09:40:03.989084 - 03 Jan 2024
+' Filename     /data/dguerra/qa/open_pnr_validation/Epic_DATALPM_11227_Open_PNR_Associated_PNRs/scripts/DequeueOpenPNR/JsonMatchExample.cry
+' Match        N/A
+' Message      8 -  . 
+' Size         90 bytes
+' T. headers   {encryptedPayloadIndicator = False; sensitiveDataExpectedFormatsInReply = CardVerificationValue: not set, CreditCardMagneticStripe: not set, CreditCardNumber: not set; sensitiveDataExperimental = not set; sensitiveDataFormatInMessage = CardVerificationValue: not set, CreditCardMagneticStripe: not set, CreditCardNumber: not set; sensitiveDataPresence = CardVerificationValue: not set, CreditCardMagneticStripe: not set, CreditCardNumber: not set; shieldTokenizerVersion = not set}
+'----------------------------------------------------------------------
+''Response:
+''RP/NCE6X0100/&
+''  1.XEYW/QROB&
+''  2  6X 402 Y 22FEB 4 FRALHR DK1  1000 1100  22FEB  E  0 320&
+''>
+''End of response
+
+'**********************************************************************
+' Sent at      09:40:03.989278 - 03 Jan 2024
+' Filename     /data/dguerra/qa/open_pnr_validation/Epic_DATALPM_11227_Open_PNR_Associated_PNRs/scripts/DequeueOpenPNR/JsonMatchExample.cry
+' Message      9 -  . 
+' Size         15 bytes
+' T. headers   {encryptedPayloadIndicator = False; sensitiveDataExpectedFormatsInReply = CardVerificationValue: not set, CreditCardMagneticStripe: not set, CreditCardNumber: not set; sensitiveDataExperimental = not set; sensitiveDataFormatInMessage = CardVerificationValue: not set, CreditCardMagneticStripe: not set, CreditCardNumber: not set; sensitiveDataPresence = CardVerificationValue: not set, CreditCardMagneticStripe: not set, CreditCardNumber: not set; shieldTokenizerVersion = not set}
+' Reply needed yes
+'----------------------------------------------------------------------
+AP +123456789AB
+
+'**********************************************************************
+' Received at  09:40:04.291864 - 03 Jan 2024
+' Filename     /data/dguerra/qa/open_pnr_validation/Epic_DATALPM_11227_Open_PNR_Associated_PNRs/scripts/DequeueOpenPNR/JsonMatchExample.cry
+' Match        N/A
+' Message      9 -  . 
+' Size         110 bytes
+' T. headers   {encryptedPayloadIndicator = False; sensitiveDataExpectedFormatsInReply = CardVerificationValue: not set, CreditCardMagneticStripe: not set, CreditCardNumber: not set; sensitiveDataExperimental = not set; sensitiveDataFormatInMessage = CardVerificationValue: not set, CreditCardMagneticStripe: not set, CreditCardNumber: not set; sensitiveDataPresence = CardVerificationValue: not set, CreditCardMagneticStripe: not set, CreditCardNumber: not set; shieldTokenizerVersion = not set}
+'----------------------------------------------------------------------
+''Response:
+''RP/NCE6X0100/&
+''  1.XEYW/QROB&
+''  2  6X 402 Y 22FEB 4 FRALHR DK1  1000 1100  22FEB  E  0 320&
+''  3 AP +123456789AB&
+''>
+''End of response
+
+'**********************************************************************
+' Sent at      09:40:04.292111 - 03 Jan 2024
+' Filename     /data/dguerra/qa/open_pnr_validation/Epic_DATALPM_11227_Open_PNR_Associated_PNRs/scripts/DequeueOpenPNR/JsonMatchExample.cry
+' Message      10 -  . 
+' Size         4 bytes
+' T. headers   {encryptedPayloadIndicator = False; sensitiveDataExpectedFormatsInReply = CardVerificationValue: not set, CreditCardMagneticStripe: not set, CreditCardNumber: not set; sensitiveDataExperimental = not set; sensitiveDataFormatInMessage = CardVerificationValue: not set, CreditCardMagneticStripe: not set, CreditCardNumber: not set; sensitiveDataPresence = CardVerificationValue: not set, CreditCardMagneticStripe: not set, CreditCardNumber: not set; shieldTokenizerVersion = not set}
+' Reply needed yes
+'----------------------------------------------------------------------
+TKOK
+
+'**********************************************************************
+' Received at  09:40:04.483267 - 03 Jan 2024
+' Filename     /data/dguerra/qa/open_pnr_validation/Epic_DATALPM_11227_Open_PNR_Associated_PNRs/scripts/DequeueOpenPNR/JsonMatchExample.cry
+' Match        N/A
+' Message      10 -  . 
+' Size         135 bytes
+' T. headers   {encryptedPayloadIndicator = False; sensitiveDataExpectedFormatsInReply = CardVerificationValue: not set, CreditCardMagneticStripe: not set, CreditCardNumber: not set; sensitiveDataExperimental = not set; sensitiveDataFormatInMessage = CardVerificationValue: not set, CreditCardMagneticStripe: not set, CreditCardNumber: not set; sensitiveDataPresence = CardVerificationValue: not set, CreditCardMagneticStripe: not set, CreditCardNumber: not set; shieldTokenizerVersion = not set}
+'----------------------------------------------------------------------
+''Response:
+''RP/NCE6X0100/&
+''  1.XEYW/QROB&
+''  2  6X 402 Y 22FEB 4 FRALHR DK1  1000 1100  22FEB  E  0 320&
+''  3 AP +123456789AB&
+''  4 TK OK03JAN/NCE6X0100&
+''>
+''End of response
+
+'**********************************************************************
+' Sent at      09:40:04.483471 - 03 Jan 2024
+' Filename     /data/dguerra/qa/open_pnr_validation/Epic_DATALPM_11227_Open_PNR_Associated_PNRs/scripts/DequeueOpenPNR/JsonMatchExample.cry
+' Message      11 -  . 
+' Size         15 bytes
+' T. headers   {encryptedPayloadIndicator = False; sensitiveDataExpectedFormatsInReply = CardVerificationValue: not set, CreditCardMagneticStripe: not set, CreditCardNumber: not set; sensitiveDataExperimental = not set; sensitiveDataFormatInMessage = CardVerificationValue: not set, CreditCardMagneticStripe: not set, CreditCardNumber: not set; sensitiveDataPresence = CardVerificationValue: not set, CreditCardMagneticStripe: not set, CreditCardNumber: not set; shieldTokenizerVersion = not set}
+' Reply needed yes
+'----------------------------------------------------------------------
+RF OPENPNR-TEST
+
+'**********************************************************************
+' Received at  09:40:04.641871 - 03 Jan 2024
+' Filename     /data/dguerra/qa/open_pnr_validation/Epic_DATALPM_11227_Open_PNR_Associated_PNRs/scripts/DequeueOpenPNR/JsonMatchExample.cry
+' Match        N/A
+' Message      11 -  . 
+' Size         151 bytes
+' T. headers   {encryptedPayloadIndicator = False; sensitiveDataExpectedFormatsInReply = CardVerificationValue: not set, CreditCardMagneticStripe: not set, CreditCardNumber: not set; sensitiveDataExperimental = not set; sensitiveDataFormatInMessage = CardVerificationValue: not set, CreditCardMagneticStripe: not set, CreditCardNumber: not set; sensitiveDataPresence = CardVerificationValue: not set, CreditCardMagneticStripe: not set, CreditCardNumber: not set; shieldTokenizerVersion = not set}
+'----------------------------------------------------------------------
+''Response:
+''RP/NCE6X0100/&
+''RF OPENPNR-TEST&
+''  1.XEYW/QROB&
+''  2  6X 402 Y 22FEB 4 FRALHR DK1  1000 1100  22FEB  E  0 320&
+''  3 AP +123456789AB&
+''  4 TK OK03JAN/NCE6X0100&
+''>
+''End of response
+
+'**********************************************************************
+' Sent at      09:40:04.642089 - 03 Jan 2024
+' Filename     /data/dguerra/qa/open_pnr_validation/Epic_DATALPM_11227_Open_PNR_Associated_PNRs/scripts/DequeueOpenPNR/JsonMatchExample.cry
+' Message      12 -  . 
+' Size         2 bytes
+' T. headers   {encryptedPayloadIndicator = False; sensitiveDataExpectedFormatsInReply = CardVerificationValue: not set, CreditCardMagneticStripe: not set, CreditCardNumber: not set; sensitiveDataExperimental = not set; sensitiveDataFormatInMessage = CardVerificationValue: not set, CreditCardMagneticStripe: not set, CreditCardNumber: not set; sensitiveDataPresence = CardVerificationValue: not set, CreditCardMagneticStripe: not set, CreditCardNumber: not set; shieldTokenizerVersion = not set}
+' Reply needed yes
+'----------------------------------------------------------------------
+ER
+
+'**********************************************************************
+' Received at  09:40:05.160635 - 03 Jan 2024
+' Filename     /data/dguerra/qa/open_pnr_validation/Epic_DATALPM_11227_Open_PNR_Associated_PNRs/scripts/DequeueOpenPNR/JsonMatchExample.cry
+' Match        OK
+' Message      12 -  . 
+' Size         201 bytes
+' T. headers   {encryptedPayloadIndicator = False; sensitiveDataExpectedFormatsInReply = CardVerificationValue: not set, CreditCardMagneticStripe: not set, CreditCardNumber: not set; sensitiveDataExperimental = not set; sensitiveDataFormatInMessage = CardVerificationValue: not set, CreditCardMagneticStripe: not set, CreditCardNumber: not set; sensitiveDataPresence = CardVerificationValue: not set, CreditCardMagneticStripe: not set, CreditCardNumber: not set; shieldTokenizerVersion = not set}
+'----------------------------------------------------------------------
+''Response:
+''--- RLR ---&
+''RP/NCE6X0100/NCE6X0100            DG/SU   3JAN24/0940Z   OKEJXS&
+''  1.XEYW/QROB&
+''  2  6X 402 Y 22FEB 4 FRALHR HK1  1000 1100  22FEB  E  6X/OKEJXS&
+''  3 AP +123456789AB&
+''  4 TK OK03JAN/NCE6X0100&
+''>
+''End of response
+
+''Exec:
+# Compose the expected PNR ID used in OpenPNR, e.g. ABC123-2025-05-27
+openpnr_id = recloc + '-' + today
+''End
+'**********************************************************************
+' Sent at      09:40:05.161128 - 03 Jan 2024
+' Filename     /data/dguerra/qa/open_pnr_validation/Epic_DATALPM_11227_Open_PNR_Associated_PNRs/scripts/DequeueOpenPNR/JsonMatchExample.cry
+' Message      13 -  . 
+' Size         2 bytes
+' T. headers   {encryptedPayloadIndicator = False; sensitiveDataExpectedFormatsInReply = CardVerificationValue: not set, CreditCardMagneticStripe: not set, CreditCardNumber: not set; sensitiveDataExperimental = not set; sensitiveDataFormatInMessage = CardVerificationValue: not set, CreditCardMagneticStripe: not set, CreditCardNumber: not set; sensitiveDataPresence = CardVerificationValue: not set, CreditCardMagneticStripe: not set, CreditCardNumber: not set; shieldTokenizerVersion = not set}
+' Reply needed yes
+'----------------------------------------------------------------------
+IG
+
+'**********************************************************************
+' Received at  09:40:05.243490 - 03 Jan 2024
+' Filename     /data/dguerra/qa/open_pnr_validation/Epic_DATALPM_11227_Open_PNR_Associated_PNRs/scripts/DequeueOpenPNR/JsonMatchExample.cry
+' Match        N/A
+' Message      13 -  . 
+' Size         18 bytes
+' T. headers   {encryptedPayloadIndicator = False; sensitiveDataExpectedFormatsInReply = CardVerificationValue: not set, CreditCardMagneticStripe: not set, CreditCardNumber: not set; sensitiveDataExperimental = not set; sensitiveDataFormatInMessage = CardVerificationValue: not set, CreditCardMagneticStripe: not set, CreditCardNumber: not set; sensitiveDataPresence = CardVerificationValue: not set, CreditCardMagneticStripe: not set, CreditCardNumber: not set; shieldTokenizerVersion = not set}
+'----------------------------------------------------------------------
+''Response:
+''IGNORED - OKEJXS&
+''>
+''End of response
+
+''WAIT:3
+''Conversation: pub
+
+'**********************************************************************
+' Sent at      09:40:08.295421 - 03 Jan 2024
+' Filename     /data/dguerra/qa/open_pnr_validation/Epic_DATALPM_11227_Open_PNR_Associated_PNRs/scripts/DequeueOpenPNR/JsonMatchExample.cry
+' Message      14 - PURCRQ 14.1 1A
+' Size         222 bytes
+' T. headers   {encryptedPayloadIndicator = False; sensitiveDataExpectedFormatsInReply = CardVerificationValue: not set, CreditCardMagneticStripe: not set, CreditCardNumber: not set; sensitiveDataExperimental = not set; sensitiveDataFormatInMessage = CardVerificationValue: not set, CreditCardMagneticStripe: not set, CreditCardNumber: not set; sensitiveDataPresence = CardVerificationValue: not set, CreditCardMagneticStripe: not set, CreditCardNumber: not set; shieldTokenizerVersion = not set}
+' Reply needed yes
+'----------------------------------------------------------------------
+UNB+IATB:1+1APPC+1ASIPUBD+240103:0940+00ZCJOK8E00001+++O'&
+UNH+1+PURCRQ:14:1:1A+********'&
+ORG+1A+:NCE1A0900++++FR:EUR:FR+A001SU'&
+RCI+:OKEJXS::03JAN24'&
+ATC++604'&
+IRV+ENV+0'&
+SPR+++2005:8:8+2100:12:12++'&
+UNT+7+1'&
+UNZ+1+00ZCJOK8E00001'
+
+'**********************************************************************
+' Received at  09:40:08.393277 - 03 Jan 2024
+' Filename     /data/dguerra/qa/open_pnr_validation/Epic_DATALPM_11227_Open_PNR_Associated_PNRs/scripts/DequeueOpenPNR/JsonMatchExample.cry
+' Match        OK
+' Message      14 - PURCRR 14.1 1A
+' Size         335 bytes
+' T. headers   {encryptedPayloadIndicator = False; sensitiveDataExpectedFormatsInReply = CardVerificationValue: not set, CreditCardMagneticStripe: not set, CreditCardNumber: not set; sensitiveDataExperimental = not set; sensitiveDataFormatInMessage = CardVerificationValue: not set, CreditCardMagneticStripe: not set, CreditCardNumber: not set; sensitiveDataPresence = CardVerificationValue: not set, CreditCardMagneticStripe: not set, CreditCardNumber: not set; shieldTokenizerVersion = not set}
+'----------------------------------------------------------------------
+''Response:
+''UNB+IATB:1+1ASIPUBD+1APPC+240103:0940+00MQTUVACT0001+00ZCJOK8E00001++T'&
+''UNH+1+PURCRR:14:1:1A+********'&
+''RCI+:OKEJXS::03JAN24'&
+''ATC++604'&
+''IRV+ENV+0'&
+''SPR+++2005:8:8+2100:12:12'&
+''DUM'&
+''RCI+:OKEJXS::20240103\:09\:40\:00'&
+''IRV+OBE+SONPK4'&
+''IRV+ENV+0'&
+''ATC++604'&
+''SDI+++2024:01:03:09:40:05'&
+''IRV+ID+960616470'&
+''SDI+++2024:01:03:09:40:05'&
+''UNT+14+1'&
+''UNZ+1+00MQTUVACT0001'
+''End of response
+
+''Conversation: pub_raw
+
+'**********************************************************************
+' Sent at      09:40:08.438106 - 03 Jan 2024
+' Filename     /data/dguerra/qa/open_pnr_validation/Epic_DATALPM_11227_Open_PNR_Associated_PNRs/scripts/DequeueOpenPNR/JsonMatchExample.cry
+' Message      15 - PUPIRQ 14.1 1A
+' Size         174 bytes
+' T. headers   {encryptedPayloadIndicator = False; sensitiveDataExpectedFormatsInReply = CardVerificationValue: not set, CreditCardMagneticStripe: not set, CreditCardNumber: not set; sensitiveDataExperimental = not set; sensitiveDataFormatInMessage = CardVerificationValue: not set, CreditCardMagneticStripe: not set, CreditCardNumber: not set; sensitiveDataPresence = CardVerificationValue: not set, CreditCardMagneticStripe: not set, CreditCardNumber: not set; shieldTokenizerVersion = not set}
+' Reply needed yes
+'----------------------------------------------------------------------
+UNB+IATA:1+1APPC+1ASIPUBD+240103:0940+00ZCJOK8E20001+++O'&
+UNH+1+PUPIRQ:14:1:1A+********'&
+IRV+ID+960616470'&
+IRV+OBE+SONPK4'&
+SDI+++2024:01:03:09:40:05'&
+UNT+5+1'&
+UNZ+1+00ZCJOK8E20001'
+
+'**********************************************************************
+' Received at  09:40:08.491409 - 03 Jan 2024
+' Filename     /data/dguerra/qa/open_pnr_validation/Epic_DATALPM_11227_Open_PNR_Associated_PNRs/scripts/DequeueOpenPNR/JsonMatchExample.cry
+' Match        OK
+' Message      15 - PUPIRR 14.1 1A
+' Size         1306 bytes
+' T. headers   {encryptedPayloadIndicator = False; sensitiveDataExpectedFormatsInReply = CardVerificationValue: not set, CreditCardMagneticStripe: not set, CreditCardNumber: not set; sensitiveDataExperimental = not set; sensitiveDataFormatInMessage = CardVerificationValue: not set, CreditCardMagneticStripe: not set, CreditCardNumber: not set; sensitiveDataPresence = CardVerificationValue: not set, CreditCardMagneticStripe: not set, CreditCardNumber: not set; shieldTokenizerVersion = not set}
+'----------------------------------------------------------------------
+''Response:
+''UNB+IATA:1+1ASIPUBD+1APPC+240103:0940+00MRBM5AUL0001+00ZCJOK8E20001++T'&
+''UNH+1+PUPIRR:14:1:1A+********'&
+''IRV+ID+960616470'&
+''IRV+OBE+SONPK4'&
+''SDI+++2024:01:03:09:40:05'&
+''BLB+1106+E+UNH\x1D1\x1DDUMMYY\x1F01\x1F1\x1F1A\x1C\x0A\xB2\x08\x12\xD5\x07\x0A\x11OKEJXS-2024-01-03\x12\x03pnr\x1A\x06OKEJXS"\x010:n\x1A\x142024-01-03T09:40:00Z"=\x0A"\x0A\x09NCE6X0100\x12\x0800631002\x1A\x026X"\x07AIRLINE\x12\x17\x0A\x040905\x12\x02DG\x1A\x02SU*\x02FR2\x03NCE*\x17OPENPNR-TEST-1A/DGUERRAJ3\x1A\x142024-01-03T09:40:04Z"\x0D\x0A\x0B\x0A\x09NCE6X0100*\x0COPENPNR-TESTz\x8A\x01\x0A\x0Bstakeholder\x12\x1AOKEJXS-2024-01-03-PNR-NM-1"\x0C\x12\x04QROB\x1A\x04XEYWr<\x0A\x07contact\x12\x1AOKEJXS-2024-01-03-PNR-AP-2\x1A\x15processedPnr.contacts\xA2\x01\x12\x12\x10410BA2E10000A1AF\x82\x01\xC8\x02\x0A\x07product\x10\x01\x1A\x1BOKEJXS-2024-01-03-PNR-AIR-1"\x9D\x02\x0A\x1A\x0A\x03FRA\x1A\x132024-02-22T10:00:00\x12\x1A\x0A\x03LHR\x1A\x132024-02-22T11:00:00"O\x0A\x09\x0A\x026X\x12\x03402\x12'&
+''\x0A\x01Y\x12\x03\x0A\x01M\x1A\x14\x0A\x02\x08\x00\x12\x0C\x0A\x04\x1A\x026X\x12\x04*\x02FR \x01"\x07ECONOMY2\x196X-402-2024-02-22-FRA-LHRJ\x02HKb\x84\x01\x0A\x10segment-delivery\x12\x1BOKEJXS-2024-01-03-PNR-BKG-1\x1A\x10400BD2E100007AD5ZA\x0A\x0Bstakeholder\x12\x1AOKEJXS-2024-01-03-PNR-NM-1\x1A\x16processedPnr.travelers\x8A\x01\x01E\x92\x01\x02\x08\x00\xB2\x01z\x0A\x07contact\x12\x1AOKEJXS-2024-01-03-PNR-AP-2"\x0E\x1A\x0C+123456789AB@\x01bA\x0A\x0Bstakeholder\x12\x1AOKEJXS-2024-01-03-PNR-NM-1\x1A\x16processedPnr.travelers\xBA\x01\xB3\x01\x0A\x11automated-process\x12\x1AOKEJXS-2024-01-03-PNR-TK-3\x18\x05ZA\x0A\x0Bstakeholder\x12\x1AOKEJXS-2024-01-03-PNR-NM-1\x1A\x16processedPnr.travelersb=\x0A\x07product\x12\x1BOKEJXS-2024-01-03-PNR-AIR-1\x1A\x15processedPnr.products\x1AX\x0A\x1Fapplication/vnd.google.protobuf\x12\x06OKEJXS\x1A\x010"\x03Pnr*\%com.amadeus.models.reservation.pnr.v2UNT\x1D2\x1D1\x1C'&
+''UNT+6+1'&
+''UNZ+1+00MRBM5AUL0001'
+''End of response
+
+''match:extract_binary_payload(global_regression, raw_binary=raw_binary)
+''Conversation: web
+
+'**********************************************************************
+' Sent at      09:40:08.493060 - 03 Jan 2024
+' Filename     /data/dguerra/qa/open_pnr_validation/Epic_DATALPM_11227_Open_PNR_Associated_PNRs/scripts/DequeueOpenPNR/JsonMatchExample.cry
+' Message      16 -  . 
+' Size         1701 bytes
+' T. headers   {encryptedPayloadIndicator = False; sensitiveDataExpectedFormatsInReply = CardVerificationValue: not set, CreditCardMagneticStripe: not set, CreditCardNumber: not set; sensitiveDataExperimental = not set; sensitiveDataFormatInMessage = CardVerificationValue: not set, CreditCardMagneticStripe: not set, CreditCardNumber: not set; sensitiveDataPresence = CardVerificationValue: not set, CreditCardMagneticStripe: not set, CreditCardNumber: not set; shieldTokenizerVersion = not set}
+' Reply needed yes
+'----------------------------------------------------------------------
+POST /1ASIUTOPLEGD/v2/open-pnrs/conversion?input=protobufBase64\&output=json HTTP/1.1&
+Content-Type: application/json&
+Authorization:1AAuth eyJub25jZSI6Ik56VTJPVEF6TURjNE9EWTJOakF3Tmc9PSIsInRpbWVzdGFtcCI6IjIwMjQtMDEtMDNUMDk6NDA6MDAuMDAwWiIsInVzZXJJZCI6IkRHVUVSUkEiLCJvZmZpY2VJZCI6Ik5DRTFBMDk1NSIsIm9yZ2FuaXphdGlvbiI6IjFBIiwicGFzc3dvcmQiOiJEZ2FWaHhJQUkrc3B4QmtWbXhsYlorb0d2dTQ9In0=&
+&
+\{"openPnr":"ChFPS0VKWFMtMjAyNC0wMS0wMxIDcG5yGgZPS0VKWFMiATA6bhoUMjAyNC0wMS0wM1QwOTo0MDowMFoiPQoiCglOQ0U2WDAxMDASCDAwNjMxMDAyGgI2WCIHQUlSTElORRIXCgQwOTA1EgJERxoCU1UqAkZSMgNOQ0UqF09QRU5QTlItVEVTVC0xQS9ER1VFUlJBSjMaFDIwMjQtMDEtMDNUMDk6NDA6MDRaIg0KCwoJTkNFNlgwMTAwKgxPUEVOUE5SLVRFU1R6igEKC3N0YWtlaG9sZGVyEhpPS0VKWFMtMjAyNC0wMS0wMy1QTlItTk0tMSIMEgRRUk9CGgRYRVlXcjwKB2NvbnRhY3QSGk9LRUpYUy0yMDI0LTAxLTAzLVBOUi1BUC0yGhVwcm9jZXNzZWRQbnIuY29udGFjdHOiARISEDQxMEJBMkUxMDAwMEExQUaCAcgCCgdwcm9kdWN0EAEaG09LRUpYUy0yMDI0LTAxLTAzLVBOUi1BSVItMSKdAgoaCgNGUkEaEzIwMjQtMDItMjJUMTA6MDA6MDASGgoDTEhSGhMyMDI0LTAyLTIyVDExOjAwOjAwIk8KCQoCNlgSAzQwMhInCgFZEgMKAU0aFAoCCAASDAoEGgI2WBIEKgJGUiABIgdFQ09OT01ZMhk2WC00MDItMjAyNC0wMi0yMi1GUkEtTEhSSgJIS2KEAQoQc2VnbWVudC1kZWxpdmVyeRIbT0tFSlhTLTIwMjQtMDEtMDMtUE5SLUJLRy0xGhA0MDBCRDJFMTAwMDA3QUQ1WkEKC3N0YWtlaG9sZGVyEhpPS0VKWFMtMjAyNC0wMS0wMy1QTlItTk0tMRoWcHJvY2Vzc2VkUG5yLnRyYXZlbGVyc4oBAUWSAQIIALIBegoHY29udGFjdBIaT0tFSlhTLTIwMjQtMDEtMDMtUE5SLUFQLTIiDhoMKzEyMzQ1Njc4OUFCQAFiQQoLc3Rha2Vob2xkZXISGk9LRUpYUy0yMDI0LTAxLTAzLVBOUi1OTS0xGhZwcm9jZXNzZWRQbnIudHJhdmVsZXJzugGzAQoRYXV0b21hdGVkLXByb2Nlc3MSGk9LRUpYUy0yMDI0LTAxLTAzLVBOUi1USy0zGAVaQQoLc3Rha2Vob2xkZXISGk9LRUpYUy0yMDI0LTAxLTAzLVBOUi1OTS0xGhZwcm9jZXNzZWRQbnIudHJhdmVsZXJzYj0KB3Byb2R1Y3QSG09LRUpYUy0yMDI0LTAxLTAzLVBOUi1BSVItMRoVcHJvY2Vzc2VkUG5yLnByb2R1Y3Rz"\}
+
+'**********************************************************************
+' Received at  09:40:08.618088 - 03 Jan 2024
+' Filename     /data/dguerra/qa/open_pnr_validation/Epic_DATALPM_11227_Open_PNR_Associated_PNRs/scripts/DequeueOpenPNR/JsonMatchExample.cry
+' Match        OK
+' Message      16 -  . 
+' Size         4952 bytes
+' T. headers   {encryptedPayloadIndicator = False; sensitiveDataExpectedFormatsInReply = CardVerificationValue: not set, CreditCardMagneticStripe: not set, CreditCardNumber: not set; sensitiveDataExperimental = not set; sensitiveDataFormatInMessage = CardVerificationValue: not set, CreditCardMagneticStripe: not set, CreditCardNumber: not set; sensitiveDataPresence = CardVerificationValue: not set, CreditCardMagneticStripe: not set, CreditCardNumber: not set; shieldTokenizerVersion = not set}
+'----------------------------------------------------------------------
+''Response:
+''HTTP/1.1 200 OK&
+''ama-request-id:0001SU7NF6OIUW&
+''content-length:2122&
+''etag:1&
+''content-type:application/vnd.amadeus+json; charset=utf-8&
+''&
+''\{&
+''    "id": "OKEJXS-2024-01-03", &
+''    "type": "pnr", &
+''    "reference": "OKEJXS", &
+''    "version": "0", &
+''    "creation": \{&
+''        "dateTime": "2024-01-03T09:40:00Z", &
+''        "pointOfSale": \{&
+''            "office": \{&
+''                "id": "NCE6X0100", &
+''                "iataNumber": "00631002", &
+''                "systemCode": "6X", &
+''                "agentType": "AIRLINE"&
+''            \}, &
+''            "login": \{&
+''                "numericSign": "0905", &
+''                "initials": "DG", &
+''                "dutyCode": "SU", &
+''                "countryCode": "FR", &
+''                "cityCode": "NCE"&
+''            \}&
+''        \}, &
+''        "comment": "OPENPNR-TEST-1A/DGUERRA"&
+''    \}, &
+''    "lastModification": \{&
+''        "dateTime": "2024-01-03T09:40:04Z", &
+''        "pointOfSale": \{&
+''            "office": \{&
+''                "id": "NCE6X0100"&
+''            \}&
+''        \}, &
+''        "comment": "OPENPNR-TEST"&
+''    \}, &
+''    "travelers": [&
+''        \{&
+''            "type": "stakeholder", &
+''            "id": "OKEJXS-2024-01-03-PNR-NM-1", &
+''            "names": [&
+''                \{&
+''                    "firstName": "QROB", &
+''                    "lastName": "XEYW"&
+''                \}&
+''            ], &
+''            "contacts": [&
+''                \{&
+''                    "type": "contact", &
+''                    "id": "OKEJXS-2024-01-03-PNR-AP-2", &
+''                    "ref": "processedPnr.contacts"&
+''                \}&
+''            ], &
+''            "passenger": \{&
+''                "uniqueIdentifier": "410BA2E10000A1AF"&
+''            \}&
+''        \}&
+''    ], &
+''    "products": [&
+''        \{&
+''            "type": "product", &
+''            "subType": "AIR", &
+''            "id": "OKEJXS-2024-01-03-PNR-AIR-1", &
+''            "airSegment": \{&
+''                "departure": \{&
+''                    "iataCode": "FRA", &
+''                    "localDateTime": "2024-02-22T10:00:00"&
+''                \}, &
+''                "arrival": \{&
+''                    "iataCode": "LHR", &
+''                    "localDateTime": "2024-02-22T11:00:00"&
+''                \}, &
+''                "marketing": \{&
+''                    "flightDesignator": \{&
+''                        "carrierCode": "6X", &
+''                        "flightNumber": "402"&
+''                    \}, &
+''                    "bookingClass": \{&
+''                        "code": "Y", &
+''                        "cabin": \{&
+''                            "code": "M"&
+''                        \}, &
+''                        "subClass": \{&
+''                            "code": 0, &
+''                            "pointOfSale": \{&
+''                                "office": \{&
+''                                    "systemCode": "6X"&
+''                                \}, &
+''                                "login": \{&
+''                                    "countryCode": "FR"&
+''                                \}&
+''                            \}, &
+''                            "sourceOfSubClassCode": "SOURCE_COUNTRY"&
+''                        \}, &
+''                        "levelOfService": "ECONOMY"&
+''                    \}, &
+''                    "id": "6X-402-2024-02-22-FRA-LHR"&
+''                \}, &
+''                "bookingStatusCode": "HK", &
+''                "deliveries": [&
+''                    \{&
+''                        "type": "segment-delivery", &
+''                        "id": "OKEJXS-2024-01-03-PNR-BKG-1", &
+''                        "distributionId": "400BD2E100007AD5", &
+''                        "traveler": \{&
+''                            "type": "stakeholder", &
+''                            "id": "OKEJXS-2024-01-03-PNR-NM-1", &
+''                            "ref": "processedPnr.travelers"&
+''                        \}&
+''                    \}&
+''                ], &
+''                "distributionMethod": "E", &
+''                "notAcknowledged": false&
+''            \}&
+''        \}&
+''    ], &
+''    "contacts": [&
+''        \{&
+''            "type": "contact", &
+''            "id": "OKEJXS-2024-01-03-PNR-AP-2", &
+''            "phone": \{&
+''                "number": "+123456789AB"&
+''            \}, &
+''            "purpose": [&
+''                "STANDARD"&
+''            ], &
+''            "travelerRefs": [&
+''                \{&
+''                    "type": "stakeholder", &
+''                    "id": "OKEJXS-2024-01-03-PNR-NM-1", &
+''                    "ref": "processedPnr.travelers"&
+''                \}&
+''            ]&
+''        \}&
+''    ], &
+''    "automatedProcesses": [&
+''        \{&
+''            "type": "automated-process", &
+''            "id": "OKEJXS-2024-01-03-PNR-TK-3", &
+''            "code": "OK", &
+''            "travelers": [&
+''                \{&
+''                    "type": "stakeholder", &
+''                    "id": "OKEJXS-2024-01-03-PNR-NM-1", &
+''                    "ref": "processedPnr.travelers"&
+''                \}&
+''            ], &
+''            "products": [&
+''                \{&
+''                    "type": "product", &
+''                    "id": "OKEJXS-2024-01-03-PNR-AIR-1", &
+''                    "ref": "processedPnr.products"&
+''                \}&
+''            ]&
+''        \}&
+''    ]&
+''\}
+''End of response
+
+''match:validate_openpnr(received_json)
+''Conversation: cry
+
+'**********************************************************************
+' Sent at      09:40:08.619411 - 03 Jan 2024
+' Filename     /data/dguerra/qa/open_pnr_validation/Epic_DATALPM_11227_Open_PNR_Associated_PNRs/scripts/DequeueOpenPNR/JsonMatchExample.cry
+' Message      17 -  . 
+' Size         9 bytes
+' T. headers   {encryptedPayloadIndicator = False; sensitiveDataExpectedFormatsInReply = CardVerificationValue: not set, CreditCardMagneticStripe: not set, CreditCardNumber: not set; sensitiveDataExperimental = not set; sensitiveDataFormatInMessage = CardVerificationValue: not set, CreditCardMagneticStripe: not set, CreditCardNumber: not set; sensitiveDataPresence = CardVerificationValue: not set, CreditCardMagneticStripe: not set, CreditCardNumber: not set; shieldTokenizerVersion = not set}
+' Reply needed yes
+'----------------------------------------------------------------------
+RT OKEJXS
+
+'**********************************************************************
+' Received at  09:40:08.815540 - 03 Jan 2024
+' Filename     /data/dguerra/qa/open_pnr_validation/Epic_DATALPM_11227_Open_PNR_Associated_PNRs/scripts/DequeueOpenPNR/JsonMatchExample.cry
+' Match        N/A
+' Message      17 -  . 
+' Size         201 bytes
+' T. headers   {encryptedPayloadIndicator = False; sensitiveDataExpectedFormatsInReply = CardVerificationValue: not set, CreditCardMagneticStripe: not set, CreditCardNumber: not set; sensitiveDataExperimental = not set; sensitiveDataFormatInMessage = CardVerificationValue: not set, CreditCardMagneticStripe: not set, CreditCardNumber: not set; sensitiveDataPresence = CardVerificationValue: not set, CreditCardMagneticStripe: not set, CreditCardNumber: not set; shieldTokenizerVersion = not set}
+'----------------------------------------------------------------------
+''Response:
+''--- RLR ---&
+''RP/NCE6X0100/NCE6X0100            DG/SU   3JAN24/0940Z   OKEJXS&
+''  1.XEYW/QROB&
+''  2  6X 402 Y 22FEB 4 FRALHR HK1  1000 1100  22FEB  E  6X/OKEJXS&
+''  3 AP +123456789AB&
+''  4 TK OK03JAN/NCE6X0100&
+''>
+''End of response
+
+'**********************************************************************
+' Sent at      09:40:08.815801 - 03 Jan 2024
+' Filename     /data/dguerra/qa/open_pnr_validation/Epic_DATALPM_11227_Open_PNR_Associated_PNRs/scripts/DequeueOpenPNR/JsonMatchExample.cry
+' Message      18 -  . 
+' Size         2 bytes
+' T. headers   {encryptedPayloadIndicator = False; sensitiveDataExpectedFormatsInReply = CardVerificationValue: not set, CreditCardMagneticStripe: not set, CreditCardNumber: not set; sensitiveDataExperimental = not set; sensitiveDataFormatInMessage = CardVerificationValue: not set, CreditCardMagneticStripe: not set, CreditCardNumber: not set; sensitiveDataPresence = CardVerificationValue: not set, CreditCardMagneticStripe: not set, CreditCardNumber: not set; shieldTokenizerVersion = not set}
+' Reply needed yes
+'----------------------------------------------------------------------
+XI
+
+'**********************************************************************
+' Received at  09:40:09.155712 - 03 Jan 2024
+' Filename     /data/dguerra/qa/open_pnr_validation/Epic_DATALPM_11227_Open_PNR_Associated_PNRs/scripts/DequeueOpenPNR/JsonMatchExample.cry
+' Match        N/A
+' Message      18 -  . 
+' Size         136 bytes
+' T. headers   {encryptedPayloadIndicator = False; sensitiveDataExpectedFormatsInReply = CardVerificationValue: not set, CreditCardMagneticStripe: not set, CreditCardNumber: not set; sensitiveDataExperimental = not set; sensitiveDataFormatInMessage = CardVerificationValue: not set, CreditCardMagneticStripe: not set, CreditCardNumber: not set; sensitiveDataPresence = CardVerificationValue: not set, CreditCardMagneticStripe: not set, CreditCardNumber: not set; shieldTokenizerVersion = not set}
+'----------------------------------------------------------------------
+''Response:
+''--- RLR ---&
+''RP/NCE6X0100/NCE6X0100            DG/SU   3JAN24/0940Z   OKEJXS&
+''  1.XEYW/QROB&
+''  2 AP +123456789AB&
+''  3 TK OK03JAN/NCE6X0100&
+''>
+''End of response
+
+'**********************************************************************
+' Sent at      09:40:09.155903 - 03 Jan 2024
+' Filename     /data/dguerra/qa/open_pnr_validation/Epic_DATALPM_11227_Open_PNR_Associated_PNRs/scripts/DequeueOpenPNR/JsonMatchExample.cry
+' Message      19 -  . 
+' Size         2 bytes
+' T. headers   {encryptedPayloadIndicator = False; sensitiveDataExpectedFormatsInReply = CardVerificationValue: not set, CreditCardMagneticStripe: not set, CreditCardNumber: not set; sensitiveDataExperimental = not set; sensitiveDataFormatInMessage = CardVerificationValue: not set, CreditCardMagneticStripe: not set, CreditCardNumber: not set; sensitiveDataPresence = CardVerificationValue: not set, CreditCardMagneticStripe: not set, CreditCardNumber: not set; shieldTokenizerVersion = not set}
+' Reply needed yes
+'----------------------------------------------------------------------
+ET
+
+'**********************************************************************
+' Received at  09:40:09.507933 - 03 Jan 2024
+' Filename     /data/dguerra/qa/open_pnr_validation/Epic_DATALPM_11227_Open_PNR_Associated_PNRs/scripts/DequeueOpenPNR/JsonMatchExample.cry
+' Match        N/A
+' Message      19 -  . 
+' Size         38 bytes
+' T. headers   {encryptedPayloadIndicator = False; sensitiveDataExpectedFormatsInReply = CardVerificationValue: not set, CreditCardMagneticStripe: not set, CreditCardNumber: not set; sensitiveDataExperimental = not set; sensitiveDataFormatInMessage = CardVerificationValue: not set, CreditCardMagneticStripe: not set, CreditCardNumber: not set; sensitiveDataPresence = CardVerificationValue: not set, CreditCardMagneticStripe: not set, CreditCardNumber: not set; shieldTokenizerVersion = not set}
+'----------------------------------------------------------------------
+''Response:
+''END OF TRANSACTION COMPLETE - OKEJXS&
+''>
+''End of response
+
+'**********************************************************************
+' Sent at      09:40:09.508122 - 03 Jan 2024
+' Filename     /data/dguerra/qa/open_pnr_validation/Epic_DATALPM_11227_Open_PNR_Associated_PNRs/scripts/DequeueOpenPNR/JsonMatchExample.cry
+' Message      20 -  . 
+' Size         2 bytes
+' T. headers   {encryptedPayloadIndicator = False; sensitiveDataExpectedFormatsInReply = CardVerificationValue: not set, CreditCardMagneticStripe: not set, CreditCardNumber: not set; sensitiveDataExperimental = not set; sensitiveDataFormatInMessage = CardVerificationValue: not set, CreditCardMagneticStripe: not set, CreditCardNumber: not set; sensitiveDataPresence = CardVerificationValue: not set, CreditCardMagneticStripe: not set, CreditCardNumber: not set; shieldTokenizerVersion = not set}
+' Reply needed yes
+'----------------------------------------------------------------------
+IG
+
+'**********************************************************************
+' Received at  09:40:09.589298 - 03 Jan 2024
+' Filename     /data/dguerra/qa/open_pnr_validation/Epic_DATALPM_11227_Open_PNR_Associated_PNRs/scripts/DequeueOpenPNR/JsonMatchExample.cry
+' Match        N/A
+' Message      20 -  . 
+' Size         9 bytes
+' T. headers   {encryptedPayloadIndicator = False; sensitiveDataExpectedFormatsInReply = CardVerificationValue: not set, CreditCardMagneticStripe: not set, CreditCardNumber: not set; sensitiveDataExperimental = not set; sensitiveDataFormatInMessage = CardVerificationValue: not set, CreditCardMagneticStripe: not set, CreditCardNumber: not set; sensitiveDataPresence = CardVerificationValue: not set, CreditCardMagneticStripe: not set, CreditCardNumber: not set; shieldTokenizerVersion = not set}
+'----------------------------------------------------------------------
+''Response:
+''IGNORED&
+''>
+''End of response
+
+'**********************************************************************
+' Sent at      09:40:09.589468 - 03 Jan 2024
+' Filename     /data/dguerra/qa/open_pnr_validation/Epic_DATALPM_11227_Open_PNR_Associated_PNRs/scripts/DequeueOpenPNR/JsonMatchExample.cry
+' Message      21 -  . 
+' Size         2 bytes
+' T. headers   {encryptedPayloadIndicator = False; sensitiveDataExpectedFormatsInReply = CardVerificationValue: not set, CreditCardMagneticStripe: not set, CreditCardNumber: not set; sensitiveDataExperimental = not set; sensitiveDataFormatInMessage = CardVerificationValue: not set, CreditCardMagneticStripe: not set, CreditCardNumber: not set; sensitiveDataPresence = CardVerificationValue: not set, CreditCardMagneticStripe: not set, CreditCardNumber: not set; shieldTokenizerVersion = not set}
+' Reply needed yes
+'----------------------------------------------------------------------
+JO
+
+'**********************************************************************
+' Received at  09:40:09.703601 - 03 Jan 2024
+' Filename     /data/dguerra/qa/open_pnr_validation/Epic_DATALPM_11227_Open_PNR_Associated_PNRs/scripts/DequeueOpenPNR/JsonMatchExample.cry
+' Match        N/A
+' Message      21 -  . 
+' Size         387 bytes
+' T. headers   {encryptedPayloadIndicator = False; sensitiveDataExpectedFormatsInReply = CardVerificationValue: not set, CreditCardMagneticStripe: not set, CreditCardNumber: not set; sensitiveDataExperimental = not set; sensitiveDataFormatInMessage = CardVerificationValue: not set, CreditCardMagneticStripe: not set, CreditCardNumber: not set; sensitiveDataPresence = CardVerificationValue: not set, CreditCardMagneticStripe: not set, CreditCardNumber: not set; shieldTokenizerVersion = not set}
+'----------------------------------------------------------------------
+''Response:
+''&
+''********         NCE1A0955&
+''&
+''AREA  TM  MOD SG/DT.LG TIME      ACT.Q   STATUS     NAME&
+''A                       24             NOT SIGNED&
+''B                                      NOT SIGNED&
+''C                                      NOT SIGNED&
+''D                                      NOT SIGNED&
+''E                                      NOT SIGNED&
+''F                                      NOT SIGNED&
+''>
+''End of response
+
+'**********************************************************************
+' Sent at      09:40:09.703829 - 03 Jan 2024
+' Filename     /data/dguerra/qa/open_pnr_validation/Epic_DATALPM_11227_Open_PNR_Associated_PNRs/scripts/DequeueOpenPNR/JsonMatchExample.cry
+' Message      22 -  . 
+' Size         2 bytes
+' T. headers   {encryptedPayloadIndicator = False; sensitiveDataExpectedFormatsInReply = CardVerificationValue: not set, CreditCardMagneticStripe: not set, CreditCardNumber: not set; sensitiveDataExperimental = not set; sensitiveDataFormatInMessage = CardVerificationValue: not set, CreditCardMagneticStripe: not set, CreditCardNumber: not set; sensitiveDataPresence = CardVerificationValue: not set, CreditCardMagneticStripe: not set, CreditCardNumber: not set; shieldTokenizerVersion = not set}
+' Reply needed yes
+'----------------------------------------------------------------------
+JD
+
+'**********************************************************************
+' Received at  09:40:09.764066 - 03 Jan 2024
+' Filename     /data/dguerra/qa/open_pnr_validation/Epic_DATALPM_11227_Open_PNR_Associated_PNRs/scripts/DequeueOpenPNR/JsonMatchExample.cry
+' Match        N/A
+' Message      22 -  . 
+' Size         387 bytes
+' T. headers   {encryptedPayloadIndicator = False; sensitiveDataExpectedFormatsInReply = CardVerificationValue: not set, CreditCardMagneticStripe: not set, CreditCardNumber: not set; sensitiveDataExperimental = not set; sensitiveDataFormatInMessage = CardVerificationValue: not set, CreditCardMagneticStripe: not set, CreditCardNumber: not set; sensitiveDataPresence = CardVerificationValue: not set, CreditCardMagneticStripe: not set, CreditCardNumber: not set; shieldTokenizerVersion = not set}
+'----------------------------------------------------------------------
+''Response:
+''&
+''********         NCE1A0955&
+''&
+''AREA  TM  MOD SG/DT.LG TIME      ACT.Q   STATUS     NAME&
+''A                       24             NOT SIGNED&
+''B                                      NOT SIGNED&
+''C                                      NOT SIGNED&
+''D                                      NOT SIGNED&
+''E                                      NOT SIGNED&
+''F                                      NOT SIGNED&
+''>
+''End of response
+
+
+'----------------------------------------------------------------------
+' Statistics
+'----------------------------------------------------------------------
+' Messages in          : 22
+' Bytes in             : 0Mb 9Kb 130b
+' Messages out         : 22
+' Bytes out            : 0Mb 2Kb 259b
+
+' Conversations        : 5
+' Transactions         : 22
+' Transactions parsed  : 22
+' Ratio                : 1
+
+' Total duration       : 0h 0min 8s 859ms
+' Parse duration       : 0h 0min 0s 1.319ms (0 %)
+' Wait duration        : 0h 0min 3s 746.984ms (42 %)
+' Transactions/s       : 2 TPS
+
+' Number of Timeouts   : 0
+' Messages compared    : 5
+' Errors found         : 0
+' Python errors found         : 0
+' No match counter     : 0
