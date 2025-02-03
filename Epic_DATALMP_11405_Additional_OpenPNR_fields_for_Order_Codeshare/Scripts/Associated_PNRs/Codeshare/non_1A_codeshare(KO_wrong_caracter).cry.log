@@ -1,0 +1,693 @@
+' Log report : 09:26:32.678852 - 04 Mar 2024
+' Filename   : /mnt/c/Users/ygarnier/open_pnr_validation/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Scripts/Associated_PNRs/Codeshare/non_1A_codeshare(KO_wrong_caracter).cry
+'----------------------------------------------------------------------
+
+''Initialize:
+import json
+from lib.openpnr import extract_binary_payload
+from lib.json_match import assert_equal, assert_found, assert_not_found, parse_json
+
+execfile(global_regression.TTS_RootDir + '/data/data_' + global_regression.TEST_SYSTEM + '.py')
+
+TTS_OK = TTServer.currentMessage.TTS_MATCH_COMPARISON_OK
+TTS_KO = TTServer.currentMessage.TTS_MATCH_COMPARISON_FAILURE
+
+# As the specific conditions to evaluate depend on the test, the comparison function is in the individual script
+# In case of match error, find the error details in TTS logs (not available in .log or in .rex file)
+# Variables defined in data files (e.g., test user data) or in the current scripts (e.g., recloc)
+# are directly available from inside the function.
+def validate_openpnr(openpnr_json):
+    try:
+        openpnr = parse_json(openpnr_json)
+        for field in ['id', 'reference', 'creation', 'travelers', 'products']:
+            assert_found(field, container=openpnr)
+
+        expected_openpnr_id = recloc + '-' + today
+        assert_equal(actual=openpnr['id'], expected=expected_openpnr_id, item_name='OpenPNR id field')
+        assert_not_found('creation/date', container=openpnr)
+        assert_found('creation/dateTime', container=openpnr)
+        assert_found('creation/pointOfSale/office/id', container=openpnr)
+        assert_equal(expected=test_user_1A_extended_office, actual=openpnr['creation']['pointOfSale']['office']['id'], item_name='creator office')
+
+        assert_equal(actual=len(openpnr['travelers']), expected=1, item_name='number of travelers')
+        traveler_1 = openpnr['travelers'][0]
+        assert_found('names[0]/firstName', container=traveler_1)
+        assert_equal(actual=traveler_1['names'][0]['firstName'], expected=Pax1.first_name, item_name='passenger first name')
+
+
+    except Exception as e:
+        print('OpenPNR validation failed: {}'.format(e))
+        return TTS_KO
+
+    print('OpenPNR validation successful')
+    return TTS_OK
+
+''End
+'**********************************************************************
+' Sent at      09:26:32.679577 - 04 Mar 2024
+' Filename     /mnt/c/Users/ygarnier/open_pnr_validation/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Scripts/Associated_PNRs/Codeshare/non_1A_codeshare(KO_wrong_caracter).cry
+' Message      1 -  . 
+' Size         2 bytes
+' Reply needed yes
+'----------------------------------------------------------------------
+IG
+
+'**********************************************************************
+' Received at  09:26:32.747363 - 04 Mar 2024
+' Filename     /mnt/c/Users/ygarnier/open_pnr_validation/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Scripts/Associated_PNRs/Codeshare/non_1A_codeshare(KO_wrong_caracter).cry
+' Match        N/A
+' Message      1 -  . 
+' Size         9 bytes
+'----------------------------------------------------------------------
+''Response:
+''SIGN IN&
+''>
+''End of response
+
+'**********************************************************************
+' Sent at      09:26:32.747942 - 04 Mar 2024
+' Filename     /mnt/c/Users/ygarnier/open_pnr_validation/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Scripts/Associated_PNRs/Codeshare/non_1A_codeshare(KO_wrong_caracter).cry
+' Message      2 -  . 
+' Size         2 bytes
+' Reply needed yes
+'----------------------------------------------------------------------
+JO
+
+'**********************************************************************
+' Received at  09:26:32.820318 - 04 Mar 2024
+' Filename     /mnt/c/Users/ygarnier/open_pnr_validation/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Scripts/Associated_PNRs/Codeshare/non_1A_codeshare(KO_wrong_caracter).cry
+' Match        N/A
+' Message      2 -  . 
+' Size         9 bytes
+'----------------------------------------------------------------------
+''Response:
+''SIGN IN&
+''>
+''End of response
+
+'**********************************************************************
+' Sent at      09:26:32.820611 - 04 Mar 2024
+' Filename     /mnt/c/Users/ygarnier/open_pnr_validation/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Scripts/Associated_PNRs/Codeshare/non_1A_codeshare(KO_wrong_caracter).cry
+' Message      3 -  . 
+' Size         2 bytes
+' Reply needed yes
+'----------------------------------------------------------------------
+JD
+
+'**********************************************************************
+' Received at  09:26:32.903159 - 04 Mar 2024
+' Filename     /mnt/c/Users/ygarnier/open_pnr_validation/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Scripts/Associated_PNRs/Codeshare/non_1A_codeshare(KO_wrong_caracter).cry
+' Match        N/A
+' Message      3 -  . 
+' Size         387 bytes
+'----------------------------------------------------------------------
+''Response:
+''&
+''09CC2B44         NCE1A0950&
+''&
+''AREA  TM  MOD SG/DT.LG TIME      ACT.Q   STATUS     NAME&
+''A                       24             NOT SIGNED&
+''B                                      NOT SIGNED&
+''C                                      NOT SIGNED&
+''D                                      NOT SIGNED&
+''E                                      NOT SIGNED&
+''F                                      NOT SIGNED&
+''>
+''End of response
+
+'> 1. Sign in with test_user_1A_sign in office test_user_1A_office
+'**********************************************************************
+' Sent at      09:26:32.903549 - 04 Mar 2024
+' Filename     /mnt/c/Users/ygarnier/open_pnr_validation/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Scripts/Associated_PNRs/Codeshare/non_1A_codeshare(KO_wrong_caracter).cry
+' Message      4 -  . 
+' Size         16 bytes
+' Reply needed yes
+'----------------------------------------------------------------------
+OK-WE/L-09CC2B44
+
+'**********************************************************************
+' Received at  09:26:32.973665 - 04 Mar 2024
+' Filename     /mnt/c/Users/ygarnier/open_pnr_validation/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Scripts/Associated_PNRs/Codeshare/non_1A_codeshare(KO_wrong_caracter).cry
+' Match        N/A
+' Message      4 -  . 
+' Size         85 bytes
+'----------------------------------------------------------------------
+''Response:
+''  NETWORK 09 SUB-SYS FE DELETION LIST&
+''     CC2B44    DELETED OK&
+''  DELETION FINISHED&
+''>
+''End of response
+
+''WAIT:2
+'**********************************************************************
+' Sent at      09:26:34.981817 - 04 Mar 2024
+' Filename     /mnt/c/Users/ygarnier/open_pnr_validation/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Scripts/Associated_PNRs/Codeshare/non_1A_codeshare(KO_wrong_caracter).cry
+' Message      5 -  . 
+' Size         63 bytes
+' Reply needed yes
+'----------------------------------------------------------------------
+OK-WY/C-C5AGY/W-AMAD/S-80X22/O-NCE1A0950/T-NCE/A-NCE/L-09CC2B44
+
+'**********************************************************************
+' Received at  09:26:35.051290 - 04 Mar 2024
+' Filename     /mnt/c/Users/ygarnier/open_pnr_validation/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Scripts/Associated_PNRs/Codeshare/non_1A_codeshare(KO_wrong_caracter).cry
+' Match        N/A
+' Message      5 -  . 
+' Size         46 bytes
+'----------------------------------------------------------------------
+''Response:
+''&
+''LEIDS:   CC2B44&
+''INITIALIZED FOR: NETWORK 09&
+''>
+''End of response
+
+'**********************************************************************
+' Sent at      09:26:35.051688 - 04 Mar 2024
+' Filename     /mnt/c/Users/ygarnier/open_pnr_validation/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Scripts/Associated_PNRs/Codeshare/non_1A_codeshare(KO_wrong_caracter).cry
+' Message      6 -  . 
+' Size         39 bytes
+' Reply needed yes
+'----------------------------------------------------------------------
+Jia0447YG/SU.NCE6X0100-Yoanntesting123+
+
+'**********************************************************************
+' Received at  09:26:35.227640 - 04 Mar 2024
+' Filename     /mnt/c/Users/ygarnier/open_pnr_validation/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Scripts/Associated_PNRs/Codeshare/non_1A_codeshare(KO_wrong_caracter).cry
+' Match        OK
+' Message      6 -  . 
+' Size         325 bytes
+'----------------------------------------------------------------------
+''Response:
+''&
+''A-SIGN COMPLETE/04MAR/SU&
+''************  AMADEUS PRODUCT NEWS  ***********  SEE GGNEWS&
+''AIR2 INSELAIR INTERNATIONAL (7I) ENJOYS ISM IASR GGNEWSAIR2&
+''HTL  BALLADINS (BL) ENJOY HTL DYNAMIC ACCESS     GGNEWSHTL&
+''AIR1 PULLMANTUR AIR (EB) ENJOYS AAS              GGNEWSAIR1&
+''AIR  UTAIR UKRAINE (QU) ENJOYS AAS               GGNEWSAIR&
+''>
+''End of response
+
+'> 2.Create a PNR with 2pax 1seg + APM
+'**********************************************************************
+' Sent at      09:26:35.228727 - 04 Mar 2024
+' Filename     /mnt/c/Users/ygarnier/open_pnr_validation/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Scripts/Associated_PNRs/Codeshare/non_1A_codeshare(KO_wrong_caracter).cry
+' Message      7 -  . 
+' Size         12 bytes
+' Reply needed yes
+'----------------------------------------------------------------------
+NM1VOQB/OHRX
+
+'**********************************************************************
+' Received at  09:26:35.351875 - 04 Mar 2024
+' Filename     /mnt/c/Users/ygarnier/open_pnr_validation/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Scripts/Associated_PNRs/Codeshare/non_1A_codeshare(KO_wrong_caracter).cry
+' Match        N/A
+' Message      7 -  . 
+' Size         29 bytes
+'----------------------------------------------------------------------
+''Response:
+''RP/NCE6X0100/&
+''  1.VOQB/OHRX&
+''>
+''End of response
+
+'**********************************************************************
+' Sent at      09:26:35.352479 - 04 Mar 2024
+' Filename     /mnt/c/Users/ygarnier/open_pnr_validation/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Scripts/Associated_PNRs/Codeshare/non_1A_codeshare(KO_wrong_caracter).cry
+' Message      8 -  . 
+' Size         21 bytes
+' Reply needed yes
+'----------------------------------------------------------------------
+SSSN9009Y26APRCDGEWR1
+
+'**********************************************************************
+' Received at  09:26:36.164827 - 04 Mar 2024
+' Filename     /mnt/c/Users/ygarnier/open_pnr_validation/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Scripts/Associated_PNRs/Codeshare/non_1A_codeshare(KO_wrong_caracter).cry
+' Match        OK
+' Message      8 -  . 
+' Size         297 bytes
+'----------------------------------------------------------------------
+''Response:
+''--- SFP ---&
+''RP/NCE6X0100/&
+''  1.VOQB/OHRX&
+''  2  SN9009 Y 26APR 5 CDGEWR DK1  0945 1155  26APR  E  0 781&
+''     OPERATED BY UNITED AIRLINES&
+''     SEE RTSVC&
+''  3 RM NOTIFY PASSENGER PRIOR TO TICKET PURCHASE \& CHECK-IN:&
+''       FEDERAL LAWS FORBID THE CARRIAGE OF HAZARDOUS MATERIALS -&
+''       GGAMAUSHAZ/S2&
+''>
+''End of response
+
+'**********************************************************************
+' Sent at      09:26:36.167732 - 04 Mar 2024
+' Filename     /mnt/c/Users/ygarnier/open_pnr_validation/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Scripts/Associated_PNRs/Codeshare/non_1A_codeshare(KO_wrong_caracter).cry
+' Message      9 -  . 
+' Size         17 bytes
+' Reply needed yes
+'----------------------------------------------------------------------
+APM-M+33661845678
+
+'**********************************************************************
+' Received at  09:26:36.307404 - 04 Mar 2024
+' Filename     /mnt/c/Users/ygarnier/open_pnr_validation/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Scripts/Associated_PNRs/Codeshare/non_1A_codeshare(KO_wrong_caracter).cry
+' Match        N/A
+' Message      9 -  . 
+' Size         319 bytes
+'----------------------------------------------------------------------
+''Response:
+''--- SFP ---&
+''RP/NCE6X0100/&
+''  1.VOQB/OHRX&
+''  2  SN9009 Y 26APR 5 CDGEWR DK1  0945 1155  26APR  E  0 781&
+''     OPERATED BY UNITED AIRLINES&
+''     SEE RTSVC&
+''  3 APM M+33661845678&
+''  4 RM NOTIFY PASSENGER PRIOR TO TICKET PURCHASE \& CHECK-IN:&
+''       FEDERAL LAWS FORBID THE CARRIAGE OF HAZARDOUS MATERIALS -&
+''       GGAMAUSHAZ/S2&
+''>
+''End of response
+
+'**********************************************************************
+' Sent at      09:26:36.308030 - 04 Mar 2024
+' Filename     /mnt/c/Users/ygarnier/open_pnr_validation/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Scripts/Associated_PNRs/Codeshare/non_1A_codeshare(KO_wrong_caracter).cry
+' Message      10 -  . 
+' Size         4 bytes
+' Reply needed yes
+'----------------------------------------------------------------------
+TKOK
+
+'**********************************************************************
+' Received at  09:26:36.437931 - 04 Mar 2024
+' Filename     /mnt/c/Users/ygarnier/open_pnr_validation/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Scripts/Associated_PNRs/Codeshare/non_1A_codeshare(KO_wrong_caracter).cry
+' Match        N/A
+' Message      10 -  . 
+' Size         344 bytes
+'----------------------------------------------------------------------
+''Response:
+''--- SFP ---&
+''RP/NCE6X0100/&
+''  1.VOQB/OHRX&
+''  2  SN9009 Y 26APR 5 CDGEWR DK1  0945 1155  26APR  E  0 781&
+''     OPERATED BY UNITED AIRLINES&
+''     SEE RTSVC&
+''  3 APM M+33661845678&
+''  4 TK OK04MAR/NCE6X0100&
+''  5 RM NOTIFY PASSENGER PRIOR TO TICKET PURCHASE \& CHECK-IN:&
+''       FEDERAL LAWS FORBID THE CARRIAGE OF HAZARDOUS MATERIALS -&
+''       GGAMAUSHAZ/S2&
+''>
+''End of response
+
+'**********************************************************************
+' Sent at      09:26:36.438552 - 04 Mar 2024
+' Filename     /mnt/c/Users/ygarnier/open_pnr_validation/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Scripts/Associated_PNRs/Codeshare/non_1A_codeshare(KO_wrong_caracter).cry
+' Message      11 -  . 
+' Size         5 bytes
+' Reply needed yes
+'----------------------------------------------------------------------
+RF CO
+
+'**********************************************************************
+' Received at  09:26:36.598501 - 04 Mar 2024
+' Filename     /mnt/c/Users/ygarnier/open_pnr_validation/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Scripts/Associated_PNRs/Codeshare/non_1A_codeshare(KO_wrong_caracter).cry
+' Match        N/A
+' Message      11 -  . 
+' Size         350 bytes
+'----------------------------------------------------------------------
+''Response:
+''--- SFP ---&
+''RP/NCE6X0100/&
+''RF CO&
+''  1.VOQB/OHRX&
+''  2  SN9009 Y 26APR 5 CDGEWR DK1  0945 1155  26APR  E  0 781&
+''     OPERATED BY UNITED AIRLINES&
+''     SEE RTSVC&
+''  3 APM M+33661845678&
+''  4 TK OK04MAR/NCE6X0100&
+''  5 RM NOTIFY PASSENGER PRIOR TO TICKET PURCHASE \& CHECK-IN:&
+''       FEDERAL LAWS FORBID THE CARRIAGE OF HAZARDOUS MATERIALS -&
+''       GGAMAUSHAZ/S2&
+''>
+''End of response
+
+'**********************************************************************
+' Sent at      09:26:36.599134 - 04 Mar 2024
+' Filename     /mnt/c/Users/ygarnier/open_pnr_validation/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Scripts/Associated_PNRs/Codeshare/non_1A_codeshare(KO_wrong_caracter).cry
+' Message      12 -  . 
+' Size         25 bytes
+' Reply needed yes
+'----------------------------------------------------------------------
+RM OPENPNR CODESHARE TEST
+
+'**********************************************************************
+' Received at  09:26:36.757631 - 04 Mar 2024
+' Filename     /mnt/c/Users/ygarnier/open_pnr_validation/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Scripts/Associated_PNRs/Codeshare/non_1A_codeshare(KO_wrong_caracter).cry
+' Match        N/A
+' Message      12 -  . 
+' Size         380 bytes
+'----------------------------------------------------------------------
+''Response:
+''--- SFP ---&
+''RP/NCE6X0100/&
+''RF CO&
+''  1.VOQB/OHRX&
+''  2  SN9009 Y 26APR 5 CDGEWR DK1  0945 1155  26APR  E  0 781&
+''     OPERATED BY UNITED AIRLINES&
+''     SEE RTSVC&
+''  3 APM M+33661845678&
+''  4 TK OK04MAR/NCE6X0100&
+''  5 RM NOTIFY PASSENGER PRIOR TO TICKET PURCHASE \& CHECK-IN:&
+''       FEDERAL LAWS FORBID THE CARRIAGE OF HAZARDOUS MATERIALS -&
+''       GGAMAUSHAZ/S2&
+''  6 RM OPENPNR CODESHARE TEST&
+''>
+''End of response
+
+'> End-transact & check for completion
+'**********************************************************************
+' Sent at      09:26:36.758389 - 04 Mar 2024
+' Filename     /mnt/c/Users/ygarnier/open_pnr_validation/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Scripts/Associated_PNRs/Codeshare/non_1A_codeshare(KO_wrong_caracter).cry
+' Message      13 -  . 
+' Size         2 bytes
+' Reply needed yes
+'----------------------------------------------------------------------
+ER
+
+'**********************************************************************
+' Received at  09:26:36.928581 - 04 Mar 2024
+' Filename     /mnt/c/Users/ygarnier/open_pnr_validation/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Scripts/Associated_PNRs/Codeshare/non_1A_codeshare(KO_wrong_caracter).cry
+' Match        KO - Loop Requested
+' Message      13 -  . 
+' Size         65 bytes
+'----------------------------------------------------------------------
+''Response:
+''WARNING: SECURE FLT PASSENGER DATA REQUIRED FOR TICKETING PAX 1&
+''>
+''End of response
+
+''nomatch:TTServer.currentMessage.loop(1, 1, 0)
+'> End-transact & check for completion
+'**********************************************************************
+' Sent at      09:26:37.930190 - 04 Mar 2024
+' Filename     /mnt/c/Users/ygarnier/open_pnr_validation/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Scripts/Associated_PNRs/Codeshare/non_1A_codeshare(KO_wrong_caracter).cry
+' Message      14 -  .  - Loop: 1
+' Size         2 bytes
+' Reply needed yes
+'----------------------------------------------------------------------
+ER
+
+'**********************************************************************
+' Received at  09:26:38.299018 - 04 Mar 2024
+' Filename     /mnt/c/Users/ygarnier/open_pnr_validation/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Scripts/Associated_PNRs/Codeshare/non_1A_codeshare(KO_wrong_caracter).cry
+' Match        OK
+' Message      14 -  . 
+' Size         384 bytes
+'----------------------------------------------------------------------
+''Response:
+''--- RLR SFP ---&
+''RP/NCE6X0100/NCE6X0100            YG/SU   4MAR24/0826Z   KNVGWP&
+''  1.VOQB/OHRX&
+''  2  SN9009 Y 26APR 5 CDGEWR HK1  0945 1155  26APR  E  SN/KNVGWP&
+''  3 APM M+33661845678&
+''  4 TK OK04MAR/NCE6X0100&
+''  5 RM NOTIFY PASSENGER PRIOR TO TICKET PURCHASE \& CHECK-IN:&
+''       FEDERAL LAWS FORBID THE CARRIAGE OF HAZARDOUS MATERIALS -&
+''       GGAMAUSHAZ/S2&
+''  6 RM OPENPNR CODESHARE TEST&
+''>
+''End of response
+
+''nomatch:TTServer.currentMessage.loop(1, 1, 0)
+''Conversation: pub
+
+'**********************************************************************
+' Sent at      09:26:38.300940 - 04 Mar 2024
+' Filename     /mnt/c/Users/ygarnier/open_pnr_validation/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Scripts/Associated_PNRs/Codeshare/non_1A_codeshare(KO_wrong_caracter).cry
+' Message      15 - PURCRQ 14.1 1A
+' Size         222 bytes
+' Reply needed yes
+'----------------------------------------------------------------------
+UNB+IATB:1+1APPC+1ASIPUBU+240304:0826+00LH21EGTY0001+++O'&
+UNH+1+PURCRQ:14:1:1A+09CC2B44'&
+ORG+1A+:NCE1A0900++++FR:EUR:FR+A001SU'&
+RCI+:KNVGWP::04MAR24'&
+ATC++604'&
+IRV+ENV+0'&
+SPR+++2005:8:8+2100:12:12++'&
+UNT+7+1'&
+UNZ+1+00LH21EGTY0001'
+
+'**********************************************************************
+' Received at  09:26:39.491613 - 04 Mar 2024
+' Filename     /mnt/c/Users/ygarnier/open_pnr_validation/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Scripts/Associated_PNRs/Codeshare/non_1A_codeshare(KO_wrong_caracter).cry
+' Match        OK
+' Message      15 - PURCRR 14.1 1A
+' Size         336 bytes
+'----------------------------------------------------------------------
+''Response:
+''UNB+IATB:1+1ASIPUBU+1APPC+240304:0826+01RAUXRZ3M0001+00LH21EGTY0001++T'&
+''UNH+1+PURCRR:14:1:1A+09CC2B44'&
+''RCI+:KNVGWP::04MAR24'&
+''ATC++604'&
+''IRV+ENV+0'&
+''SPR+++2005:8:8+2100:12:12'&
+''DUM'&
+''RCI+:KNVGWP::20240304\:08\:26\:00'&
+''IRV+OBE+SONPK4'&
+''IRV+ENV+0'&
+''ATC++604'&
+''SDI+++2024:03:04:08:26:38'&
+''IRV+ID+4069271576'&
+''SDI+++2024:03:04:08:26:38'&
+''UNT+14+1'&
+''UNZ+1+01RAUXRZ3M0001'
+''End of response
+
+''Conversation: pub_raw
+
+'**********************************************************************
+' Sent at      09:26:39.493789 - 04 Mar 2024
+' Filename     /mnt/c/Users/ygarnier/open_pnr_validation/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Scripts/Associated_PNRs/Codeshare/non_1A_codeshare(KO_wrong_caracter).cry
+' Message      16 - PUPIRQ 14.1 1A
+' Size         175 bytes
+' Reply needed yes
+'----------------------------------------------------------------------
+UNB+IATA:1+1APPC+1ASIPUBU+240304:0826+00LH21EGU00001+++O'&
+UNH+1+PUPIRQ:14:1:1A+09CC2B44'&
+IRV+ID+4069271576'&
+IRV+OBE+SONPK4'&
+SDI+++2024:03:04:08:26:38'&
+UNT+5+1'&
+UNZ+1+00LH21EGU00001'
+
+'**********************************************************************
+' Received at  09:26:39.561668 - 04 Mar 2024
+' Filename     /mnt/c/Users/ygarnier/open_pnr_validation/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Scripts/Associated_PNRs/Codeshare/non_1A_codeshare(KO_wrong_caracter).cry
+' Match        KO
+' Message      16 - PUPIRR 14.1 1A
+' Size         2026 bytes
+'----------------------------------------------------------------------
+''Response:
+''UNB+IATA:1+1ASIPUBU+1APPC+240304:0826+01RDBQ61KK0001+00LH21EGU00001++T'&
+''UNH+1+PUPIRR:14:1:1A+09CC2B44'&
+''IRV+ID+4069271576'&
+''IRV+OBE+SONPK4'&
+''SDI+++2024:03:04:08:26:38'&
+''BLB+1825+E+UNH\x1D1\x1DDUMMYY\x1F01\x1F1\x1F1A\x1C\x0A\x81\x0E\x12\xA4\x0D\x0A\x11KNVGWP-2024-03-04\x12\x03pnr\x1A\x06KNVGWP"\x010:f\x1A\x142024-03-04T08:26:00Z"=\x0A"\x0A\x09NCE6X0100\x12\x0800631002\x1A\x026X"\x07AIRLINE\x12\x17\x0A\x040447\x12\x02YG\x1A\x02SU*\x02FR2\x03NCE*\x0FCO-1A/YOANNTESTJ)\x1A\x142024-03-04T08:26:37Z"\x0D\x0A\x0B\x0A\x09NCE6X0100*\x02COz\x8A\x01\x0A\x0Bstakeholder\x12\x1AKNVGWP-2024-03-04-PNR-NM-1"\x0C\x12\x04OHRX\x1A\x04VOQBr<\x0A\x07contact\x12\x1AKNVGWP-2024-03-04-PNR-AP-5\x1A\x15processedPnr.contacts\xA2\x01\x12\x12\x106103D31E0001AF0A\x82\x01\x92\x04\x0A\x07product\x10\x01\x1A\x1BKNVGWP-2024-03-04-PNR-AIR-1"\xE7\x03\x0A\x1D\x0A\x03CDG\x12\x01B\x1A\x132024-04-26T09:45:00\x12\x1A\x0A\x03EWR\x1A\x132024-04-26T11:55:00"\x8A\x01\x0A\x0A\x0A\x02SN\x12\x049009\x12`\x0A\x01Y\x12\x13\x0A\x01Y\x12\x0E\x0A\x010"\x09BID_PRICE\x1A=\x0A\x02\x08\x00\x12\x0C\x0A\x04\x1A\x026X\x12\x04*\x02FR\x1A\x14\x0A\x010"\x0FEFFECTIVE_YIELD\x1A\x11\x0A\x041400"\x09OND_YIELD \x01"\x07ECONOMY2\x1ASN-9009-2024-04-26-CDG-EWR*\x88\x01\x0A\x08\x0A\x02UA\x12\x0256\x12`\x0A\x01Y\x12\x13\x0A\x01Y\x12\x0E\x0A\x010"\x09BID_PRICE\x1A=\x0A\x02\x08\x00\x12\x0C\x0A\x04\x1A\x026X\x12\x04*\x02FR\x1A\x14\x0A\x010"\x0FEFFECTIVE_YIELD\x1A\x11\x0A\x041400"\x09OND_YIELD \x01"\x07ECONOMY(\x022\x18UA-56-2024-04-26-CDG-EWRJ\x02HKb\x84\x01\x0A\x10segment-delivery\x12\x1BKNVGWP-2024-03-04-PNR-BKG-1\x1A\x106003E31E00023EE6ZA\x0A\x0Bstakeholder\x12\x1AKNVGWP-2024-03-04-PNR-NM-1\x1A\x16processedPnr.travelers\x8A\x01\x01E\x92\x01\x02\x08\x00\xAA\x01\xA6\x02\x0A\x06remark\x12\x1AKNVGWP-2024-03-04-PNR-RM-4\x1A\x02RM*zNOTIFY PASSENGER PRIOR TO TICKET PURCHASE \& CHECK-IN: FEDERAL LAWS FORBID THE CARRIAGE OF HAZARDOUS MATERIALS - GGAMAUSHAZ2A\x0A\x0Bstakeholder\x12\x1AKNVGWP-2024-03-04-PNR-NM-1\x1A\x16processedPnr.travelers:=\x0A\x07product\x12\x1BKNVGWP-2024-03-04-PNR-AIR-1\x1A\x15processedPnr.products\xAA\x01\xC2\x01\x0A\x06remark\x12\x1AKNVGWP-2024-03-04-PNR-RM-7\x1A\x02RM*\x16OPENPNR CODESHARE TEST2A\x0A\x0Bstakeholder\x12\x1AKNVGWP-2024-03-04-PNR-NM-1\x1A\x16processedPnr.travelers:=\x0A\x07product\x12\x1BKNVGWP-2024-03-04-PNR-AIR-1\x1A\x15processedPnr.products\xB2\x01\x7F\x0A\x07contact\x12\x1AKNVGWP-2024-03-04-PNR-AP-5"\x13\x08\x01\x10\x01\x1A\x0DM+33661845678@\x01bA\x0A\x0Bstakeholder\x12\x1AKNVGWP-2024-03-04-PNR-NM-1\x1A\x16processedPnr.travelers\xBA\x01\xD5\x01\x0A\x11automated-process\x12\x1AKNVGWP-2024-03-04-PNR-TK-6\x18\x05"\x132024-03-04T00:00:00*\x0B\x0A\x09NCE6X0100ZA\x0A\x0Bstakeholder\x12\x1AKNVGWP-2024-03-04-PNR-NM-1\x1A\x16processedPnr.travelersb=\x0A\x07product\x12\x1BKNVGWP-2024-03-04-PNR-AIR-1\x1A\x15processedPnr.products\x1AX\x0A\x1Fapplication/vnd.google.protobuf\x12\x06KNVGWP\x1A\x010"\x03Pnr*\%com.amadeus.models.reservation.pnr.v2UNT\x1D2\x1D1\x1C'&
+''UNT+6+1'&
+''UNZ+1+01RDBQ61KK0001'
+''End of response
+
+''match:extract_binary_payload(global_regression, raw_binary=raw_binary)
+''Conversation: web
+
+'**********************************************************************
+' Sent at      09:26:39.563402 - 04 Mar 2024
+' Filename     /mnt/c/Users/ygarnier/open_pnr_validation/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Scripts/Associated_PNRs/Codeshare/non_1A_codeshare(KO_wrong_caracter).cry
+' Message      17 -  . 
+' Size         397 bytes
+' Reply needed yes
+'----------------------------------------------------------------------
+POST /1ASIUTOPLEGU/v2/open-pnrs/conversion?input=protobufBase64\&output=json HTTP/1.1&
+Content-Type: application/json&
+Authorization:1AAuth eyJub25jZSI6Ik5qWTVNREl5T1RZd09UazNOakUzT1E9PSIsInRpbWVzdGFtcCI6IjIwMjQtMDMtMDRUMDg6MjY6MjguMDAwWiIsInVzZXJJZCI6IllPQU5OVEVTVCIsIm9mZmljZUlkIjoiTkNFMUEwOTUwIiwib3JnYW5pemF0aW9uIjoiMUEiLCJwYXNzd29yZCI6IkRjMlpyblUvNzRUNmtSbiswcjdpbGtGd0pLYz0ifQ==&
+&
+\{"openPnr":""\}
+
+'**********************************************************************
+' Received at  09:26:39.742294 - 04 Mar 2024
+' Filename     /mnt/c/Users/ygarnier/open_pnr_validation/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Scripts/Associated_PNRs/Codeshare/non_1A_codeshare(KO_wrong_caracter).cry
+' Match        KO
+' Message      17 -  . 
+' Size         130 bytes
+'----------------------------------------------------------------------
+''Response:
+''HTTP/1.1 200 OK&
+''ama-request-id:0001WRYP19TE4F&
+''content-length:2&
+''etag:1&
+''content-type:application/vnd.amadeus+json; charset=utf-8&
+''&
+''\{\}
+''End of response
+
+''match:validate_openpnr(received_json)
+''Conversation: cry
+
+'**********************************************************************
+' Sent at      09:26:39.742974 - 04 Mar 2024
+' Filename     /mnt/c/Users/ygarnier/open_pnr_validation/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Scripts/Associated_PNRs/Codeshare/non_1A_codeshare(KO_wrong_caracter).cry
+' Message      18 -  . 
+' Size         2 bytes
+' Reply needed yes
+'----------------------------------------------------------------------
+XI
+
+'**********************************************************************
+' Received at  09:26:40.200816 - 04 Mar 2024
+' Filename     /mnt/c/Users/ygarnier/open_pnr_validation/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Scripts/Associated_PNRs/Codeshare/non_1A_codeshare(KO_wrong_caracter).cry
+' Match        N/A
+' Message      18 -  . 
+' Size         196 bytes
+'----------------------------------------------------------------------
+''Response:
+''PNR UPDATED BY PARALLEL PROCESS-PLEASE VERIFY PNR CONTENT&
+''--- RLR ---&
+''RP/NCE6X0100/NCE6X0100            FM/SU   4MAR24/0826Z   KNVGWP&
+''  1.VOQB/OHRX&
+''  2 APM M+33661845678&
+''  3 TK OK04MAR/NCE6X0100&
+''>
+''End of response
+
+'**********************************************************************
+' Sent at      09:26:40.201448 - 04 Mar 2024
+' Filename     /mnt/c/Users/ygarnier/open_pnr_validation/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Scripts/Associated_PNRs/Codeshare/non_1A_codeshare(KO_wrong_caracter).cry
+' Message      19 -  . 
+' Size         2 bytes
+' Reply needed yes
+'----------------------------------------------------------------------
+ET
+
+'**********************************************************************
+' Received at  09:26:40.539667 - 04 Mar 2024
+' Filename     /mnt/c/Users/ygarnier/open_pnr_validation/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Scripts/Associated_PNRs/Codeshare/non_1A_codeshare(KO_wrong_caracter).cry
+' Match        N/A
+' Message      19 -  . 
+' Size         38 bytes
+'----------------------------------------------------------------------
+''Response:
+''END OF TRANSACTION COMPLETE - KNVGWP&
+''>
+''End of response
+
+'**********************************************************************
+' Sent at      09:26:40.540215 - 04 Mar 2024
+' Filename     /mnt/c/Users/ygarnier/open_pnr_validation/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Scripts/Associated_PNRs/Codeshare/non_1A_codeshare(KO_wrong_caracter).cry
+' Message      20 -  . 
+' Size         2 bytes
+' Reply needed yes
+'----------------------------------------------------------------------
+IG
+
+'**********************************************************************
+' Received at  09:26:40.634630 - 04 Mar 2024
+' Filename     /mnt/c/Users/ygarnier/open_pnr_validation/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Scripts/Associated_PNRs/Codeshare/non_1A_codeshare(KO_wrong_caracter).cry
+' Match        N/A
+' Message      20 -  . 
+' Size         9 bytes
+'----------------------------------------------------------------------
+''Response:
+''IGNORED&
+''>
+''End of response
+
+'**********************************************************************
+' Sent at      09:26:40.635124 - 04 Mar 2024
+' Filename     /mnt/c/Users/ygarnier/open_pnr_validation/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Scripts/Associated_PNRs/Codeshare/non_1A_codeshare(KO_wrong_caracter).cry
+' Message      21 -  . 
+' Size         2 bytes
+' Reply needed yes
+'----------------------------------------------------------------------
+JO
+
+'**********************************************************************
+' Received at  09:26:40.778693 - 04 Mar 2024
+' Filename     /mnt/c/Users/ygarnier/open_pnr_validation/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Scripts/Associated_PNRs/Codeshare/non_1A_codeshare(KO_wrong_caracter).cry
+' Match        N/A
+' Message      21 -  . 
+' Size         387 bytes
+'----------------------------------------------------------------------
+''Response:
+''&
+''09CC2B44         NCE1A0950&
+''&
+''AREA  TM  MOD SG/DT.LG TIME      ACT.Q   STATUS     NAME&
+''A                       24             NOT SIGNED&
+''B                                      NOT SIGNED&
+''C                                      NOT SIGNED&
+''D                                      NOT SIGNED&
+''E                                      NOT SIGNED&
+''F                                      NOT SIGNED&
+''>
+''End of response
+
+'**********************************************************************
+' Sent at      09:26:40.779393 - 04 Mar 2024
+' Filename     /mnt/c/Users/ygarnier/open_pnr_validation/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Scripts/Associated_PNRs/Codeshare/non_1A_codeshare(KO_wrong_caracter).cry
+' Message      22 -  . 
+' Size         2 bytes
+' Reply needed yes
+'----------------------------------------------------------------------
+JD
+
+'**********************************************************************
+' Received at  09:26:40.863188 - 04 Mar 2024
+' Filename     /mnt/c/Users/ygarnier/open_pnr_validation/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Scripts/Associated_PNRs/Codeshare/non_1A_codeshare(KO_wrong_caracter).cry
+' Match        N/A
+' Message      22 -  . 
+' Size         387 bytes
+'----------------------------------------------------------------------
+''Response:
+''&
+''09CC2B44         NCE1A0950&
+''&
+''AREA  TM  MOD SG/DT.LG TIME      ACT.Q   STATUS     NAME&
+''A                       24             NOT SIGNED&
+''B                                      NOT SIGNED&
+''C                                      NOT SIGNED&
+''D                                      NOT SIGNED&
+''E                                      NOT SIGNED&
+''F                                      NOT SIGNED&
+''>
+''End of response
+
+
+'----------------------------------------------------------------------
+' Statistics
+'----------------------------------------------------------------------
+' Messages in          : 22
+' Bytes in             : 0Mb 6Kb 394b
+' Messages out         : 22
+' Bytes out            : 0Mb 0Kb 1016b
+
+' Conversations        : 5
+' Transactions         : 22
+' Transactions parsed  : 21
+' Ratio                : 0.954545
+
+' Total duration       : 0h 0min 8s 184.6ms
+' Parse duration       : 0h 0min 0s 0.964ms (0 %)
+' Wait duration        : 0h 0min 5s 146.514ms (62 %)
+' Transactions/s       : 2 TPS
+
+' Number of Timeouts   : 0
+' Messages compared    : 7
+' Errors found         : 2
+' Python errors found         : 0
+' No match counter     : 2

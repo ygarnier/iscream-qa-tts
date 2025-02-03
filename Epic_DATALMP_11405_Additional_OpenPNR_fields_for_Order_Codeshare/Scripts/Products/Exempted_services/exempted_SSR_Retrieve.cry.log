@@ -1,0 +1,830 @@
+' Log report : 11:37:55.096571 - 14 Mar 2024
+' Filename   : /mnt/c/Users/ygarnier/open_pnr_validation/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Scripts/Products/Exempted_services/exempted_SSR_Retrieve.cry
+'----------------------------------------------------------------------
+
+''Initialize:
+import json
+from lib.openpnr import extract_binary_payload
+from lib.json_match import assert_equal, assert_found, assert_not_found, parse_json
+
+execfile(global_regression.TTS_RootDir + '/data/data_' + global_regression.TEST_SYSTEM + '.py')
+
+TTS_OK = TTServer.currentMessage.TTS_MATCH_COMPARISON_OK
+TTS_KO = TTServer.currentMessage.TTS_MATCH_COMPARISON_FAILURE
+
+# As the specific conditions to evaluate depend on the test, the comparison function is in the individual script
+# In case of match error, find the error details in TTS logs (not available in .log or in .rex file)
+# Variables defined in data files (e.g., test user data) or in the current scripts (e.g., recloc)
+# are directly available from inside the function.
+def validate_openpnr(openpnr_json):
+    try:
+        openpnr = parse_json(openpnr_json)
+        for field in ['id', 'reference', 'creation', 'travelers', 'products', 'contacts']:
+            assert_found(field, container=openpnr)
+
+        expected_openpnr_id = recloc + '-' + today
+        assert_equal(actual=openpnr['id'], expected=expected_openpnr_id, item_name='OpenPNR id field')
+        assert_not_found('creation/date', container=openpnr)
+        assert_found('creation/dateTime', container=openpnr)
+        assert_found('creation/pointOfSale/office/id', container=openpnr)
+        assert_equal(expected=OFFICE_AY_01, actual=openpnr['creation']['pointOfSale']['office']['id'], item_name='creator office')
+
+        assert_equal(actual=len(openpnr['products']), expected=2, item_name='number of products')
+        product_1 = openpnr['products'][0]
+        product_2 = openpnr['products'][1]
+        #Check service data for exempted service SSR VGML
+        assert_equal(actual=product_2['subType'], expected='SERVICE', item_name='product subType')
+        assert_equal(actual=product_2['service']['code'], expected='VGML', item_name='service code')
+        assert_equal(actual=product_2['service']['subType'], expected='SPECIAL_SERVICE_REQUEST', item_name='service subType')
+        assert_equal(actual=product_2['service']['serviceProvider']['code'], expected='6X', item_name='serviceProvider code')
+        assert_equal(actual=product_2['service']['status'], expected='HK', item_name='service status')
+        assert_equal(actual=product_2['service']['paymentStatus'], expected='EXEMPTED', item_name='service paymentStatus')
+
+    except Exception as e:
+        print('OpenPNR validation failed: {}'.format(e))
+        return TTS_KO
+
+    print('OpenPNR validation successful')
+    return TTS_OK
+
+''End
+''Conversation: cry
+
+'**********************************************************************
+' Sent at      11:37:55.098194 - 14 Mar 2024
+' Filename     /mnt/c/Users/ygarnier/open_pnr_validation/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Scripts/Products/Exempted_services/exempted_SSR_Retrieve.cry
+' Message      1 -  . 
+' Size         2 bytes
+' Reply needed yes
+'----------------------------------------------------------------------
+IG
+
+'**********************************************************************
+' Received at  11:37:55.145758 - 14 Mar 2024
+' Filename     /mnt/c/Users/ygarnier/open_pnr_validation/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Scripts/Products/Exempted_services/exempted_SSR_Retrieve.cry
+' Match        N/A
+' Message      1 -  . 
+' Size         9 bytes
+'----------------------------------------------------------------------
+''Response:
+''SIGN IN&
+''>
+''End of response
+
+'**********************************************************************
+' Sent at      11:37:55.146321 - 14 Mar 2024
+' Filename     /mnt/c/Users/ygarnier/open_pnr_validation/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Scripts/Products/Exempted_services/exempted_SSR_Retrieve.cry
+' Message      2 -  . 
+' Size         2 bytes
+' Reply needed yes
+'----------------------------------------------------------------------
+JO
+
+'**********************************************************************
+' Received at  11:37:55.194259 - 14 Mar 2024
+' Filename     /mnt/c/Users/ygarnier/open_pnr_validation/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Scripts/Products/Exempted_services/exempted_SSR_Retrieve.cry
+' Match        N/A
+' Message      2 -  . 
+' Size         9 bytes
+'----------------------------------------------------------------------
+''Response:
+''SIGN IN&
+''>
+''End of response
+
+'**********************************************************************
+' Sent at      11:37:55.194682 - 14 Mar 2024
+' Filename     /mnt/c/Users/ygarnier/open_pnr_validation/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Scripts/Products/Exempted_services/exempted_SSR_Retrieve.cry
+' Message      3 -  . 
+' Size         2 bytes
+' Reply needed yes
+'----------------------------------------------------------------------
+JD
+
+'**********************************************************************
+' Received at  11:37:55.255698 - 14 Mar 2024
+' Filename     /mnt/c/Users/ygarnier/open_pnr_validation/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Scripts/Products/Exempted_services/exempted_SSR_Retrieve.cry
+' Match        N/A
+' Message      3 -  . 
+' Size         387 bytes
+'----------------------------------------------------------------------
+''Response:
+''&
+''09CC2B44         NCE1A0950&
+''&
+''AREA  TM  MOD SG/DT.LG TIME      ACT.Q   STATUS     NAME&
+''A                       24             NOT SIGNED&
+''B                                      NOT SIGNED&
+''C                                      NOT SIGNED&
+''D                                      NOT SIGNED&
+''E                                      NOT SIGNED&
+''F                                      NOT SIGNED&
+''>
+''End of response
+
+'> 1. Sign in with test_user_1A_sign in office test_user_1A_office
+'**********************************************************************
+' Sent at      11:37:55.256057 - 14 Mar 2024
+' Filename     /mnt/c/Users/ygarnier/open_pnr_validation/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Scripts/Products/Exempted_services/exempted_SSR_Retrieve.cry
+' Message      4 -  . 
+' Size         16 bytes
+' Reply needed yes
+'----------------------------------------------------------------------
+OK-WE/L-09CC2B44
+
+'**********************************************************************
+' Received at  11:37:55.306475 - 14 Mar 2024
+' Filename     /mnt/c/Users/ygarnier/open_pnr_validation/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Scripts/Products/Exempted_services/exempted_SSR_Retrieve.cry
+' Match        N/A
+' Message      4 -  . 
+' Size         85 bytes
+'----------------------------------------------------------------------
+''Response:
+''  NETWORK 09 SUB-SYS FE DELETION LIST&
+''     CC2B44    DELETED OK&
+''  DELETION FINISHED&
+''>
+''End of response
+
+''WAIT:2
+'**********************************************************************
+' Sent at      11:37:57.320392 - 14 Mar 2024
+' Filename     /mnt/c/Users/ygarnier/open_pnr_validation/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Scripts/Products/Exempted_services/exempted_SSR_Retrieve.cry
+' Message      5 -  . 
+' Size         63 bytes
+' Reply needed yes
+'----------------------------------------------------------------------
+OK-WY/C-C5AGY/W-AMAD/S-80X22/O-NCE1A0950/T-NCE/A-NCE/L-09CC2B44
+
+'**********************************************************************
+' Received at  11:37:57.372225 - 14 Mar 2024
+' Filename     /mnt/c/Users/ygarnier/open_pnr_validation/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Scripts/Products/Exempted_services/exempted_SSR_Retrieve.cry
+' Match        N/A
+' Message      5 -  . 
+' Size         46 bytes
+'----------------------------------------------------------------------
+''Response:
+''&
+''LEIDS:   CC2B44&
+''INITIALIZED FOR: NETWORK 09&
+''>
+''End of response
+
+'**********************************************************************
+' Sent at      11:37:57.373552 - 14 Mar 2024
+' Filename     /mnt/c/Users/ygarnier/open_pnr_validation/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Scripts/Products/Exempted_services/exempted_SSR_Retrieve.cry
+' Message      6 -  . 
+' Size         38 bytes
+' Reply needed yes
+'----------------------------------------------------------------------
+Ji0447YG/SU.CDG7S0002-Yoanntesting123+
+
+'**********************************************************************
+' Received at  11:37:57.531154 - 14 Mar 2024
+' Filename     /mnt/c/Users/ygarnier/open_pnr_validation/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Scripts/Products/Exempted_services/exempted_SSR_Retrieve.cry
+' Match        OK
+' Message      6 -  . 
+' Size         325 bytes
+'----------------------------------------------------------------------
+''Response:
+''&
+''A-SIGN COMPLETE/14MAR/SU&
+''************  AMADEUS PRODUCT NEWS  ***********  SEE GGNEWS&
+''AIR2 INSELAIR INTERNATIONAL (7I) ENJOYS ISM IASR GGNEWSAIR2&
+''HTL  BALLADINS (BL) ENJOY HTL DYNAMIC ACCESS     GGNEWSHTL&
+''AIR1 PULLMANTUR AIR (EB) ENJOYS AAS              GGNEWSAIR1&
+''AIR  UTAIR UKRAINE (QU) ENJOYS AAS               GGNEWSAIR&
+''>
+''End of response
+
+'> 2. Create a PNR
+'**********************************************************************
+' Sent at      11:37:57.532239 - 14 Mar 2024
+' Filename     /mnt/c/Users/ygarnier/open_pnr_validation/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Scripts/Products/Exempted_services/exempted_SSR_Retrieve.cry
+' Message      7 -  . 
+' Size         12 bytes
+' Reply needed yes
+'----------------------------------------------------------------------
+NM1AWMI/CQBF
+
+'**********************************************************************
+' Received at  11:37:57.635967 - 14 Mar 2024
+' Filename     /mnt/c/Users/ygarnier/open_pnr_validation/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Scripts/Products/Exempted_services/exempted_SSR_Retrieve.cry
+' Match        N/A
+' Message      7 -  . 
+' Size         29 bytes
+'----------------------------------------------------------------------
+''Response:
+''RP/CDG7S0002/&
+''  1.AWMI/CQBF&
+''>
+''End of response
+
+'**********************************************************************
+' Sent at      11:37:57.637511 - 14 Mar 2024
+' Filename     /mnt/c/Users/ygarnier/open_pnr_validation/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Scripts/Products/Exempted_services/exempted_SSR_Retrieve.cry
+' Message      8 -  . 
+' Size         17 bytes
+' Reply needed yes
+'----------------------------------------------------------------------
+an18aprcdglhr/a6X
+
+'**********************************************************************
+' Received at  11:37:57.795851 - 14 Mar 2024
+' Filename     /mnt/c/Users/ygarnier/open_pnr_validation/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Scripts/Products/Exempted_services/exempted_SSR_Retrieve.cry
+' Match        N/A
+' Message      8 -  . 
+' Size         1360 bytes
+'----------------------------------------------------------------------
+''Response:
+''AN18APRCDGLHR/A6X&
+''** AMADEUS AVAILABILITY - AN ** LHR HEATHROW.GB               35 TH 18APR 0000&
+'' 1   6X7217  F9 AL ZL J9 DL I9 W9 /CDG   LHR    0700    0830  E0/744       2:30&
+''             TL Y9 B9 H9 K9 M9 L9 N9 O9 Q9 GL E9&
+'' 2   6X9806  F9 AL ZL J9 DL I9 Y9 /CDG   LHR    0730    0800  E0/777       1:30&
+''             B9 H9 K9 M9 L9 N9 O9 Q9 GL E9&
+'' 3   6X 301  C9 D9 I9 U9 Y9 B9 H9 /CDG   LHR    0745    0815  E0/319       1:30&
+''             K9 M9 L9 V9 N9 O9 S9 Q9 G9 X9 E9&
+'' 4   6X 301A C9 D9 I9 U9 Y9 B9 H9 /CDG   LHR    0745    0815  E0/319       1:30&
+''             K9 M9 L9 V9 N9 O9 S9 Q9 G9 X9 E9&
+'' 5   6X 303  C9 D9 I9 U9 B9 H9 K9 /CDG 1 LHR 4  0745    0815  E0/319       1:30&
+''             M9 L9 V9 N9 O9 S9 Q9 G9 X9 E9&
+'' 6   6X7061  J9 DL I9 Y9          /CDG   LHR    0920    0930   0/738       1:10&
+'' 7   6X7060  J9 DL I9 Y9          /CDG   LHR    0920    0930   0/738       1:10&
+'' 8   6X7062  J9 DL I9 Y9          /CDG   LHR    0920    0930   0/738       1:10&
+'' 9   6X7063  J9 DL I9 Y9          /CDG   LHR    0920    0930   0/738       1:10&
+''10   6X7064  J9 DL I9 Y9 B9 H9 K9 /CDG   LHR    0920    0930   0/738       1:10&
+''             M9 V9 G9 E2&
+''11   6X7065  J9 DL I9 Y9 B9 H9 K9 /CDG   LHR    0920    0930   0/738       1:10&
+''             M9 V9 G9 E2&
+''12   6X7066  J9 DL I9 Y9 B9 H9 K9 /CDG   LHR    0920    0930   0/738       1:10&
+''             M9 V9 G9 E2&
+''>
+''End of response
+
+'**********************************************************************
+' Sent at      11:37:57.798033 - 14 Mar 2024
+' Filename     /mnt/c/Users/ygarnier/open_pnr_validation/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Scripts/Products/Exempted_services/exempted_SSR_Retrieve.cry
+' Message      9 -  . 
+' Size         5 bytes
+' Reply needed yes
+'----------------------------------------------------------------------
+SS1Y1
+
+'**********************************************************************
+' Received at  11:37:58.201268 - 14 Mar 2024
+' Filename     /mnt/c/Users/ygarnier/open_pnr_validation/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Scripts/Products/Exempted_services/exempted_SSR_Retrieve.cry
+' Match        N/A
+' Message      9 -  . 
+' Size         106 bytes
+'----------------------------------------------------------------------
+''Response:
+''RP/CDG7S0002/&
+''  1.AWMI/CQBF&
+''  2  6X7217 Y 18APR 4 CDGLHR HK1          0700 0830   744 E 0&
+''     SEE RTSVC&
+''>
+''End of response
+
+'**********************************************************************
+' Sent at      11:37:58.202667 - 14 Mar 2024
+' Filename     /mnt/c/Users/ygarnier/open_pnr_validation/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Scripts/Products/Exempted_services/exempted_SSR_Retrieve.cry
+' Message      10 -  . 
+' Size         20 bytes
+' Reply needed yes
+'----------------------------------------------------------------------
+TKOK; APOK; AP; RFYG
+
+'**********************************************************************
+' Received at  11:37:58.441366 - 14 Mar 2024
+' Filename     /mnt/c/Users/ygarnier/open_pnr_validation/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Scripts/Products/Exempted_services/exempted_SSR_Retrieve.cry
+' Match        N/A
+' Message      10 -  . 
+' Size         182 bytes
+'----------------------------------------------------------------------
+''Response:
+''RP/CDG7S0002/&
+''RF YG&
+''  1.AWMI/CQBF&
+''  2  6X7217 Y 18APR 4 CDGLHR HK1          0700 0830   744 E 0&
+''     SEE RTSVC&
+''  3 AP OK&
+''  4 AP CDG - ACM AFKL PROJECTS - A&
+''  5 TK OK14MAR/CDG7S0002&
+''>
+''End of response
+
+'**********************************************************************
+' Sent at      11:37:58.442649 - 14 Mar 2024
+' Filename     /mnt/c/Users/ygarnier/open_pnr_validation/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Scripts/Products/Exempted_services/exempted_SSR_Retrieve.cry
+' Message      11 -  . 
+' Size         7 bytes
+' Reply needed yes
+'----------------------------------------------------------------------
+SR VGML
+
+'**********************************************************************
+' Received at  11:37:58.653551 - 14 Mar 2024
+' Filename     /mnt/c/Users/ygarnier/open_pnr_validation/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Scripts/Products/Exempted_services/exempted_SSR_Retrieve.cry
+' Match        N/A
+' Message      11 -  . 
+' Size         206 bytes
+'----------------------------------------------------------------------
+''Response:
+''RP/CDG7S0002/&
+''RF YG&
+''  1.AWMI/CQBF&
+''  2  6X7217 Y 18APR 4 CDGLHR HK1          0700 0830   744 E 0&
+''     SEE RTSVC&
+''  3 AP OK&
+''  4 AP CDG - ACM AFKL PROJECTS - A&
+''  5 TK OK14MAR/CDG7S0002&
+''  6 #SSR VGML 6X HK1/S2&
+''>
+''End of response
+
+'**********************************************************************
+' Sent at      11:37:58.654833 - 14 Mar 2024
+' Filename     /mnt/c/Users/ygarnier/open_pnr_validation/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Scripts/Products/Exempted_services/exempted_SSR_Retrieve.cry
+' Message      12 -  . 
+' Size         2 bytes
+' Reply needed yes
+'----------------------------------------------------------------------
+ER
+
+'**********************************************************************
+' Received at  11:37:59.032949 - 14 Mar 2024
+' Filename     /mnt/c/Users/ygarnier/open_pnr_validation/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Scripts/Products/Exempted_services/exempted_SSR_Retrieve.cry
+' Match        OK
+' Message      12 -  . 
+' Size         246 bytes
+'----------------------------------------------------------------------
+''Response:
+''--- RLR ---&
+''RP/CDG7S0002/CDG7S0002            YG/SU  14MAR24/1037Z   MBYX9W&
+''  1.AWMI/CQBF&
+''  2  6X7217 Y 18APR 4 CDGLHR HK1          0700 0830   *1A/E*&
+''  3 AP OK&
+''  4 AP CDG - ACM AFKL PROJECTS - A&
+''  5 TK OK14MAR/CDG7S0002&
+''  6 #SSR VGML 6X HK1/S2&
+''>
+''End of response
+
+''nomatch:TTServer.currentMessage.loop(1, 1, 0)
+''Exec:
+# Compose the expected PNR ID used in OpenPNR, e.g. ABC123-2025-05-27
+openpnr_id = recloc + '-' + today
+''End
+'**********************************************************************
+' Sent at      11:37:59.036319 - 14 Mar 2024
+' Filename     /mnt/c/Users/ygarnier/open_pnr_validation/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Scripts/Products/Exempted_services/exempted_SSR_Retrieve.cry
+' Message      13 -  . 
+' Size         2 bytes
+' Reply needed yes
+'----------------------------------------------------------------------
+IG
+
+'**********************************************************************
+' Received at  11:37:59.104245 - 14 Mar 2024
+' Filename     /mnt/c/Users/ygarnier/open_pnr_validation/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Scripts/Products/Exempted_services/exempted_SSR_Retrieve.cry
+' Match        N/A
+' Message      13 -  . 
+' Size         18 bytes
+'----------------------------------------------------------------------
+''Response:
+''IGNORED - MBYX9W&
+''>
+''End of response
+
+''Conversation: web
+
+'**********************************************************************
+' Sent at      11:37:59.104968 - 14 Mar 2024
+' Filename     /mnt/c/Users/ygarnier/open_pnr_validation/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Scripts/Products/Exempted_services/exempted_SSR_Retrieve.cry
+' Message      14 -  . 
+' Size         359 bytes
+' Reply needed yes
+'----------------------------------------------------------------------
+GET /1ASIUTOPLEGU/v2/open-pnrs/MBYX9W HTTP/1.1&
+Content-Type: text/plain&
+Debug-format: json&
+Authorization: 1AAuth eyJub25jZSI6Ik16ZzVPREEwTnprMU1EY3pPRGcxT0E9PSIsInRpbWVzdGFtcCI6IjIwMjQtMDMtMTRUMTA6Mzc6NTMuMDAwWiIsInVzZXJJZCI6IllPQU5OVEVTVCIsIm9mZmljZUlkIjoiTkNFMUEwOTUwIiwib3JnYW5pemF0aW9uIjoiMUEiLCJwYXNzd29yZCI6ImJGNFRWNTlQelVWY0owbzRJSjJMRWVuQ0g1cz0ifQ==&
+&
+
+
+'**********************************************************************
+' Received at  11:37:59.331803 - 14 Mar 2024
+' Filename     /mnt/c/Users/ygarnier/open_pnr_validation/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Scripts/Products/Exempted_services/exempted_SSR_Retrieve.cry
+' Match        OK
+' Message      14 -  . 
+' Size         2085 bytes
+'----------------------------------------------------------------------
+''Response:
+''HTTP/1.1 200 OK&
+''ama-request-id:0001IN5CAAC2VB&
+''content-length:1933&
+''etag:0&
+''content-type:application/vnd.amadeus+json; charset=utf-8&
+''&
+''\{&
+''    "reference": "MBYX9W", &
+''    "version": "0", &
+''    "openPnr": "ChFNQllYOVctMjAyNC0wMy0xNBIDcG5yGgZNQllYOVciATA6QhoUMjAyNC0wMy0xNFQxMDozNzowMFoiKgoPCglDREc3UzAwMDIaAjdTEhcKBDA0NDcSAllHGgJTVSoCRlIyA0NER0oWGhQyMDI0LTAzLTE0VDEwOjM3OjU4WnrIAQoLc3Rha2Vob2xkZXISGk1CWVg5Vy0yMDI0LTAzLTE0LVBOUi1OTS0xIgwSBENRQkYaBEFXTUlyPAoHY29udGFjdBIaTUJZWDlXLTIwMjQtMDMtMTQtUE5SLUFQLTMaFXByb2Nlc3NlZFBuci5jb250YWN0c3I8Cgdjb250YWN0EhpNQllYOVctMjAyNC0wMy0xNC1QTlItQVAtNBoVcHJvY2Vzc2VkUG5yLmNvbnRhY3RzogESEhA2MTA5RDMyODAwMDA0NjIyggGFAwoHcHJvZHVjdBABGhtNQllYOVctMjAyNC0wMy0xNC1QTlItQUlSLTEimwIKGgoDQ0RHGhMyMDI0LTA0LTE4VDA3OjAwOjAwEhoKA0xIUhoTMjAyNC0wNC0xOFQwODozMDowMCJPCgoKAjZYEgQ3MjE3EiUKAVkSAwoBTRoSCgASDAoEGgI3UxIEKgJGUiABIgdFQ09OT01ZMho2WC03MjE3LTIwMjQtMDQtMTgtQ0RHLUxIUkoCSEtihAEKEHNlZ21lbnQtZGVsaXZlcnkSG01CWVg5Vy0yMDI0LTAzLTE0LVBOUi1CS0ctMRoQNjAwQTIzMjkwMDAwMzg3MlpBCgtzdGFrZWhvbGRlchIaTUJZWDlXLTIwMjQtMDMtMTQtUE5SLU5NLTEaFnByb2Nlc3NlZFBuci50cmF2ZWxlcnOKAQFFkgEAOj0KB3Byb2R1Y3QSG01CWVg5Vy0yMDI0LTAzLTE0LVBOUi1TU1ItNRoVcHJvY2Vzc2VkUG5yLnByb2R1Y3RzggHSAQoHcHJvZHVjdBACGhtNQllYOVctMjAyNC0wMy0xNC1QTlItU1NSLTUqJhoEVkdNTCABKgQKAjZYMgJISzoCCAFiCAoBRxIDMEFSggEAkAEEOj0KB3Byb2R1Y3QSG01CWVg5Vy0yMDI0LTAzLTE0LVBOUi1BSVItMRoVcHJvY2Vzc2VkUG5yLnByb2R1Y3RzQkEKC3N0YWtlaG9sZGVyEhpNQllYOVctMjAyNC0wMy0xNC1QTlItTk0tMRoWcHJvY2Vzc2VkUG5yLnRyYXZlbGVyc7IBcQoHY29udGFjdBIaTUJZWDlXLTIwMjQtMDMtMTQtUE5SLUFQLTMiBBoCT0tCAQFiQQoLc3Rha2Vob2xkZXISGk1CWVg5Vy0yMDI0LTAzLTE0LVBOUi1OTS0xGhZwcm9jZXNzZWRQbnIudHJhdmVsZXJzsgGKAQoHY29udGFjdBIaTUJZWDlXLTIwMjQtMDMtMTQtUE5SLUFQLTQiHRobQ0RHIC0gQUNNIEFGS0wgUFJPSkVDVFMgLSBBQgEBYkEKC3N0YWtlaG9sZGVyEhpNQllYOVctMjAyNC0wMy0xNC1QTlItTk0tMRoWcHJvY2Vzc2VkUG5yLnRyYXZlbGVyc7oB1QEKEWF1dG9tYXRlZC1wcm9jZXNzEhpNQllYOVctMjAyNC0wMy0xNC1QTlItVEstMhgFIhMyMDI0LTAzLTE0VDAwOjAwOjAwKgsKCUNERzdTMDAwMlpBCgtzdGFrZWhvbGRlchIaTUJZWDlXLTIwMjQtMDMtMTQtUE5SLU5NLTEaFnByb2Nlc3NlZFBuci50cmF2ZWxlcnNiPQoHcHJvZHVjdBIbTUJZWDlXLTIwMjQtMDMtMTQtUE5SLUFJUi0xGhVwcm9jZXNzZWRQbnIucHJvZHVjdHM="&
+''\}
+''End of response
+
+''Conversation: web
+
+'**********************************************************************
+' Sent at      11:37:59.335137 - 14 Mar 2024
+' Filename     /mnt/c/Users/ygarnier/open_pnr_validation/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Scripts/Products/Exempted_services/exempted_SSR_Retrieve.cry
+' Message      15 -  . 
+' Size         2302 bytes
+' Reply needed yes
+'----------------------------------------------------------------------
+POST /1ASIUTOPLEGU/v2/open-pnrs/conversion?input=protobufBase64\&output=json HTTP/1.1&
+Debug-Format: debug&
+Content-Type: application/json&
+Authorization: 1AAuth eyJub25jZSI6Ik9EVTVOVFE0TURJM016QTRNemczT0E9PSIsInRpbWVzdGFtcCI6IjIwMjQtMDMtMTRUMTA6Mzc6NTMuMDAwWiIsInVzZXJJZCI6IllPQU5OVEVTVCIsIm9mZmljZUlkIjoiTkNFMUEwOTUwIiwib3JnYW5pemF0aW9uIjoiMUEiLCJwYXNzd29yZCI6InRoSjA0S1drZDJxZWMxelYydXBLUGRRa2VVaz0ifQ==&
+&
+\{"openPnr":"ChFNQllYOVctMjAyNC0wMy0xNBIDcG5yGgZNQllYOVciATA6QhoUMjAyNC0wMy0xNFQxMDozNzowMFoiKgoPCglDREc3UzAwMDIaAjdTEhcKBDA0NDcSAllHGgJTVSoCRlIyA0NER0oWGhQyMDI0LTAzLTE0VDEwOjM3OjU4WnrIAQoLc3Rha2Vob2xkZXISGk1CWVg5Vy0yMDI0LTAzLTE0LVBOUi1OTS0xIgwSBENRQkYaBEFXTUlyPAoHY29udGFjdBIaTUJZWDlXLTIwMjQtMDMtMTQtUE5SLUFQLTMaFXByb2Nlc3NlZFBuci5jb250YWN0c3I8Cgdjb250YWN0EhpNQllYOVctMjAyNC0wMy0xNC1QTlItQVAtNBoVcHJvY2Vzc2VkUG5yLmNvbnRhY3RzogESEhA2MTA5RDMyODAwMDA0NjIyggGFAwoHcHJvZHVjdBABGhtNQllYOVctMjAyNC0wMy0xNC1QTlItQUlSLTEimwIKGgoDQ0RHGhMyMDI0LTA0LTE4VDA3OjAwOjAwEhoKA0xIUhoTMjAyNC0wNC0xOFQwODozMDowMCJPCgoKAjZYEgQ3MjE3EiUKAVkSAwoBTRoSCgASDAoEGgI3UxIEKgJGUiABIgdFQ09OT01ZMho2WC03MjE3LTIwMjQtMDQtMTgtQ0RHLUxIUkoCSEtihAEKEHNlZ21lbnQtZGVsaXZlcnkSG01CWVg5Vy0yMDI0LTAzLTE0LVBOUi1CS0ctMRoQNjAwQTIzMjkwMDAwMzg3MlpBCgtzdGFrZWhvbGRlchIaTUJZWDlXLTIwMjQtMDMtMTQtUE5SLU5NLTEaFnByb2Nlc3NlZFBuci50cmF2ZWxlcnOKAQFFkgEAOj0KB3Byb2R1Y3QSG01CWVg5Vy0yMDI0LTAzLTE0LVBOUi1TU1ItNRoVcHJvY2Vzc2VkUG5yLnByb2R1Y3RzggHSAQoHcHJvZHVjdBACGhtNQllYOVctMjAyNC0wMy0xNC1QTlItU1NSLTUqJhoEVkdNTCABKgQKAjZYMgJISzoCCAFiCAoBRxIDMEFSggEAkAEEOj0KB3Byb2R1Y3QSG01CWVg5Vy0yMDI0LTAzLTE0LVBOUi1BSVItMRoVcHJvY2Vzc2VkUG5yLnByb2R1Y3RzQkEKC3N0YWtlaG9sZGVyEhpNQllYOVctMjAyNC0wMy0xNC1QTlItTk0tMRoWcHJvY2Vzc2VkUG5yLnRyYXZlbGVyc7IBcQoHY29udGFjdBIaTUJZWDlXLTIwMjQtMDMtMTQtUE5SLUFQLTMiBBoCT0tCAQFiQQoLc3Rha2Vob2xkZXISGk1CWVg5Vy0yMDI0LTAzLTE0LVBOUi1OTS0xGhZwcm9jZXNzZWRQbnIudHJhdmVsZXJzsgGKAQoHY29udGFjdBIaTUJZWDlXLTIwMjQtMDMtMTQtUE5SLUFQLTQiHRobQ0RHIC0gQUNNIEFGS0wgUFJPSkVDVFMgLSBBQgEBYkEKC3N0YWtlaG9sZGVyEhpNQllYOVctMjAyNC0wMy0xNC1QTlItTk0tMRoWcHJvY2Vzc2VkUG5yLnRyYXZlbGVyc7oB1QEKEWF1dG9tYXRlZC1wcm9jZXNzEhpNQllYOVctMjAyNC0wMy0xNC1QTlItVEstMhgFIhMyMDI0LTAzLTE0VDAwOjAwOjAwKgsKCUNERzdTMDAwMlpBCgtzdGFrZWhvbGRlchIaTUJZWDlXLTIwMjQtMDMtMTQtUE5SLU5NLTEaFnByb2Nlc3NlZFBuci50cmF2ZWxlcnNiPQoHcHJvZHVjdBIbTUJZWDlXLTIwMjQtMDMtMTQtUE5SLUFJUi0xGhVwcm9jZXNzZWRQbnIucHJvZHVjdHM="\}
+
+'**********************************************************************
+' Received at  11:37:59.477208 - 14 Mar 2024
+' Filename     /mnt/c/Users/ygarnier/open_pnr_validation/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Scripts/Products/Exempted_services/exempted_SSR_Retrieve.cry
+' Match        OK
+' Message      15 -  . 
+' Size         6787 bytes
+'----------------------------------------------------------------------
+''Response:
+''HTTP/1.1 200 OK&
+''ama-request-id:0001IN5CCAC2VB&
+''content-length:2916&
+''etag:1&
+''content-type:application/vnd.amadeus+json; charset=utf-8&
+''&
+''\{&
+''    "id": "MBYX9W-2024-03-14", &
+''    "type": "pnr", &
+''    "reference": "MBYX9W", &
+''    "version": "0", &
+''    "creation": \{&
+''        "dateTime": "2024-03-14T10:37:00Z", &
+''        "pointOfSale": \{&
+''            "office": \{&
+''                "id": "CDG7S0002", &
+''                "systemCode": "7S"&
+''            \}, &
+''            "login": \{&
+''                "numericSign": "0447", &
+''                "initials": "YG", &
+''                "dutyCode": "SU", &
+''                "countryCode": "FR", &
+''                "cityCode": "CDG"&
+''            \}&
+''        \}&
+''    \}, &
+''    "lastModification": \{&
+''        "dateTime": "2024-03-14T10:37:58Z"&
+''    \}, &
+''    "travelers": [&
+''        \{&
+''            "type": "stakeholder", &
+''            "id": "MBYX9W-2024-03-14-PNR-NM-1", &
+''            "names": [&
+''                \{&
+''                    "firstName": "CQBF", &
+''                    "lastName": "AWMI"&
+''                \}&
+''            ], &
+''            "contacts": [&
+''                \{&
+''                    "type": "contact", &
+''                    "id": "MBYX9W-2024-03-14-PNR-AP-3", &
+''                    "ref": "processedPnr.contacts"&
+''                \}, &
+''                \{&
+''                    "type": "contact", &
+''                    "id": "MBYX9W-2024-03-14-PNR-AP-4", &
+''                    "ref": "processedPnr.contacts"&
+''                \}&
+''            ], &
+''            "passenger": \{&
+''                "uniqueIdentifier": "6109D32800004622"&
+''            \}&
+''        \}&
+''    ], &
+''    "products": [&
+''        \{&
+''            "type": "product", &
+''            "subType": "AIR", &
+''            "id": "MBYX9W-2024-03-14-PNR-AIR-1", &
+''            "airSegment": \{&
+''                "departure": \{&
+''                    "iataCode": "CDG", &
+''                    "localDateTime": "2024-04-18T07:00:00"&
+''                \}, &
+''                "arrival": \{&
+''                    "iataCode": "LHR", &
+''                    "localDateTime": "2024-04-18T08:30:00"&
+''                \}, &
+''                "marketing": \{&
+''                    "flightDesignator": \{&
+''                        "carrierCode": "6X", &
+''                        "flightNumber": "7217"&
+''                    \}, &
+''                    "bookingClass": \{&
+''                        "code": "Y", &
+''                        "cabin": \{&
+''                            "code": "M"&
+''                        \}, &
+''                        "subClass": \{&
+''                            "code": 0, &
+''                            "pointOfSale": \{&
+''                                "office": \{&
+''                                    "systemCode": "7S"&
+''                                \}, &
+''                                "login": \{&
+''                                    "countryCode": "FR"&
+''                                \}&
+''                            \}, &
+''                            "sourceOfSubClassCode": "SOURCE_COUNTRY"&
+''                        \}, &
+''                        "levelOfService": "ECONOMY"&
+''                    \}, &
+''                    "id": "6X-7217-2024-04-18-CDG-LHR"&
+''                \}, &
+''                "bookingStatusCode": "HK", &
+''                "deliveries": [&
+''                    \{&
+''                        "type": "segment-delivery", &
+''                        "id": "MBYX9W-2024-03-14-PNR-BKG-1", &
+''                        "distributionId": "600A232900003872", &
+''                        "traveler": \{&
+''                            "type": "stakeholder", &
+''                            "id": "MBYX9W-2024-03-14-PNR-NM-1", &
+''                            "ref": "processedPnr.travelers"&
+''                        \}&
+''                    \}&
+''                ], &
+''                "distributionMethod": "E", &
+''                "notAcknowledged": false&
+''            \}, &
+''            "products": [&
+''                \{&
+''                    "type": "product", &
+''                    "id": "MBYX9W-2024-03-14-PNR-SSR-5", &
+''                    "ref": "processedPnr.products"&
+''                \}&
+''            ]&
+''        \}, &
+''        \{&
+''            "type": "product", &
+''            "subType": "SERVICE", &
+''            "id": "MBYX9W-2024-03-14-PNR-SSR-5", &
+''            "service": \{&
+''                "code": "VGML", &
+''                "subType": "SPECIAL_SERVICE_REQUEST", &
+''                "serviceProvider": \{&
+''                    "code": "6X"&
+''                \}, &
+''                "status": "HK", &
+''                "nip": 1, &
+''                "priceCategory": \{&
+''                    "code": "G", &
+''                    "subCode": "0AR"&
+''                \}, &
+''                "isChargeable": false, &
+''                "paymentStatus": "EXEMPTED"&
+''            \}, &
+''            "products": [&
+''                \{&
+''                    "type": "product", &
+''                    "id": "MBYX9W-2024-03-14-PNR-AIR-1", &
+''                    "ref": "processedPnr.products"&
+''                \}&
+''            ], &
+''            "travelers": [&
+''                \{&
+''                    "type": "stakeholder", &
+''                    "id": "MBYX9W-2024-03-14-PNR-NM-1", &
+''                    "ref": "processedPnr.travelers"&
+''                \}&
+''            ]&
+''        \}&
+''    ], &
+''    "contacts": [&
+''        \{&
+''            "type": "contact", &
+''            "id": "MBYX9W-2024-03-14-PNR-AP-3", &
+''            "phone": \{&
+''                "number": "OK"&
+''            \}, &
+''            "purpose": [&
+''                "STANDARD"&
+''            ], &
+''            "travelerRefs": [&
+''                \{&
+''                    "type": "stakeholder", &
+''                    "id": "MBYX9W-2024-03-14-PNR-NM-1", &
+''                    "ref": "processedPnr.travelers"&
+''                \}&
+''            ]&
+''        \}, &
+''        \{&
+''            "type": "contact", &
+''            "id": "MBYX9W-2024-03-14-PNR-AP-4", &
+''            "phone": \{&
+''                "number": "CDG - ACM AFKL PROJECTS - A"&
+''            \}, &
+''            "purpose": [&
+''                "STANDARD"&
+''            ], &
+''            "travelerRefs": [&
+''                \{&
+''                    "type": "stakeholder", &
+''                    "id": "MBYX9W-2024-03-14-PNR-NM-1", &
+''                    "ref": "processedPnr.travelers"&
+''                \}&
+''            ]&
+''        \}&
+''    ], &
+''    "automatedProcesses": [&
+''        \{&
+''            "type": "automated-process", &
+''            "id": "MBYX9W-2024-03-14-PNR-TK-2", &
+''            "code": "OK", &
+''            "dateTime": "2024-03-14T00:00:00", &
+''            "office": \{&
+''                "id": "CDG7S0002"&
+''            \}, &
+''            "travelers": [&
+''                \{&
+''                    "type": "stakeholder", &
+''                    "id": "MBYX9W-2024-03-14-PNR-NM-1", &
+''                    "ref": "processedPnr.travelers"&
+''                \}&
+''            ], &
+''            "products": [&
+''                \{&
+''                    "type": "product", &
+''                    "id": "MBYX9W-2024-03-14-PNR-AIR-1", &
+''                    "ref": "processedPnr.products"&
+''                \}&
+''            ]&
+''        \}&
+''    ]&
+''\}
+''End of response
+
+''match:validate_openpnr(received_json)
+''Conversation: cry
+
+'**********************************************************************
+' Sent at      11:37:59.484291 - 14 Mar 2024
+' Filename     /mnt/c/Users/ygarnier/open_pnr_validation/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Scripts/Products/Exempted_services/exempted_SSR_Retrieve.cry
+' Message      16 -  . 
+' Size         2 bytes
+' Reply needed yes
+'----------------------------------------------------------------------
+XI
+
+'**********************************************************************
+' Received at  11:37:59.562750 - 14 Mar 2024
+' Filename     /mnt/c/Users/ygarnier/open_pnr_validation/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Scripts/Products/Exempted_services/exempted_SSR_Retrieve.cry
+' Match        N/A
+' Message      16 -  . 
+' Size         24 bytes
+'----------------------------------------------------------------------
+''Response:
+''NO TRANSACTION PRESENT&
+''>
+''End of response
+
+'**********************************************************************
+' Sent at      11:37:59.563222 - 14 Mar 2024
+' Filename     /mnt/c/Users/ygarnier/open_pnr_validation/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Scripts/Products/Exempted_services/exempted_SSR_Retrieve.cry
+' Message      17 -  . 
+' Size         2 bytes
+' Reply needed yes
+'----------------------------------------------------------------------
+ET
+
+'**********************************************************************
+' Received at  11:37:59.638102 - 14 Mar 2024
+' Filename     /mnt/c/Users/ygarnier/open_pnr_validation/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Scripts/Products/Exempted_services/exempted_SSR_Retrieve.cry
+' Match        N/A
+' Message      17 -  . 
+' Size         24 bytes
+'----------------------------------------------------------------------
+''Response:
+''NO TRANSACTION PRESENT&
+''>
+''End of response
+
+'**********************************************************************
+' Sent at      11:37:59.639233 - 14 Mar 2024
+' Filename     /mnt/c/Users/ygarnier/open_pnr_validation/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Scripts/Products/Exempted_services/exempted_SSR_Retrieve.cry
+' Message      18 -  . 
+' Size         2 bytes
+' Reply needed yes
+'----------------------------------------------------------------------
+IG
+
+'**********************************************************************
+' Received at  11:37:59.704225 - 14 Mar 2024
+' Filename     /mnt/c/Users/ygarnier/open_pnr_validation/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Scripts/Products/Exempted_services/exempted_SSR_Retrieve.cry
+' Match        N/A
+' Message      18 -  . 
+' Size         9 bytes
+'----------------------------------------------------------------------
+''Response:
+''IGNORED&
+''>
+''End of response
+
+'**********************************************************************
+' Sent at      11:37:59.704667 - 14 Mar 2024
+' Filename     /mnt/c/Users/ygarnier/open_pnr_validation/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Scripts/Products/Exempted_services/exempted_SSR_Retrieve.cry
+' Message      19 -  . 
+' Size         2 bytes
+' Reply needed yes
+'----------------------------------------------------------------------
+JO
+
+'**********************************************************************
+' Received at  11:37:59.821680 - 14 Mar 2024
+' Filename     /mnt/c/Users/ygarnier/open_pnr_validation/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Scripts/Products/Exempted_services/exempted_SSR_Retrieve.cry
+' Match        N/A
+' Message      19 -  . 
+' Size         387 bytes
+'----------------------------------------------------------------------
+''Response:
+''&
+''09CC2B44         NCE1A0950&
+''&
+''AREA  TM  MOD SG/DT.LG TIME      ACT.Q   STATUS     NAME&
+''A                       24             NOT SIGNED&
+''B                                      NOT SIGNED&
+''C                                      NOT SIGNED&
+''D                                      NOT SIGNED&
+''E                                      NOT SIGNED&
+''F                                      NOT SIGNED&
+''>
+''End of response
+
+'**********************************************************************
+' Sent at      11:37:59.823039 - 14 Mar 2024
+' Filename     /mnt/c/Users/ygarnier/open_pnr_validation/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Scripts/Products/Exempted_services/exempted_SSR_Retrieve.cry
+' Message      20 -  . 
+' Size         2 bytes
+' Reply needed yes
+'----------------------------------------------------------------------
+JD
+
+'**********************************************************************
+' Received at  11:37:59.887161 - 14 Mar 2024
+' Filename     /mnt/c/Users/ygarnier/open_pnr_validation/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Scripts/Products/Exempted_services/exempted_SSR_Retrieve.cry
+' Match        N/A
+' Message      20 -  . 
+' Size         387 bytes
+'----------------------------------------------------------------------
+''Response:
+''&
+''09CC2B44         NCE1A0950&
+''&
+''AREA  TM  MOD SG/DT.LG TIME      ACT.Q   STATUS     NAME&
+''A                       24             NOT SIGNED&
+''B                                      NOT SIGNED&
+''C                                      NOT SIGNED&
+''D                                      NOT SIGNED&
+''E                                      NOT SIGNED&
+''F                                      NOT SIGNED&
+''>
+''End of response
+
+
+'----------------------------------------------------------------------
+' Statistics
+'----------------------------------------------------------------------
+' Messages in          : 20
+' Bytes in             : 0Mb 12Kb 423b
+' Messages out         : 20
+' Bytes out            : 0Mb 2Kb 811b
+
+' Conversations        : 4
+' Transactions         : 20
+' Transactions parsed  : 20
+' Ratio                : 1
+
+' Total duration       : 0h 0min 4s 792.2ms
+' Parse duration       : 0h 0min 0s 1.052ms (0 %)
+' Wait duration        : 0h 0min 2s 733.389ms (57 %)
+' Transactions/s       : 4 TPS
+
+' Number of Timeouts   : 0
+' Messages compared    : 4
+' Errors found         : 0
+' Python errors found         : 0
+' No match counter     : 0

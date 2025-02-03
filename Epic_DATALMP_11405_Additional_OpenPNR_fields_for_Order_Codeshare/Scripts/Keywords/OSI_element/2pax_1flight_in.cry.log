@@ -1,0 +1,944 @@
+' Log report : 16:45:26.347317 - 26 Feb 2024
+' Filename   : /mnt/c/Users/ygarnier/open_pnr_validation/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Scripts/Keywords/OSI_element/2pax_1flight_in.cry
+'----------------------------------------------------------------------
+
+''Initialize:
+import json
+from lib.openpnr import extract_binary_payload
+from lib.json_match import assert_equal, assert_found, assert_not_found, parse_json
+
+execfile(global_regression.TTS_RootDir + '/data/data_' + global_regression.TEST_SYSTEM + '.py')
+
+TTS_OK = TTServer.currentMessage.TTS_MATCH_COMPARISON_OK
+TTS_KO = TTServer.currentMessage.TTS_MATCH_COMPARISON_FAILURE
+
+# As the specific conditions to evaluate depend on the test, the comparison function is in the individual script
+# In case of match error, find the error details in TTS logs (not available in .log or in .rex file)
+# Variables defined in data files (e.g., test user data) or in the current scripts (e.g., recloc)
+# are directly available from inside the function.
+def validate_openpnr(openpnr_json):
+    try:
+        openpnr = parse_json(openpnr_json)
+        for field in ['id', 'reference', 'creation', 'travelers', 'products', 'contacts']:
+            assert_found(field, container=openpnr)
+
+        expected_openpnr_id = recloc + '-' + today
+        assert_equal(actual=openpnr['id'], expected=expected_openpnr_id, item_name='OpenPNR id field')
+        assert_not_found('creation/date', container=openpnr)
+        assert_found('creation/dateTime', container=openpnr)
+        assert_found('creation/pointOfSale/office/id', container=openpnr)
+        assert_equal(expected=test_user_1A_extended_office, actual=openpnr['creation']['pointOfSale']['office']['id'], item_name='creator office')
+
+        assert_equal(actual=len(openpnr['keywords']), expected=1, item_name='number of keywords')
+        keywords_1 = openpnr['keywords'][0]
+        #Check service data for exempted service OSI
+        assert_equal(actual=keywords_1['type'], expected='SERVICE', item_name='keyword subType')
+        assert_equal(actual=keywords_1['code'], expected='VIP', item_name='keyword code')
+        assert_equal(actual=keywords_1['subType'], expected='OTHER_SERVICE_INFORMATION', item_name='keyword subType')
+        assert_equal(actual=keywords_1['serviceProvider']['code'], expected='6X', item_name='keyword/serviceProvider code')
+        assert_equal(actual=keywords_1['text'], expected='VIP PRINCE', item_name='keyword free text')
+
+    except Exception as e:
+        print('OpenPNR validation failed: {}'.format(e))
+        return TTS_KO
+
+    print('OpenPNR validation successful')
+    return TTS_OK
+
+''End
+''Conversation: cry
+
+'**********************************************************************
+' Sent at      16:45:26.348416 - 26 Feb 2024
+' Filename     /mnt/c/Users/ygarnier/open_pnr_validation/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Scripts/Keywords/OSI_element/2pax_1flight_in.cry
+' Message      1 -  . 
+' Size         2 bytes
+' Reply needed yes
+'----------------------------------------------------------------------
+IG
+
+'**********************************************************************
+' Received at  16:45:26.407805 - 26 Feb 2024
+' Filename     /mnt/c/Users/ygarnier/open_pnr_validation/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Scripts/Keywords/OSI_element/2pax_1flight_in.cry
+' Match        N/A
+' Message      1 -  . 
+' Size         9 bytes
+'----------------------------------------------------------------------
+''Response:
+''SIGN IN&
+''>
+''End of response
+
+'**********************************************************************
+' Sent at      16:45:26.410601 - 26 Feb 2024
+' Filename     /mnt/c/Users/ygarnier/open_pnr_validation/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Scripts/Keywords/OSI_element/2pax_1flight_in.cry
+' Message      2 -  . 
+' Size         2 bytes
+' Reply needed yes
+'----------------------------------------------------------------------
+JO
+
+'**********************************************************************
+' Received at  16:45:26.478329 - 26 Feb 2024
+' Filename     /mnt/c/Users/ygarnier/open_pnr_validation/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Scripts/Keywords/OSI_element/2pax_1flight_in.cry
+' Match        N/A
+' Message      2 -  . 
+' Size         9 bytes
+'----------------------------------------------------------------------
+''Response:
+''SIGN IN&
+''>
+''End of response
+
+'**********************************************************************
+' Sent at      16:45:26.480229 - 26 Feb 2024
+' Filename     /mnt/c/Users/ygarnier/open_pnr_validation/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Scripts/Keywords/OSI_element/2pax_1flight_in.cry
+' Message      3 -  . 
+' Size         2 bytes
+' Reply needed yes
+'----------------------------------------------------------------------
+JD
+
+'**********************************************************************
+' Received at  16:45:26.562425 - 26 Feb 2024
+' Filename     /mnt/c/Users/ygarnier/open_pnr_validation/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Scripts/Keywords/OSI_element/2pax_1flight_in.cry
+' Match        N/A
+' Message      3 -  . 
+' Size         387 bytes
+'----------------------------------------------------------------------
+''Response:
+''&
+''09CC2B44         NCE1A0955&
+''&
+''AREA  TM  MOD SG/DT.LG TIME      ACT.Q   STATUS     NAME&
+''A                       24             NOT SIGNED&
+''B                                      NOT SIGNED&
+''C                                      NOT SIGNED&
+''D                                      NOT SIGNED&
+''E                                      NOT SIGNED&
+''F                                      NOT SIGNED&
+''>
+''End of response
+
+'> 1. Sign in with test_user_1A_sign in office test_user_1A_office
+'**********************************************************************
+' Sent at      16:45:26.564840 - 26 Feb 2024
+' Filename     /mnt/c/Users/ygarnier/open_pnr_validation/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Scripts/Keywords/OSI_element/2pax_1flight_in.cry
+' Message      4 -  . 
+' Size         16 bytes
+' Reply needed yes
+'----------------------------------------------------------------------
+OK-WE/L-09CC2B44
+
+'**********************************************************************
+' Received at  16:45:26.637794 - 26 Feb 2024
+' Filename     /mnt/c/Users/ygarnier/open_pnr_validation/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Scripts/Keywords/OSI_element/2pax_1flight_in.cry
+' Match        N/A
+' Message      4 -  . 
+' Size         85 bytes
+'----------------------------------------------------------------------
+''Response:
+''  NETWORK 09 SUB-SYS FE DELETION LIST&
+''     CC2B44    DELETED OK&
+''  DELETION FINISHED&
+''>
+''End of response
+
+''WAIT:2
+'**********************************************************************
+' Sent at      16:45:28.653644 - 26 Feb 2024
+' Filename     /mnt/c/Users/ygarnier/open_pnr_validation/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Scripts/Keywords/OSI_element/2pax_1flight_in.cry
+' Message      5 -  . 
+' Size         63 bytes
+' Reply needed yes
+'----------------------------------------------------------------------
+OK-WY/C-C5AGY/W-AMAD/S-80X22/O-NCE1A0950/T-NCE/A-NCE/L-09CC2B44
+
+'**********************************************************************
+' Received at  16:45:28.716905 - 26 Feb 2024
+' Filename     /mnt/c/Users/ygarnier/open_pnr_validation/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Scripts/Keywords/OSI_element/2pax_1flight_in.cry
+' Match        N/A
+' Message      5 -  . 
+' Size         46 bytes
+'----------------------------------------------------------------------
+''Response:
+''&
+''LEIDS:   CC2B44&
+''INITIALIZED FOR: NETWORK 09&
+''>
+''End of response
+
+'**********************************************************************
+' Sent at      16:45:28.718312 - 26 Feb 2024
+' Filename     /mnt/c/Users/ygarnier/open_pnr_validation/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Scripts/Keywords/OSI_element/2pax_1flight_in.cry
+' Message      6 -  . 
+' Size         39 bytes
+' Reply needed yes
+'----------------------------------------------------------------------
+Jia0447YG/SU.NCE6X0100-Yoanntesting123+
+
+'**********************************************************************
+' Received at  16:45:28.947021 - 26 Feb 2024
+' Filename     /mnt/c/Users/ygarnier/open_pnr_validation/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Scripts/Keywords/OSI_element/2pax_1flight_in.cry
+' Match        OK
+' Message      6 -  . 
+' Size         325 bytes
+'----------------------------------------------------------------------
+''Response:
+''&
+''A-SIGN COMPLETE/26FEB/SU&
+''************  AMADEUS PRODUCT NEWS  ***********  SEE GGNEWS&
+''AIR2 INSELAIR INTERNATIONAL (7I) ENJOYS ISM IASR GGNEWSAIR2&
+''HTL  BALLADINS (BL) ENJOY HTL DYNAMIC ACCESS     GGNEWSHTL&
+''AIR1 PULLMANTUR AIR (EB) ENJOYS AAS              GGNEWSAIR1&
+''AIR  UTAIR UKRAINE (QU) ENJOYS AAS               GGNEWSAIR&
+''>
+''End of response
+
+'> 2. Create a PNR
+'**********************************************************************
+' Sent at      16:45:28.949022 - 26 Feb 2024
+' Filename     /mnt/c/Users/ygarnier/open_pnr_validation/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Scripts/Keywords/OSI_element/2pax_1flight_in.cry
+' Message      7 -  . 
+' Size         12 bytes
+' Reply needed yes
+'----------------------------------------------------------------------
+NM1PSDV/MEKB
+
+'**********************************************************************
+' Received at  16:45:29.072278 - 26 Feb 2024
+' Filename     /mnt/c/Users/ygarnier/open_pnr_validation/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Scripts/Keywords/OSI_element/2pax_1flight_in.cry
+' Match        N/A
+' Message      7 -  . 
+' Size         29 bytes
+'----------------------------------------------------------------------
+''Response:
+''RP/NCE6X0100/&
+''  1.PSDV/MEKB&
+''>
+''End of response
+
+'**********************************************************************
+' Sent at      16:45:29.073621 - 26 Feb 2024
+' Filename     /mnt/c/Users/ygarnier/open_pnr_validation/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Scripts/Keywords/OSI_element/2pax_1flight_in.cry
+' Message      8 -  . 
+' Size         12 bytes
+' Reply needed yes
+'----------------------------------------------------------------------
+NM1TSLM/GUKE
+
+'**********************************************************************
+' Received at  16:45:29.194141 - 26 Feb 2024
+' Filename     /mnt/c/Users/ygarnier/open_pnr_validation/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Scripts/Keywords/OSI_element/2pax_1flight_in.cry
+' Match        N/A
+' Message      8 -  . 
+' Size         43 bytes
+'----------------------------------------------------------------------
+''Response:
+''RP/NCE6X0100/&
+''  1.PSDV/MEKB   2.TSLM/GUKE&
+''>
+''End of response
+
+'**********************************************************************
+' Sent at      16:45:29.194828 - 26 Feb 2024
+' Filename     /mnt/c/Users/ygarnier/open_pnr_validation/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Scripts/Keywords/OSI_element/2pax_1flight_in.cry
+' Message      9 -  . 
+' Size         20 bytes
+' Reply needed yes
+'----------------------------------------------------------------------
+SS6X402Y16APRFRALHR2
+
+'**********************************************************************
+' Received at  16:45:29.621702 - 26 Feb 2024
+' Filename     /mnt/c/Users/ygarnier/open_pnr_validation/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Scripts/Keywords/OSI_element/2pax_1flight_in.cry
+' Match        N/A
+' Message      9 -  . 
+' Size         119 bytes
+'----------------------------------------------------------------------
+''Response:
+''RP/NCE6X0100/&
+''  1.PSDV/MEKB   2.TSLM/GUKE&
+''  3  6X 402 Y 16APR 2 FRALHR DK2  1000 1100  16APR  E  0 320&
+''     SEE RTSVC&
+''>
+''End of response
+
+'**********************************************************************
+' Sent at      16:45:29.622418 - 26 Feb 2024
+' Filename     /mnt/c/Users/ygarnier/open_pnr_validation/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Scripts/Keywords/OSI_element/2pax_1flight_in.cry
+' Message      10 -  . 
+' Size         15 bytes
+' Reply needed yes
+'----------------------------------------------------------------------
+AP +123456789AB
+
+'**********************************************************************
+' Received at  16:45:29.767130 - 26 Feb 2024
+' Filename     /mnt/c/Users/ygarnier/open_pnr_validation/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Scripts/Keywords/OSI_element/2pax_1flight_in.cry
+' Match        N/A
+' Message      10 -  . 
+' Size         139 bytes
+'----------------------------------------------------------------------
+''Response:
+''RP/NCE6X0100/&
+''  1.PSDV/MEKB   2.TSLM/GUKE&
+''  3  6X 402 Y 16APR 2 FRALHR DK2  1000 1100  16APR  E  0 320&
+''     SEE RTSVC&
+''  4 AP +123456789AB&
+''>
+''End of response
+
+'**********************************************************************
+' Sent at      16:45:29.769023 - 26 Feb 2024
+' Filename     /mnt/c/Users/ygarnier/open_pnr_validation/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Scripts/Keywords/OSI_element/2pax_1flight_in.cry
+' Message      11 -  . 
+' Size         4 bytes
+' Reply needed yes
+'----------------------------------------------------------------------
+TKOK
+
+'**********************************************************************
+' Received at  16:45:29.907089 - 26 Feb 2024
+' Filename     /mnt/c/Users/ygarnier/open_pnr_validation/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Scripts/Keywords/OSI_element/2pax_1flight_in.cry
+' Match        N/A
+' Message      11 -  . 
+' Size         164 bytes
+'----------------------------------------------------------------------
+''Response:
+''RP/NCE6X0100/&
+''  1.PSDV/MEKB   2.TSLM/GUKE&
+''  3  6X 402 Y 16APR 2 FRALHR DK2  1000 1100  16APR  E  0 320&
+''     SEE RTSVC&
+''  4 AP +123456789AB&
+''  5 TK OK26FEB/NCE6X0100&
+''>
+''End of response
+
+'**********************************************************************
+' Sent at      16:45:29.908809 - 26 Feb 2024
+' Filename     /mnt/c/Users/ygarnier/open_pnr_validation/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Scripts/Keywords/OSI_element/2pax_1flight_in.cry
+' Message      12 -  . 
+' Size         5 bytes
+' Reply needed yes
+'----------------------------------------------------------------------
+RF YG
+
+'**********************************************************************
+' Received at  16:45:30.055029 - 26 Feb 2024
+' Filename     /mnt/c/Users/ygarnier/open_pnr_validation/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Scripts/Keywords/OSI_element/2pax_1flight_in.cry
+' Match        N/A
+' Message      12 -  . 
+' Size         170 bytes
+'----------------------------------------------------------------------
+''Response:
+''RP/NCE6X0100/&
+''RF YG&
+''  1.PSDV/MEKB   2.TSLM/GUKE&
+''  3  6X 402 Y 16APR 2 FRALHR DK2  1000 1100  16APR  E  0 320&
+''     SEE RTSVC&
+''  4 AP +123456789AB&
+''  5 TK OK26FEB/NCE6X0100&
+''>
+''End of response
+
+'**********************************************************************
+' Sent at      16:45:30.057285 - 26 Feb 2024
+' Filename     /mnt/c/Users/ygarnier/open_pnr_validation/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Scripts/Keywords/OSI_element/2pax_1flight_in.cry
+' Message      13 -  . 
+' Size         19 bytes
+' Reply needed yes
+'----------------------------------------------------------------------
+OS 6X VIP PRINCE/P1
+
+'**********************************************************************
+' Received at  16:45:30.220011 - 26 Feb 2024
+' Filename     /mnt/c/Users/ygarnier/open_pnr_validation/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Scripts/Keywords/OSI_element/2pax_1flight_in.cry
+' Match        N/A
+' Message      13 -  . 
+' Size         195 bytes
+'----------------------------------------------------------------------
+''Response:
+''RP/NCE6X0100/&
+''RF YG&
+''  1.PSDV/MEKB   2.TSLM/GUKE&
+''  3  6X 402 Y 16APR 2 FRALHR DK2  1000 1100  16APR  E  0 320&
+''     SEE RTSVC&
+''  4 AP +123456789AB&
+''  5 TK OK26FEB/NCE6X0100&
+''  6 OSI 6X VIP PRINCE/P1&
+''>
+''End of response
+
+'**********************************************************************
+' Sent at      16:45:30.221483 - 26 Feb 2024
+' Filename     /mnt/c/Users/ygarnier/open_pnr_validation/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Scripts/Keywords/OSI_element/2pax_1flight_in.cry
+' Message      14 -  . 
+' Size         2 bytes
+' Reply needed yes
+'----------------------------------------------------------------------
+ER
+
+'**********************************************************************
+' Received at  16:45:31.280408 - 26 Feb 2024
+' Filename     /mnt/c/Users/ygarnier/open_pnr_validation/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Scripts/Keywords/OSI_element/2pax_1flight_in.cry
+' Match        OK
+' Message      14 -  . 
+' Size         240 bytes
+'----------------------------------------------------------------------
+''Response:
+''--- RLR ---&
+''RP/NCE6X0100/NCE6X0100            YG/SU  26FEB24/1545Z   JKS9YY&
+''  1.PSDV/MEKB   2.TSLM/GUKE&
+''  3  6X 402 Y 16APR 2 FRALHR HK2  1000 1100  16APR  E  6X/JKS9YY&
+''  4 AP +123456789AB&
+''  5 TK OK26FEB/NCE6X0100&
+''  6 OSI 6X VIP PRINCE/P1&
+''>
+''End of response
+
+''nomatch:TTServer.currentMessage.loop(1, 1, 0)
+''Exec:
+# Compose the expected PNR ID used in OpenPNR, e.g. ABC123-2025-05-27
+openpnr_id = recloc + '-' + today
+''End
+'**********************************************************************
+' Sent at      16:45:31.283547 - 26 Feb 2024
+' Filename     /mnt/c/Users/ygarnier/open_pnr_validation/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Scripts/Keywords/OSI_element/2pax_1flight_in.cry
+' Message      15 -  . 
+' Size         2 bytes
+' Reply needed yes
+'----------------------------------------------------------------------
+IG
+
+'**********************************************************************
+' Received at  16:45:31.370145 - 26 Feb 2024
+' Filename     /mnt/c/Users/ygarnier/open_pnr_validation/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Scripts/Keywords/OSI_element/2pax_1flight_in.cry
+' Match        N/A
+' Message      15 -  . 
+' Size         18 bytes
+'----------------------------------------------------------------------
+''Response:
+''IGNORED - JKS9YY&
+''>
+''End of response
+
+''WAIT:3
+''Conversation: pub
+
+'**********************************************************************
+' Sent at      16:45:34.471860 - 26 Feb 2024
+' Filename     /mnt/c/Users/ygarnier/open_pnr_validation/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Scripts/Keywords/OSI_element/2pax_1flight_in.cry
+' Message      16 - PURCRQ 14.1 1A
+' Size         222 bytes
+' Reply needed yes
+'----------------------------------------------------------------------
+UNB+IATB:1+1APPC+1ASIPUBU+240226:1545+00CMXUTXR20001+++O'&
+UNH+1+PURCRQ:14:1:1A+09CC2B44'&
+ORG+1A+:NCE1A0900++++FR:EUR:FR+A001SU'&
+RCI+:JKS9YY::26FEB24'&
+ATC++604'&
+IRV+ENV+0'&
+SPR+++2005:8:8+2100:12:12++'&
+UNT+7+1'&
+UNZ+1+00CMXUTXR20001'
+
+'**********************************************************************
+' Received at  16:45:35.800944 - 26 Feb 2024
+' Filename     /mnt/c/Users/ygarnier/open_pnr_validation/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Scripts/Keywords/OSI_element/2pax_1flight_in.cry
+' Match        OK
+' Message      16 - PURCRR 14.1 1A
+' Size         336 bytes
+'----------------------------------------------------------------------
+''Response:
+''UNB+IATB:1+1ASIPUBU+1APPC+240226:1545+00AC6W1XLO0001+00CMXUTXR20001++T'&
+''UNH+1+PURCRR:14:1:1A+09CC2B44'&
+''RCI+:JKS9YY::26FEB24'&
+''ATC++604'&
+''IRV+ENV+0'&
+''SPR+++2005:8:8+2100:12:12'&
+''DUM'&
+''RCI+:JKS9YY::20240226\:15\:45\:00'&
+''IRV+OBE+SONPK4'&
+''IRV+ENV+0'&
+''ATC++604'&
+''SDI+++2024:02:26:15:45:31'&
+''IRV+ID+4034392314'&
+''SDI+++2024:02:26:15:45:31'&
+''UNT+14+1'&
+''UNZ+1+00AC6W1XLO0001'
+''End of response
+
+''Conversation: pub_raw
+
+'**********************************************************************
+' Sent at      16:45:35.857321 - 26 Feb 2024
+' Filename     /mnt/c/Users/ygarnier/open_pnr_validation/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Scripts/Keywords/OSI_element/2pax_1flight_in.cry
+' Message      17 - PUPIRQ 14.1 1A
+' Size         175 bytes
+' Reply needed yes
+'----------------------------------------------------------------------
+UNB+IATA:1+1APPC+1ASIPUBU+240226:1545+00CMXUTXR40001+++O'&
+UNH+1+PUPIRQ:14:1:1A+09CC2B44'&
+IRV+ID+4034392314'&
+IRV+OBE+SONPK4'&
+SDI+++2024:02:26:15:45:31'&
+UNT+5+1'&
+UNZ+1+00CMXUTXR40001'
+
+'**********************************************************************
+' Received at  16:45:35.926713 - 26 Feb 2024
+' Filename     /mnt/c/Users/ygarnier/open_pnr_validation/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Scripts/Keywords/OSI_element/2pax_1flight_in.cry
+' Match        OK
+' Message      17 - PUPIRR 14.1 1A
+' Size         1897 bytes
+'----------------------------------------------------------------------
+''Response:
+''UNB+IATA:1+1ASIPUBU+1APPC+240226:1545+00AENOG02L0001+00CMXUTXR40001++T'&
+''UNH+1+PUPIRR:14:1:1A+09CC2B44'&
+''IRV+ID+4034392314'&
+''IRV+OBE+SONPK4'&
+''SDI+++2024:02:26:15:45:31'&
+''BLB+1696+E+UNH\x1D1\x1DDUMMYY\x1F01\x1F1\x1F1A\x1C\x0A\x80\x0D\x12\xA3\x0C\x0A\x11JKS9YY-2024-02-26\x12\x03pnr\x1A\x06JKS9YY"\x010:f\x1A\x142024-02-26T15:45:00Z"=\x0A"\x0A\x09NCE6X0100\x12\x0800631002\x1A\x026X"\x07AIRLINE\x12\x17\x0A\x040447\x12\x02YG\x1A\x02SU*\x02FR2\x03NCE*\x0FYG-1A/YOANNTESTJ)\x1A\x142024-02-26T15:45:30Z"\x0D\x0A\x0B\x0A\x09NCE6X0100*\x02YGz\x8A\x01\x0A\x0Bstakeholder\x12\x1AJKS9YY-2024-02-26-PNR-NM-1"\x0C\x12\x04MEKB\x1A\x04PSDVr<\x0A\x07contact\x12\x1AJKS9YY-2024-02-26-PNR-AP-3\x1A\x15processedPnr.contacts\xA2\x01\x12\x12\x106100131700012ABDz\x8A\x01\x0A\x0Bstakeholder\x12\x1AJKS9YY-2024-02-26-PNR-NM-2"\x0C\x12\x04GUKE\x1A\x04TSLMr<\x0A\x07contact\x12\x1AJKS9YY-2024-02-26-PNR-AP-3\x1A\x15processedPnr.contacts\xA2\x01\x12\x12\x106100131700012ADB\x82\x01\xCF\x03\x0A\x07product\x10\x01\x1A\x1BJKS9YY-2024-02-26-PNR-AIR-1"\xA4\x03\x0A\x1A\x0A\x03FRA\x1A\x132024-04-16T10:00:00\x12\x1A\x0A\x03LHR\x1A\x132024-04-16T11:00:00"O\x0A\x09\x0A\x026X\x12\x03402\x12'&
+''\x0A\x01Y\x12\x03\x0A\x01M\x1A\x14\x0A\x02\x08\x00\x12\x0C\x0A\x04\x1A\x026X\x12\x04*\x02FR \x01"\x07ECONOMY2\x196X-402-2024-04-16-FRA-LHRJ\x02HKb\x84\x01\x0A\x10segment-delivery\x12\x1BJKS9YY-2024-02-26-PNR-BKG-1\x1A\x10600033180000F49DZA\x0A\x0Bstakeholder\x12\x1AJKS9YY-2024-02-26-PNR-NM-1\x1A\x16processedPnr.travelersb\x84\x01\x0A\x10segment-delivery\x12\x1BJKS9YY-2024-02-26-PNR-BKG-2\x1A\x10600033180000F49EZA\x0A\x0Bstakeholder\x12\x1AJKS9YY-2024-02-26-PNR-NM-2\x1A\x16processedPnr.travelers\x8A\x01\x01E\x92\x01\x02\x08\x00\xA2\x01\xC1\x01\x0A\x07SERVICE\x12\x1BJKS9YY-2024-02-26-PNR-OSI-5\x1A\x03VIP \x04*\x04\x0A\x026Xj\x0AVIP PRINCErA\x0A\x0Bstakeholder\x12\x1AJKS9YY-2024-02-26-PNR-NM-1\x1A\x16processedPnr.travelersz=\x0A\x07product\x12\x1BJKS9YY-2024-02-26-PNR-AIR-1\x1A\x15processedPnr.products\xB2\x01\xBD\x01\x0A\x07contact\x12\x1AJKS9YY-2024-02-26-PNR-AP-3"\x0E\x1A\x0C+123456789AB@\x01bA\x0A\x0Bstakeholder\x12\x1AJKS9YY-2024-02-26-PNR-NM-1\x1A\x16processedPnr.travelersbA\x0A\x0Bstakeholder\x12\x1AJKS9YY-2024-02-26-PNR-NM-2\x1A\x16processedPnr.travelers\xBA\x01\xF6\x01\x0A\x11automated-process\x12\x1AJKS9YY-2024-02-26-PNR-TK-4\x18\x05ZA\x0A\x0Bstakeholder\x12\x1AJKS9YY-2024-02-26-PNR-NM-1\x1A\x16processedPnr.travelersZA\x0A\x0Bstakeholder\x12\x1AJKS9YY-2024-02-26-PNR-NM-2\x1A\x16processedPnr.travelersb=\x0A\x07product\x12\x1BJKS9YY-2024-02-26-PNR-AIR-1\x1A\x15processedPnr.products\x1AX\x0A\x1Fapplication/vnd.google.protobuf\x12\x06JKS9YY\x1A\x010"\x03Pnr*\%com.amadeus.models.reservation.pnr.v2UNT\x1D2\x1D1\x1C'&
+''UNT+6+1'&
+''UNZ+1+00AENOG02L0001'
+''End of response
+
+''match:extract_binary_payload(global_regression, raw_binary=raw_binary)
+''Conversation: web
+
+'**********************************************************************
+' Sent at      16:45:35.929465 - 26 Feb 2024
+' Filename     /mnt/c/Users/ygarnier/open_pnr_validation/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Scripts/Keywords/OSI_element/2pax_1flight_in.cry
+' Message      18 -  . 
+' Size         2493 bytes
+' Reply needed yes
+'----------------------------------------------------------------------
+POST /1ASIUTOPLEGU/v2/open-pnrs/conversion?input=protobufBase64\&output=json HTTP/1.1&
+Content-Type: application/json&
+Authorization:1AAuth eyJub25jZSI6Ik1URXpNVFl5TnpZd09ETTFNRFV5TkE9PSIsInRpbWVzdGFtcCI6IjIwMjQtMDItMjZUMTU6NDU6MjIuMDAwWiIsInVzZXJJZCI6IllPQU5OVEVTVCIsIm9mZmljZUlkIjoiTkNFMUEwOTUwIiwib3JnYW5pemF0aW9uIjoiMUEiLCJwYXNzd29yZCI6IlRKeTR4TXNmOFlvZXNENVFvd0l5TUZDSVUrST0ifQ==&
+&
+\{"openPnr":"ChFKS1M5WVktMjAyNC0wMi0yNhIDcG5yGgZKS1M5WVkiATA6ZhoUMjAyNC0wMi0yNlQxNTo0NTowMFoiPQoiCglOQ0U2WDAxMDASCDAwNjMxMDAyGgI2WCIHQUlSTElORRIXCgQwNDQ3EgJZRxoCU1UqAkZSMgNOQ0UqD1lHLTFBL1lPQU5OVEVTVEopGhQyMDI0LTAyLTI2VDE1OjQ1OjMwWiINCgsKCU5DRTZYMDEwMCoCWUd6igEKC3N0YWtlaG9sZGVyEhpKS1M5WVktMjAyNC0wMi0yNi1QTlItTk0tMSIMEgRNRUtCGgRQU0RWcjwKB2NvbnRhY3QSGkpLUzlZWS0yMDI0LTAyLTI2LVBOUi1BUC0zGhVwcm9jZXNzZWRQbnIuY29udGFjdHOiARISEDYxMDAxMzE3MDAwMTJBQkR6igEKC3N0YWtlaG9sZGVyEhpKS1M5WVktMjAyNC0wMi0yNi1QTlItTk0tMiIMEgRHVUtFGgRUU0xNcjwKB2NvbnRhY3QSGkpLUzlZWS0yMDI0LTAyLTI2LVBOUi1BUC0zGhVwcm9jZXNzZWRQbnIuY29udGFjdHOiARISEDYxMDAxMzE3MDAwMTJBREKCAc8DCgdwcm9kdWN0EAEaG0pLUzlZWS0yMDI0LTAyLTI2LVBOUi1BSVItMSKkAwoaCgNGUkEaEzIwMjQtMDQtMTZUMTA6MDA6MDASGgoDTEhSGhMyMDI0LTA0LTE2VDExOjAwOjAwIk8KCQoCNlgSAzQwMhInCgFZEgMKAU0aFAoCCAASDAoEGgI2WBIEKgJGUiABIgdFQ09OT01ZMhk2WC00MDItMjAyNC0wNC0xNi1GUkEtTEhSSgJIS2KEAQoQc2VnbWVudC1kZWxpdmVyeRIbSktTOVlZLTIwMjQtMDItMjYtUE5SLUJLRy0xGhA2MDAwMzMxODAwMDBGNDlEWkEKC3N0YWtlaG9sZGVyEhpKS1M5WVktMjAyNC0wMi0yNi1QTlItTk0tMRoWcHJvY2Vzc2VkUG5yLnRyYXZlbGVyc2KEAQoQc2VnbWVudC1kZWxpdmVyeRIbSktTOVlZLTIwMjQtMDItMjYtUE5SLUJLRy0yGhA2MDAwMzMxODAwMDBGNDlFWkEKC3N0YWtlaG9sZGVyEhpKS1M5WVktMjAyNC0wMi0yNi1QTlItTk0tMhoWcHJvY2Vzc2VkUG5yLnRyYXZlbGVyc4oBAUWSAQIIAKIBwQEKB1NFUlZJQ0USG0pLUzlZWS0yMDI0LTAyLTI2LVBOUi1PU0ktNRoDVklQIAQqBAoCNlhqClZJUCBQUklOQ0VyQQoLc3Rha2Vob2xkZXISGkpLUzlZWS0yMDI0LTAyLTI2LVBOUi1OTS0xGhZwcm9jZXNzZWRQbnIudHJhdmVsZXJzej0KB3Byb2R1Y3QSG0pLUzlZWS0yMDI0LTAyLTI2LVBOUi1BSVItMRoVcHJvY2Vzc2VkUG5yLnByb2R1Y3RzsgG9AQoHY29udGFjdBIaSktTOVlZLTIwMjQtMDItMjYtUE5SLUFQLTMiDhoMKzEyMzQ1Njc4OUFCQAFiQQoLc3Rha2Vob2xkZXISGkpLUzlZWS0yMDI0LTAyLTI2LVBOUi1OTS0xGhZwcm9jZXNzZWRQbnIudHJhdmVsZXJzYkEKC3N0YWtlaG9sZGVyEhpKS1M5WVktMjAyNC0wMi0yNi1QTlItTk0tMhoWcHJvY2Vzc2VkUG5yLnRyYXZlbGVyc7oB9gEKEWF1dG9tYXRlZC1wcm9jZXNzEhpKS1M5WVktMjAyNC0wMi0yNi1QTlItVEstNBgFWkEKC3N0YWtlaG9sZGVyEhpKS1M5WVktMjAyNC0wMi0yNi1QTlItTk0tMRoWcHJvY2Vzc2VkUG5yLnRyYXZlbGVyc1pBCgtzdGFrZWhvbGRlchIaSktTOVlZLTIwMjQtMDItMjYtUE5SLU5NLTIaFnByb2Nlc3NlZFBuci50cmF2ZWxlcnNiPQoHcHJvZHVjdBIbSktTOVlZLTIwMjQtMDItMjYtUE5SLUFJUi0xGhVwcm9jZXNzZWRQbnIucHJvZHVjdHM="\}
+
+'**********************************************************************
+' Received at  16:45:36.090238 - 26 Feb 2024
+' Filename     /mnt/c/Users/ygarnier/open_pnr_validation/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Scripts/Keywords/OSI_element/2pax_1flight_in.cry
+' Match        OK
+' Message      18 -  . 
+' Size         7145 bytes
+'----------------------------------------------------------------------
+''Response:
+''HTTP/1.1 200 OK&
+''ama-request-id:0001XL4S19GZS0&
+''content-length:3101&
+''etag:1&
+''content-type:application/vnd.amadeus+json; charset=utf-8&
+''&
+''\{&
+''    "id": "JKS9YY-2024-02-26", &
+''    "type": "pnr", &
+''    "reference": "JKS9YY", &
+''    "version": "0", &
+''    "creation": \{&
+''        "dateTime": "2024-02-26T15:45:00Z", &
+''        "pointOfSale": \{&
+''            "office": \{&
+''                "id": "NCE6X0100", &
+''                "iataNumber": "00631002", &
+''                "systemCode": "6X", &
+''                "agentType": "AIRLINE"&
+''            \}, &
+''            "login": \{&
+''                "numericSign": "0447", &
+''                "initials": "YG", &
+''                "dutyCode": "SU", &
+''                "countryCode": "FR", &
+''                "cityCode": "NCE"&
+''            \}&
+''        \}, &
+''        "comment": "YG-1A/YOANNTEST"&
+''    \}, &
+''    "lastModification": \{&
+''        "dateTime": "2024-02-26T15:45:30Z", &
+''        "pointOfSale": \{&
+''            "office": \{&
+''                "id": "NCE6X0100"&
+''            \}&
+''        \}, &
+''        "comment": "YG"&
+''    \}, &
+''    "travelers": [&
+''        \{&
+''            "type": "stakeholder", &
+''            "id": "JKS9YY-2024-02-26-PNR-NM-1", &
+''            "names": [&
+''                \{&
+''                    "firstName": "MEKB", &
+''                    "lastName": "PSDV"&
+''                \}&
+''            ], &
+''            "contacts": [&
+''                \{&
+''                    "type": "contact", &
+''                    "id": "JKS9YY-2024-02-26-PNR-AP-3", &
+''                    "ref": "processedPnr.contacts"&
+''                \}&
+''            ], &
+''            "passenger": \{&
+''                "uniqueIdentifier": "6100131700012ABD"&
+''            \}&
+''        \}, &
+''        \{&
+''            "type": "stakeholder", &
+''            "id": "JKS9YY-2024-02-26-PNR-NM-2", &
+''            "names": [&
+''                \{&
+''                    "firstName": "GUKE", &
+''                    "lastName": "TSLM"&
+''                \}&
+''            ], &
+''            "contacts": [&
+''                \{&
+''                    "type": "contact", &
+''                    "id": "JKS9YY-2024-02-26-PNR-AP-3", &
+''                    "ref": "processedPnr.contacts"&
+''                \}&
+''            ], &
+''            "passenger": \{&
+''                "uniqueIdentifier": "6100131700012ADB"&
+''            \}&
+''        \}&
+''    ], &
+''    "products": [&
+''        \{&
+''            "type": "product", &
+''            "subType": "AIR", &
+''            "id": "JKS9YY-2024-02-26-PNR-AIR-1", &
+''            "airSegment": \{&
+''                "departure": \{&
+''                    "iataCode": "FRA", &
+''                    "localDateTime": "2024-04-16T10:00:00"&
+''                \}, &
+''                "arrival": \{&
+''                    "iataCode": "LHR", &
+''                    "localDateTime": "2024-04-16T11:00:00"&
+''                \}, &
+''                "marketing": \{&
+''                    "flightDesignator": \{&
+''                        "carrierCode": "6X", &
+''                        "flightNumber": "402"&
+''                    \}, &
+''                    "bookingClass": \{&
+''                        "code": "Y", &
+''                        "cabin": \{&
+''                            "code": "M"&
+''                        \}, &
+''                        "subClass": \{&
+''                            "code": 0, &
+''                            "pointOfSale": \{&
+''                                "office": \{&
+''                                    "systemCode": "6X"&
+''                                \}, &
+''                                "login": \{&
+''                                    "countryCode": "FR"&
+''                                \}&
+''                            \}, &
+''                            "sourceOfSubClassCode": "SOURCE_COUNTRY"&
+''                        \}, &
+''                        "levelOfService": "ECONOMY"&
+''                    \}, &
+''                    "id": "6X-402-2024-04-16-FRA-LHR"&
+''                \}, &
+''                "bookingStatusCode": "HK", &
+''                "deliveries": [&
+''                    \{&
+''                        "type": "segment-delivery", &
+''                        "id": "JKS9YY-2024-02-26-PNR-BKG-1", &
+''                        "distributionId": "600033180000F49D", &
+''                        "traveler": \{&
+''                            "type": "stakeholder", &
+''                            "id": "JKS9YY-2024-02-26-PNR-NM-1", &
+''                            "ref": "processedPnr.travelers"&
+''                        \}&
+''                    \}, &
+''                    \{&
+''                        "type": "segment-delivery", &
+''                        "id": "JKS9YY-2024-02-26-PNR-BKG-2", &
+''                        "distributionId": "600033180000F49E", &
+''                        "traveler": \{&
+''                            "type": "stakeholder", &
+''                            "id": "JKS9YY-2024-02-26-PNR-NM-2", &
+''                            "ref": "processedPnr.travelers"&
+''                        \}&
+''                    \}&
+''                ], &
+''                "distributionMethod": "E", &
+''                "notAcknowledged": false&
+''            \}&
+''        \}&
+''    ], &
+''    "keywords": [&
+''        \{&
+''            "type": "SERVICE", &
+''            "id": "JKS9YY-2024-02-26-PNR-OSI-5", &
+''            "code": "VIP", &
+''            "subType": "OTHER_SERVICE_INFORMATION", &
+''            "serviceProvider": \{&
+''                "code": "6X"&
+''            \}, &
+''            "text": "VIP PRINCE", &
+''            "travelers": [&
+''                \{&
+''                    "type": "stakeholder", &
+''                    "id": "JKS9YY-2024-02-26-PNR-NM-1", &
+''                    "ref": "processedPnr.travelers"&
+''                \}&
+''            ], &
+''            "products": [&
+''                \{&
+''                    "type": "product", &
+''                    "id": "JKS9YY-2024-02-26-PNR-AIR-1", &
+''                    "ref": "processedPnr.products"&
+''                \}&
+''            ]&
+''        \}&
+''    ], &
+''    "contacts": [&
+''        \{&
+''            "type": "contact", &
+''            "id": "JKS9YY-2024-02-26-PNR-AP-3", &
+''            "phone": \{&
+''                "number": "+123456789AB"&
+''            \}, &
+''            "purpose": [&
+''                "STANDARD"&
+''            ], &
+''            "travelerRefs": [&
+''                \{&
+''                    "type": "stakeholder", &
+''                    "id": "JKS9YY-2024-02-26-PNR-NM-1", &
+''                    "ref": "processedPnr.travelers"&
+''                \}, &
+''                \{&
+''                    "type": "stakeholder", &
+''                    "id": "JKS9YY-2024-02-26-PNR-NM-2", &
+''                    "ref": "processedPnr.travelers"&
+''                \}&
+''            ]&
+''        \}&
+''    ], &
+''    "automatedProcesses": [&
+''        \{&
+''            "type": "automated-process", &
+''            "id": "JKS9YY-2024-02-26-PNR-TK-4", &
+''            "code": "OK", &
+''            "travelers": [&
+''                \{&
+''                    "type": "stakeholder", &
+''                    "id": "JKS9YY-2024-02-26-PNR-NM-1", &
+''                    "ref": "processedPnr.travelers"&
+''                \}, &
+''                \{&
+''                    "type": "stakeholder", &
+''                    "id": "JKS9YY-2024-02-26-PNR-NM-2", &
+''                    "ref": "processedPnr.travelers"&
+''                \}&
+''            ], &
+''            "products": [&
+''                \{&
+''                    "type": "product", &
+''                    "id": "JKS9YY-2024-02-26-PNR-AIR-1", &
+''                    "ref": "processedPnr.products"&
+''                \}&
+''            ]&
+''        \}&
+''    ]&
+''\}
+''End of response
+
+''match:validate_openpnr(received_json)
+''Conversation: cry
+
+'**********************************************************************
+' Sent at      16:45:36.095554 - 26 Feb 2024
+' Filename     /mnt/c/Users/ygarnier/open_pnr_validation/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Scripts/Keywords/OSI_element/2pax_1flight_in.cry
+' Message      19 -  . 
+' Size         9 bytes
+' Reply needed yes
+'----------------------------------------------------------------------
+RT JKS9YY
+
+'**********************************************************************
+' Received at  16:45:36.269132 - 26 Feb 2024
+' Filename     /mnt/c/Users/ygarnier/open_pnr_validation/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Scripts/Keywords/OSI_element/2pax_1flight_in.cry
+' Match        N/A
+' Message      19 -  . 
+' Size         425 bytes
+'----------------------------------------------------------------------
+''Response:
+''--- RLR ---&
+''RP/NCE6X0100/NCE6X0100            AA/SU  26FEB24/1545Z   JKS9YY&
+''  1.PSDV/MEKB   2.TSLM/GUKE&
+''  3  6X 402 Y 16APR 2 FRALHR HK2  1000 1100  16APR  E  6X/JKS9YY&
+''  4 AP +123456789AB&
+''  5 TK OK26FEB/NCE6X0100&
+''  6 OSI 6X VIP PRINCE/P1&
+''  7 OPW-27FEB:2300/1C7/6X REQUIRES TICKET ON OR BEFORE&
+''        28FEB:2300 NCE TIME ZONE/TKT/S3&
+''  8 OPC-28FEB:2300/1C8/6X CANCELLATION DUE TO NO TICKET NCE TIME&
+''        ZONE/TKT/S3/P1-2&
+''>
+''End of response
+
+'**********************************************************************
+' Sent at      16:45:36.270002 - 26 Feb 2024
+' Filename     /mnt/c/Users/ygarnier/open_pnr_validation/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Scripts/Keywords/OSI_element/2pax_1flight_in.cry
+' Message      20 -  . 
+' Size         2 bytes
+' Reply needed yes
+'----------------------------------------------------------------------
+XI
+
+'**********************************************************************
+' Received at  16:45:36.549859 - 26 Feb 2024
+' Filename     /mnt/c/Users/ygarnier/open_pnr_validation/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Scripts/Keywords/OSI_element/2pax_1flight_in.cry
+' Match        N/A
+' Message      20 -  . 
+' Size         150 bytes
+'----------------------------------------------------------------------
+''Response:
+''--- RLR ---&
+''RP/NCE6X0100/NCE6X0100            AA/SU  26FEB24/1545Z   JKS9YY&
+''  1.PSDV/MEKB   2.TSLM/GUKE&
+''  3 AP +123456789AB&
+''  4 TK OK26FEB/NCE6X0100&
+''>
+''End of response
+
+'**********************************************************************
+' Sent at      16:45:36.550117 - 26 Feb 2024
+' Filename     /mnt/c/Users/ygarnier/open_pnr_validation/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Scripts/Keywords/OSI_element/2pax_1flight_in.cry
+' Message      21 -  . 
+' Size         2 bytes
+' Reply needed yes
+'----------------------------------------------------------------------
+ET
+
+'**********************************************************************
+' Received at  16:45:36.877487 - 26 Feb 2024
+' Filename     /mnt/c/Users/ygarnier/open_pnr_validation/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Scripts/Keywords/OSI_element/2pax_1flight_in.cry
+' Match        N/A
+' Message      21 -  . 
+' Size         38 bytes
+'----------------------------------------------------------------------
+''Response:
+''END OF TRANSACTION COMPLETE - JKS9YY&
+''>
+''End of response
+
+'**********************************************************************
+' Sent at      16:45:36.878766 - 26 Feb 2024
+' Filename     /mnt/c/Users/ygarnier/open_pnr_validation/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Scripts/Keywords/OSI_element/2pax_1flight_in.cry
+' Message      22 -  . 
+' Size         2 bytes
+' Reply needed yes
+'----------------------------------------------------------------------
+IG
+
+'**********************************************************************
+' Received at  16:45:36.993203 - 26 Feb 2024
+' Filename     /mnt/c/Users/ygarnier/open_pnr_validation/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Scripts/Keywords/OSI_element/2pax_1flight_in.cry
+' Match        N/A
+' Message      22 -  . 
+' Size         9 bytes
+'----------------------------------------------------------------------
+''Response:
+''IGNORED&
+''>
+''End of response
+
+'**********************************************************************
+' Sent at      16:45:36.993635 - 26 Feb 2024
+' Filename     /mnt/c/Users/ygarnier/open_pnr_validation/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Scripts/Keywords/OSI_element/2pax_1flight_in.cry
+' Message      23 -  . 
+' Size         2 bytes
+' Reply needed yes
+'----------------------------------------------------------------------
+JO
+
+'**********************************************************************
+' Received at  16:45:37.123451 - 26 Feb 2024
+' Filename     /mnt/c/Users/ygarnier/open_pnr_validation/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Scripts/Keywords/OSI_element/2pax_1flight_in.cry
+' Match        N/A
+' Message      23 -  . 
+' Size         387 bytes
+'----------------------------------------------------------------------
+''Response:
+''&
+''09CC2B44         NCE1A0950&
+''&
+''AREA  TM  MOD SG/DT.LG TIME      ACT.Q   STATUS     NAME&
+''A                       24             NOT SIGNED&
+''B                                      NOT SIGNED&
+''C                                      NOT SIGNED&
+''D                                      NOT SIGNED&
+''E                                      NOT SIGNED&
+''F                                      NOT SIGNED&
+''>
+''End of response
+
+'**********************************************************************
+' Sent at      16:45:37.124168 - 26 Feb 2024
+' Filename     /mnt/c/Users/ygarnier/open_pnr_validation/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Scripts/Keywords/OSI_element/2pax_1flight_in.cry
+' Message      24 -  . 
+' Size         2 bytes
+' Reply needed yes
+'----------------------------------------------------------------------
+JD
+
+'**********************************************************************
+' Received at  16:45:37.199522 - 26 Feb 2024
+' Filename     /mnt/c/Users/ygarnier/open_pnr_validation/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Epic_DATALMP_11405_Additional_OpenPNR_fields_for_Order_Codeshare/Scripts/Keywords/OSI_element/2pax_1flight_in.cry
+' Match        N/A
+' Message      24 -  . 
+' Size         387 bytes
+'----------------------------------------------------------------------
+''Response:
+''&
+''09CC2B44         NCE1A0950&
+''&
+''AREA  TM  MOD SG/DT.LG TIME      ACT.Q   STATUS     NAME&
+''A                       24             NOT SIGNED&
+''B                                      NOT SIGNED&
+''C                                      NOT SIGNED&
+''D                                      NOT SIGNED&
+''E                                      NOT SIGNED&
+''F                                      NOT SIGNED&
+''>
+''End of response
+
+
+'----------------------------------------------------------------------
+' Statistics
+'----------------------------------------------------------------------
+' Messages in          : 24
+' Bytes in             : 0Mb 12Kb 464b
+' Messages out         : 24
+' Bytes out            : 0Mb 3Kb 52b
+
+' Conversations        : 5
+' Transactions         : 24
+' Transactions parsed  : 24
+' Ratio                : 1
+
+' Total duration       : 0h 0min 10s 855.3ms
+' Parse duration       : 0h 0min 0s 1.698ms (0 %)
+' Wait duration        : 0h 0min 5s 620.038ms (51 %)
+' Transactions/s       : 2 TPS
+
+' Number of Timeouts   : 0
+' Messages compared    : 5
+' Errors found         : 0
+' Python errors found         : 0
+' No match counter     : 0
