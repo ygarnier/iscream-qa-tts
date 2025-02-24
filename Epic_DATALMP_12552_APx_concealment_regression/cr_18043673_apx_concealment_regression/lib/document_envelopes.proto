@@ -1,0 +1,54 @@
+syntax = "proto3";
+
+package pub.grammar.protoBuf.opendatamultipayload;
+
+message DocumentEnvelopes {
+
+    repeated DocumentEnvelope envelopes = 1;
+
+    /*
+     * Standard definition of a document envelope as defined in
+     * https://rndwww.nce.amadeus.net/git/projects/ADT-SL/repos/data-model-dictionary/browse/reference/common/models/SharedCommonDataModels/DocumentEnvelope/DocumentEnvelope.v1.yaml
+    */
+    message DocumentEnvelope {
+
+        oneof value {
+            string payload  = 1;
+            bytes binary_payload = 2;
+        }
+
+        DocumentEnvelopeMetadata metadata = 3;
+    }
+
+    /*
+     * Standard definition of document envelope metadata as defined in
+     * https://rndwww.nce.amadeus.net/git/projects/ADT-SL/repos/data-model-dictionary/browse/reference/common/models/SharedCommonDataModels/DocumentEnvelope/DocumentEnvelope_MetaData.v1.yaml
+    */
+    message DocumentEnvelopeMetadata {
+
+        // The default content type is application/vnd.google.protobuf or a content type defined in https://www.iana.org/assignments/media-types/media-types.xhtml
+        string iana_content_type = 1; //-> Static Value "application/vnd.google.protobuf"
+
+        // The name of the document (RECLOC, orderId)
+        string name = 2; //  -> RECLOC
+
+        // The version of the document (envelope number, etag, timestamp)
+        string version = 3; // envelope number
+
+        // Name of the grammar i.e. name of the file defining the grammar
+        string grammar_name = 4; //Static Value "Pnr"
+
+        // Namespace of the grammar : com.amadeus.orms
+        string grammar_domain = 5; // Static Value "com.amadeus.pulse.message"
+
+        // The version of the grammar
+        string grammar_version = 6; // -> No Need, it is not yet versionned
+
+        // The encoding of the payload, it could be different depending the presence of binary_payload or payload
+        // (e.g : BASE64 for binary data encoded in payload field or UTF-8 for binary string encoded binary_payload field
+        string encoding = 7; //No Need
+
+        // The compression applied after encoding (GZIP)
+        string compression_type = 8; //No Need
+    }
+}

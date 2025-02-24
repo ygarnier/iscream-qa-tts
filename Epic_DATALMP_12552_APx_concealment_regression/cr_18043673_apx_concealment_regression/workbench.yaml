@@ -1,0 +1,4 @@
+# Information about this file can be found here: https://rndwww.nce.amadeus.net/confluence/x/SRkqHw
+team: 'CSS-Q&T-PTS-TMS'
+# CI Exclusion reason information can be found here: https://rndwww.nce.amadeus.net/confluence/x/KD2fLg
+ci_exclude_reason: 'descoped repository'

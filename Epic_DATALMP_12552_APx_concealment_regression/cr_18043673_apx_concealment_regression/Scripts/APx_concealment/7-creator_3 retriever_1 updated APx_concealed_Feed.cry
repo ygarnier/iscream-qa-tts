@@ -1,0 +1,409 @@
+'=========================================================================
+'             (C) COPYRIGHT AMADEUS GLOBAL TRAVEL DISTRIBUTION 2019
+'
+' TEST CASE NAME: office retriever 0_ concealed
+' PRODUCT: todo
+'
+' TEST CASE: 
+'   TESTED REQUIREMENT: CR18043673/APx_concealement
+'   PREREQUISITE:
+'      PNR  (1pax 1segment + APE, APN, APM)
+'      
+'
+'   DESCRIPTION:
+'      Goal of this test is to validate that the APx elements are concealed for offices retriever 0 and 1 (airlines) and visible for the others
+'   EXPECTATIONS:
+'      APx concealed for offices retriever 0 and 1
+'      APx visible for offices retrievers 2 to 9
+'
+'
+' TEST PLAN: CR18043673
+' 
+' -DESIGN steps:
+' 1. Sign in airline test office BLR6X1123
+' 2. Create a PNR with 1pax 1seg + APE, APN, APM
+' 3. Sign out
+' 4. Sign in TA test office NCE6X31RP
+' 5. Add APM, APE, API elements
+' 6. Sign out
+' 7. Sign in Airline test office BLR6X1123
+' 5. Retrieve. Check that only APx elements created by an office airline are displayed (the ones created by TA are not displayed except AP and API elements)
+' 6. Sign out
+'
+'=========================================================================
+'initialize - execute (the root and the data file)
+''Initialize:
+import json
+from lib.openpnr import extract_binary_payload
+from lib.json_match import assert_equal, assert_found, assert_not_found, parse_json
+
+execfile(global_regression.TTS_RootDir + '/data/data_' + global_regression.TEST_SYSTEM + '.py')
+
+TTS_OK = TTServer.currentMessage.TTS_MATCH_COMPARISON_OK
+TTS_KO = TTServer.currentMessage.TTS_MATCH_COMPARISON_FAILURE
+
+# As the specific conditions to evaluate depend on the test, the comparison function is in the individual script
+# In case of match error, find the error details in TTS logs (not available in .log or in .rex file)
+# Variables defined in data files (e.g., test user data) or in the current scripts (e.g., recloc)
+# are directly available from inside the function.
+def validate_openpnr(openpnr_json):
+    try:
+        openpnr = parse_json(openpnr_json)
+        for field in ['id', 'reference', 'creation', 'travelers', 'products']:
+            assert_found(field, container=openpnr)
+        
+        expected_openpnr_id = recloc + '-' + today
+        assert_equal(actual=openpnr['id'], expected=expected_openpnr_id, item_name='OpenPNR id field')
+        assert_not_found('creation/date', container=openpnr)
+        assert_found('creation/dateTime', container=openpnr)
+        assert_found('creation/pointOfSale/office/id', container=openpnr)
+        assert_equal(expected=DEFAULT_OFFICE_6X1, actual=openpnr['creation']['pointOfSale']['office']['id'], item_name='creator office')
+
+        #Check data for contacts section
+        assert_equal(actual=len(openpnr['contacts']), expected=6, item_name='number of contacts')
+        contacts_1 = openpnr['contacts'][0]
+        contacts_2 = openpnr['contacts'][1]
+        contacts_3 = openpnr['contacts'][2]
+        contacts_4 = openpnr['contacts'][3]
+        contacts_5 = openpnr['contacts'][4]
+        contacts_6 = openpnr['contacts'][5]
+        
+        #Check data for AP element
+        assert_equal(actual=contacts_1['type'], expected="contact", item_name='contact1 type')
+        assert_equal(actual=contacts_1['id'], expected= recloc+"-"+today+"-PNR-AP-4", item_name='contact1 id')
+        assert_equal(actual=contacts_1['purpose'], expected= [u'STANDARD'], item_name='contact1 purpose')
+        assert_equal(actual=contacts_1['phone']['number'], expected= "EOS", item_name='contact1 phone/number')
+        #Check data for APN element
+        assert_equal(actual=contacts_2['type'], expected="contact", item_name='contact2 type')
+        assert_equal(actual=contacts_2['id'], expected= recloc+"-"+today+"-PNR-AP-5", item_name='contact2 id')
+        assert_equal(actual=contacts_2['purpose'], expected= [u'NOTIFICATION'], item_name='contact2 purpose')
+        assert_equal(actual=contacts_2['phone']['number'], expected= SMS, item_name='contact2 phone/number')    
+        #Check data for APM element
+        assert_equal(actual=contacts_3['type'], expected="contact", item_name='contact3 type')
+        assert_equal(actual=contacts_3['id'], expected= recloc+"-"+today+"-PNR-AP-6", item_name='contact3 id')
+        assert_equal(actual=contacts_3['purpose'], expected= [u'STANDARD'], item_name='contact3 purpose')
+        assert_equal(actual=contacts_3['phone']['category'], expected= "PERSONAL", item_name='contact3 phone/category')
+        assert_equal(actual=contacts_3['phone']['deviceType'], expected= "MOBILE", item_name='contact3 phone/deviceType')
+        assert_equal(actual=contacts_3['phone']['number'], expected= HomeNumber+" (AIRLINE)", item_name='contact3 phone/number')
+        #Check data for APE element
+        assert_equal(actual=contacts_4['type'], expected="contact", item_name='contact4 type')
+        assert_equal(actual=contacts_4['id'], expected= recloc+"-"+today+"-PNR-AP-7", item_name='contact4 id')
+        assert_equal(actual=contacts_4['email']['address'], expected= "MBAUER@YKT.COM (AIRLINE)", item_name='contact4 email/address')
+        assert_equal(actual=contacts_4['purpose'], expected= [u'STANDARD'], item_name='contact4 purpose')
+        #Check data for API element
+        assert_equal(actual=contacts_5['type'], expected="contact", item_name='contact5 type')
+        assert_equal(actual=contacts_5['id'], expected= recloc+"-"+today+"-PNR-AP-8", item_name='contact5 id')
+        assert_equal(actual=contacts_5['phone']['number'], expected= "THIS INFO LINE SHOULD BE VISIBLE IN OPENPNR (AIRLINE)", item_name='contact5 phone/number')
+        assert_equal(actual=contacts_5['purpose'], expected= [u'INFORMATION'], item_name='contact5 purpose')
+        assert_equal(actual=contacts_5['freeFlowFormat'], expected= "THIS INFO LINE SHOULD BE VISIBLE IN OPENPNR (AIRLINE)", item_name='contact5 purpose')
+        #Check data for API element
+        assert_equal(actual=contacts_6['type'], expected="contact", item_name='contact6 type')
+        assert_equal(actual=contacts_6['id'], expected= recloc+"-"+today+"-PNR-AP-17", item_name='contact6 id')
+        assert_equal(actual=contacts_6['phone']['number'], expected= "THIS INFO LINE SHOULD BE VISIBLE IN OPENPNR (TA)", item_name='contact6 phone/number')
+        assert_equal(actual=contacts_6['purpose'], expected= [u'INFORMATION'], item_name='contact6 purpose')
+        assert_equal(actual=contacts_6['freeFlowFormat'], expected= "THIS INFO LINE SHOULD BE VISIBLE IN OPENPNR (TA)", item_name='contact6 purpose')
+
+
+    except Exception as e:
+        print('OpenPNR validation failed: {}'.format(e))
+        return TTS_KO
+    
+    print('OpenPNR validation successful')
+    return TTS_OK
+
+''End
+
+IG
+JO
+JD
+
+'========================================================================
+'> 1.Sign in the airline test office BLR6X1123 %DEFAULT_OFFICE_6X1%
+'========================================================================
+'@Action: 
+'@Expect: todo
+
+OK-WE/L-%ATID%
+''WAIT:3
+OK-WY/C-C5AGY/W-AMAD/S-80X22/O-%test_user_1A_office%/T-NCE/A-NCE/L-%ATID%
+Ji%test_user_1A_sign%/SU.%DEFAULT_OFFICE_6X1%-%test_user_1A_pwd%
+
+''Response:
+''{.*}A-SIGN COMPLETE{*}
+
+
+'========================================================================
+'> 2.Create a PNR with 1pax 1seg + APE, APN, APM
+'========================================================================
+'@Action:
+'@Expect: todo
+
+{=Pax1.book()}
+{=Flight_1.book(1)}
+
+''Response:
+''{.*}RP/%DEFAULT_OFFICE_6X1%/&
+''{.*} {=Flight_1.pnr_format('')}{*}&
+''{*}
+
+' An airline have to give a Travel Agency office the right to check this PNR or else it would only see "secured PNR"
+ES/G%DEFAULT_OFFICE2%-B
+TKOK
+AP EOS
+
+' SMS, Home number, Email
+APN-%SMS%/P1
+APM-%HomeNumber% (airline)
+APE-%Email% (airline)
+API-This info line should be visible in OpenPNR (airline)
+
+RF OPENPNR-TEST
+
+'> End-transact & check for completion
+ER
+
+''Response:
+''--- RLR {*}---&
+''RP/%DEFAULT_OFFICE_6X1%/%DEFAULT_OFFICE_6X1%            {*}/{*}  {*}Z   {%recloc%=.{6}}&
+''{*}
+''NoMatch: TTServer.currentMessage.loop(1, 1, 0)
+
+IG
+
+'========================================================================
+'> 3. Sign out
+'========================================================================
+'@Action: 3. Sign out
+'@Expect: todo
+
+JO
+JD
+
+'========================================================================
+'> 4. Sign in TA test office retriever  NCE6X31RP %DEFAULT_OFFICE2%
+'========================================================================
+'@Action:
+
+OK-WE/L-%ATID%
+''WAIT:3
+OK-WY/C-C5AGY/W-AMAD/S-80X22/O-%test_user_1A_office%/T-NCE/A-NCE/L-%ATID%
+Ji%test_user_1A_sign%/SU.%DEFAULT_OFFICE2%-%test_user_1A_pwd%
+
+''Response:
+''{.*}A-SIGN COMPLETE{*}
+
+
+'>Retrieve
+RT%recloc%
+
+''Response:
+''--- RLR {*}---&
+''RP/%DEFAULT_OFFICE_6X1%/%DEFAULT_OFFICE_6X1%            {*}/{*}  {*}Z   %recloc%&
+''{(local).*?AP} EOS&
+''{(local).*?APE} SECURED DATA&
+''{(local).*?API} THIS INFO LINE SHOULD BE VISIBLE IN OPENPNR (AIRLINE)&
+''{(local).*?APM} SECURED DATA&
+''{(local).*?APN} SECURED DATA&
+''{*}
+''NoMatch: TTServer.currentMessage.loop(1, 1, 0)
+
+'Add new elements to the PNR (APM, APE, API)
+
+APM-%HomeNumber% (TA)
+APE-%Email% (TA)
+API-This info line should be visible in OpenPNR (TA)
+RF TA
+
+ER
+
+''Response:
+''--- RLR {*}---&
+''RP/%DEFAULT_OFFICE_6X1%/%DEFAULT_OFFICE_6X1%            {*}/{*}  {*}Z   %recloc%&
+''{(local).*?AP} EOS&
+''{(local).*?APE} SECURED DATA&
+''{(local).*?APE} MBAUER@YKT.COM (TA)&
+''{(local).*?API} THIS INFO LINE SHOULD BE VISIBLE IN OPENPNR (AIRLINE)&
+''{(local).*?API} THIS INFO LINE SHOULD BE VISIBLE IN OPENPNR (TA)&
+''{(local).*?APM} SECURED DATA&
+''{(local).*?APM} %HomeNumber% (TA)&
+''{(local).*?APN} SECURED DATA&
+''{*}
+''NoMatch: TTServer.currentMessage.loop(1, 1, 0)
+
+IG
+JO
+JD
+
+'========================================================================
+'> 5.Sign in again with airline test office BLR6X1123 %DEFAULT_OFFICE_6X1%
+'========================================================================
+'@Action: 
+'@Expect: todo
+
+OK-WE/L-%ATID%
+''WAIT:3
+OK-WY/C-C5AGY/W-AMAD/S-80X22/O-%test_user_1A_office%/T-NCE/A-NCE/L-%ATID%
+Ji%test_user_1A_sign%/SU.%DEFAULT_OFFICE_6X1%-%test_user_1A_pwd%
+
+''Response:
+''{.*}A-SIGN COMPLETE{*}
+
+'>Retrieve
+RT%recloc%
+
+''Response:
+''--- RLR {*}---&
+''RP/%DEFAULT_OFFICE_6X1%/%DEFAULT_OFFICE_6X1%            {*}/{*}  {*}Z   %recloc%&
+''{(local).*?AP} EOS&
+''{(local).*?APE} %Email% (AIRLINE)&
+''{(local).*?APE} SECURED DATA&
+''{(local).*?API} THIS INFO LINE SHOULD BE VISIBLE IN OPENPNR (AIRLINE)&
+''{(local).*?API} THIS INFO LINE SHOULD BE VISIBLE IN OPENPNR (TA)&
+''{(local).*?APM} %HomeNumber% (AIRLINE)&
+''{(local).*?APM} SECURED DATA&
+''{(local).*?APN} %SMS%&
+''{*}
+''NoMatch: TTServer.currentMessage.loop(1, 1, 0)
+
+
+''Exec:
+# Compose the expected PNR ID used in OpenPNR, e.g. ABC123-2025-05-27
+openpnr_id = recloc + '-' + today
+''End
+
+IG
+JO
+JD
+
+'========================================================================
+'> 6. Sign in with test_user_1A_sign in office test_user_1A_office
+'========================================================================
+'@Action: Reconfigure terminal
+
+OK-WE/L-%ATID%
+''WAIT:2
+OK-WY/C-C5AGY/W-AMAD/S-80X22/O-%test_user_1A_office%/T-NCE/A-NCE/L-%ATID%
+
+'@Action: Sign in with extended sign into the 6X office
+
+Jia%test_user_1A_sign%/SU.%test_user_1A_extended_office%-%test_user_1A_pwd% 
+
+''Response:
+''{.*}A-SIGN COMPLETE{*}
+
+'>Retrieve
+RT%recloc%
+''WAIT:1
+
+'> Catch the correct envelope number PNR
+''Conversation: edi
+
+UNH+1+PNRRET:%PNRRET_Version%:%PNRRET_Release%:1A'&
+ORG+00+:%DESTINATION_OFFICE%+++++A%MY_SIGN%SUCKS'&
+RET+2'&
+RCI+:%recloc%'
+
+''Response:
+''{(multi).*}'&
+''PNH++{%env_num%=.{1}}'&
+''{(multi).*}'
+''End of response
+
+'========================================================================
+'> 7. Retrieve the OpenPNR publication via the Edifact service
+'========================================================================
+
+'@Action: get the published message ID from recloc + creation date + publication ID
+
+''Conversation: pub
+
+UNH+1+PURCRQ:14:1:1A'&
+ORG+1A+:NCE1A0900++++FR:EUR:FR+A001SU'&
+RCI+:%recloc%::%today_ddmmyy%'&
+ATC++%openpnr_publication%'&
+IRV+ENV+%env_num%'&
+SPR+++2005:8:8+2100:12:12++'
+
+''Response:
+''UNH+1+PURCRR:14:1:1A'&
+''RCI+:%recloc%::%today_ddmmyy%'&
+''ATC++%openpnr_publication%'&
+''IRV+ENV+%env_num%'&
+''SPR+++2005:8:8+2100:12:12'&
+''DUM'&
+''RCI+:%recloc%::{*}'&
+''IRV+OBE+{%backend%=*}'&
+''IRV+ENV+%env_num%'&
+''ATC++%openpnr_publication%'&
+''SDI+++{*}'&
+''IRV+ID+{%message_id%=*}'&
+''SDI+++{%sdi_date2%=*}'&
+''{*}
+''End of response
+
+
+'@Action: retrieve the published message by ID
+
+''Conversation: pub_raw
+
+UNH+1+PUPIRQ:14:1:1A'&
+IRV+ID+%message_id%'&
+IRV+OBE+%backend%'&
+SDI+++%sdi_date2%'
+''Response:
+''UNH+1+PUPIRR:14:1:1A'&
+''IRV+ID+{*}'&
+''IRV+OBE+SONPK{*}'&
+''SDI+++{*}'&
+''BLB+{*}+E+UNH\x1D1\x1DDUMMYY\x1F01\x1F1\x1F1A\x1C&
+''{%raw_binary%=(multi).*}&
+''\UNT\x1D2\x1D1\x1C'UNT+6+1'
+''End of response
+''Match: extract_binary_payload(global_regression, raw_binary=raw_binary)
+
+
+'===============================================================================
+'> 8. Call the OpenPNR conversion API to transform base64 protobuf to JSON,
+'     extract the JSON output and evaluate conditions (smart comparison)
+'===============================================================================
+
+'@Action: Convert the base64 protobuf to JSON
+
+''Conversation: web
+
+POST /%SAP%/v2/open-pnrs/conversion?input=protobufBase64&output=json HTTP/1.1&
+Content-Type: application/json&
+Authorization:1AAuth %auth_header_airline%&
+&
+\{"openPnr":"%global_regression.openpnr_payload%"\}
+
+''Response:
+''HTTP/1.1 200 OK&
+''ama-request-id:{*}&
+''content-length:{*}&
+''etag:1&
+''content-type:application/vnd.amadeus+json; charset=utf-8&
+''&
+''{%received_json%=.*}
+''End of response
+''Match: validate_openpnr(received_json)
+
+
+'========================================================================
+'> 9. Cancel the PNR and sign out
+'========================================================================
+
+'@Action: cancel the PNR itinerary
+
+''Conversation: cry
+
+RT%recloc%
+XI
+ET
+IG
+
+
+'@Action: sign out
+
+JO
+JD
